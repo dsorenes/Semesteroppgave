@@ -3,8 +3,37 @@
 
 ## Karakter blir satt etter følgende generelle mål:
 • At du har arbeidet effektivt med medlemmene i din gruppe
+
 • At dere har implementert et program i samsvar med oppgavebeskrivelsen
+
 • At tekniske løsninger er utarbeidet med høy kvalitet
+
+## Evaluering
+Evalueringen vil være basert på punktene under. Alle punktene teller like mye i karaktersettingen.
+• Oppnåelse av et fungerende program i henhold til oppgavebeskrivelsen.
+
+• Kvalitet av klassene som representerer elementene i registeret
+
+• Brukbarheten til det grafiske brukergrensesnittet
+
+• Interaksjon for å legge til, modifisere, og slette elementer. Registrerte elementer skal være
+grafisk opplistet og skal kunne sorteres og filtreres. Feil som ugyldig data fra bruker skal
+håndteres på en naturlig måte.
+
+• Lagring til fil fra GUI, med støtte for både csv og jobj. Bruk av Strategy designmønster for
+løsning i kode. Feilhåndtering med avvik.
+
+• Innlesning av data fra fil, med støtte for både csv og jobj. Bruk av Strategy designmønster for
+løsning i kode. Feilhåndtering med egen-definerte avvik.
+
+• Bruk av tråder for innlesning av data.
+
+• Bruk av MVC, der back-end kode er tydelig separert fra front-end kode. Controller delen
+fungerer som et bindeledd mellom front og back-end, men skal ikke ha andre ansvarsområder.
+
+• Kvalitet og lesbarhet av kode.
+
+• Evaluering av grupperapporten og den individuelle rapporten.
 
 ## Registrering av elementer
 Bruker skal ha muligheten til å registrere individuelle elementer fra et grafisk brukergrensesnitt. Hvis
