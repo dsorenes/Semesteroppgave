@@ -12,10 +12,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
         Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         stage.setTitle("JavaFX");
         stage.setScene(scene);
