@@ -35,7 +35,7 @@ fungerer som et bindeledd mellom front og back-end, men skal ikke ha andre ansva
 
 • Evaluering av grupperapporten og den individuelle rapporten.
 
-## Registrering av elementer
+### Registrering av elementer
 Bruker skal ha muligheten til å registrere individuelle elementer fra et grafisk brukergrensesnitt. Hvis
 brukeren taster inn ugyldig data, skal brukeren få beskjed om dette. Det skal dermed ikke være mulig
 å legge til elementer med ugyldig data.
@@ -44,7 +44,7 @@ brukeren å forstå hvordan å legge til elementer. Det blir lagt noe vekt på det g
 ikke mye. Det vil si, det skal se bra ut, men det forventes ikke noe ekstraordinært her som animasjoner
 eller andre dynamiske GUI funksjonaliteter.
 
-## Visualisering av eksisterende elementer
+### Visualisering av eksisterende elementer
 De elementene som er lagt til fra bruker og lest inn fra fil skal listes opp i det grafiske
 brukergrensesnittet. Det skal være mulig for bruker å kunne sortere elementene etter hver
 datakolonne. I tillegg forventes det at elementer kan filtreres ut ifra filtreringsmuligheter som passer
@@ -53,7 +53,7 @@ Bruker skal kunne velge et individuelt element, gjøre endringer på elementets da
 elementet. Det grafiske grensesnittet skal være designet slik at det kommer tydelig frem hvilket
 element som er valgt (for eksempel, ved å markere valgt rad med mørkere bakgrunn).
 
-## Lagring av data til fil
+### Lagring av data til fil
 Programmet skal støtte lagring av programmets data til fil. Videre, skal programmet støtte to typer
 formater for lagring som brukeren kan velge mellom:
 • Lagring til .csv fil kompatibelt som er kompatibelt med regnearksprogrammer som Microsoft
@@ -76,7 +76,7 @@ avvik skal kastes fra klassen som lagrer dataene til fil. Slike avvik skal deret
 eller tilsvarende, som er koplet opp til brukergrensesnittet. Hvis feil oppstår skal controller
 klassen påse at feilinformasjonen blir på en naturlig måte fremstilt til bruker.
 
-## Innlesning av data fra fil
+### Innlesning av data fra fil
 Programmet skal støtte muligheten for å laste data inn fra fil. Den tekniske løsningen for dette
 reflekterer løsningen fra fillagringen. Det betyr, innlasting fra to filformater skal støttes: csv og jobj.
 Strategy designmønsteret skal igjen brukes til å støtte innlesning fra disse to formatene. Det vil si, en
@@ -101,7 +101,7 @@ Innlesningsmetoden kan kjøres i en tråd opprettet med en klasse som arver fra Ta
 javafx.concurrent. Klassene som implementerer filhåndteringen (den abstrakte klassen og de to
 konkrete klassene for csv og jobj) skal ikke utvide Task. Det
 
-## Bruk av OOP og Model-View-Controller
+### Bruk av OOP og Model-View-Controller
 Programmeringsstilen objekt-orientert programmering skal brukes som den primære metoden for å
 håndtere kompleksitet. Et sentralt mål innen programutvikling er å utvikle kode som kan vedlikeholdes
 og videreutvikles. Oppgavebeskrivelsen beskriver data som skal modelleres for hvert konsept, og det
