@@ -1,19 +1,28 @@
 package savetofile;
 
-import person.Person;
+import model.Person;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public abstract class WriteToFile {
 
-     public void SaveToFile (String path, List<Person> list) {
+     public void SaveToFile (String fileName, List<Person> list) {
+         Path path = Paths.get(fileName);
           try (
-                  var writer = new PrintWriter(path, "UTF-8")
+                  var writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)
                   ) {
              for (Object o : list) {
-                  writer.println(o);
+                  writer.write(o.toString());
+                  writer.newLine();
              }
 
           } catch (IOException e) {

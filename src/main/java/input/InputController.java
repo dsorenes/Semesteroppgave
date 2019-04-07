@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import person.Person;
-import savetofile.SaveToJOBJ;
+import model.Person;
+import savetofile.SaveToCSV;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,10 +30,10 @@ public class InputController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Person> list = new ArrayList<>();
-        SaveToJOBJ stj = new SaveToJOBJ();
+        SaveToCSV saveCSV = new SaveToCSV();
         submit.setOnAction(e -> list.add(new Person(firstname.getText(), lastname.getText())));
 
 
-       save.setOnAction(e -> stj.SaveToFile("C:\\Users\\Daniel\\OneDrive - OsloMet\\Programutvikling\\Semesteroppgave\\person.txt", list));
+       save.setOnAction(e -> saveCSV.SaveToFile("person.csv", list));
     }
 }
