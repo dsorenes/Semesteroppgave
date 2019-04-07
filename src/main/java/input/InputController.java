@@ -34,6 +34,6 @@ public class InputController implements Initializable {
         submit.setOnAction(e -> list.add(new Person(firstname.getText(), lastname.getText())));
 
 
-       save.setOnAction(e -> saveCSV.SaveToFile("person.csv", list));
+       save.setOnAction(e -> saveCSV.SaveToFile("person", list));
     }
 }

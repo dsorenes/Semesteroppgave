@@ -15,12 +15,12 @@ import java.util.List;
 
 public abstract class WriteToFile {
 
-     public void SaveToFile (String fileName, List<Person> list) {
+     public <T> void SaveToFile (String fileName, List<T> list) {
          Path path = Paths.get(fileName);
           try (
                   var writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)
                   ) {
-             for (Object o : list) {
+             for (T o : list) {
                   writer.write(o.toString());
                   writer.newLine();
              }
