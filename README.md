@@ -40,35 +40,36 @@ Det skal lages et Java-program til et vikarbyrå. Vikarbyråets oppgave er å formi
 personer som ønsker seg et midlertidig engasjement og virksomheter som trenger vikarer.
 Programmet som skal utvikles skal gjøre det lettere å få rett vikar til rett virksomhet.
 ###Registreringsdata:
-<95> Arbeidsgiver
-<95> Bransje
-<95> Kontaktinformasjon
-<95> Liste av ledige vikariater
+* Arbeidsgiver
+* Bransje
+* Kontaktinformasjon
+* Liste av ledige vikariater
+
 ###Ledige vikariater
-<95> Offentlig eller privat sektor
-<95> Arbeidssted
-<95> Arbeidsgiver
-<95> Jobbkategori
-<95> Engasjementets varighet
-<95> Arbeidstid
-<95> Stillingstype
-<95> Krav til kvalifikasjoner
-<95> Lønnsbetingelser
-<95> Arbeidsvilkår
-<95> Kontaktinformasjon
-<95> Stillingsbeskrivelse
-<95> Liste over søkere
+* Offentlig eller privat sektor
+* Arbeidssted
+* Arbeidsgiver
+* Jobbkategori
+* Engasjementets varighet
+* Arbeidstid
+* Stillingstype
+* Krav til kvalifikasjoner
+* Lønnsbetingelser
+* Arbeidsvilkår
+* Kontaktinformasjon
+* Stillingsbeskrivelse
+* Liste over søkere
 ###Jobbsøker
-<95> Kontaktinformasjon
-<95> Personlig informasjon som alder
-<95> Ønsket jobbkategori
-<95> Utdannelse
-<95> Jobberfaring
-<95> Lønnskrav
-<95> Referanser
+* Kontaktinformasjon
+* Personlig informasjon som alder
+* Ønsket jobbkategori
+* Utdannelse
+* Jobberfaring
+* Lønnskrav
+* Referanser
 ###Arbeidsforhold
-<95> Vikaren (tidligere jobbsøker)
-<95> Vikariatet (som nå ikke er ledig lenger)
+* Vikaren (tidligere jobbsøker)
+* Vikariatet (som nå ikke er ledig lenger)
 
 
 ### Registrering av elementer
