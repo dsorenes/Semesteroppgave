@@ -39,8 +39,9 @@ fungerer som et bindeledd mellom front og back-end, men skal ikke ha andre ansva
 Det skal lages et Java-program til et vikarbyrå. Vikarbyråets oppgave er å formidle kontakt mellom
 personer som ønsker seg et midlertidig engasjement og virksomheter som trenger vikarer.
 Programmet som skal utvikles skal gjøre det lettere å få rett vikar til rett virksomhet.
-### Registreringsdata:
-* Arbeidsgiver
+### Arbeidsgiver
+* Offentlig eller privat sektor
+* Adresse
 * Bransje
 * Kontaktinformasjon
 * Liste av ledige vikariater
