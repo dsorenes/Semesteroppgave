@@ -35,6 +35,42 @@ fungerer som et bindeledd mellom front og back-end, men skal ikke ha andre ansva
 
 • Evaluering av grupperapporten og den individuelle rapporten.
 
+##Alternativ 2: Vikarbyrå
+Det skal lages et Java-program til et vikarbyrå. Vikarbyråets oppgave er å formidle kontakt mellom
+personer som ønsker seg et midlertidig engasjement og virksomheter som trenger vikarer.
+Programmet som skal utvikles skal gjøre det lettere å få rett vikar til rett virksomhet.
+###Registreringsdata:
+<95> Arbeidsgiver
+<95> Bransje
+<95> Kontaktinformasjon
+<95> Liste av ledige vikariater
+###Ledige vikariater
+<95> Offentlig eller privat sektor
+<95> Arbeidssted
+<95> Arbeidsgiver
+<95> Jobbkategori
+<95> Engasjementets varighet
+<95> Arbeidstid
+<95> Stillingstype
+<95> Krav til kvalifikasjoner
+<95> Lønnsbetingelser
+<95> Arbeidsvilkår
+<95> Kontaktinformasjon
+<95> Stillingsbeskrivelse
+<95> Liste over søkere
+###Jobbsøker
+<95> Kontaktinformasjon
+<95> Personlig informasjon som alder
+<95> Ønsket jobbkategori
+<95> Utdannelse
+<95> Jobberfaring
+<95> Lønnskrav
+<95> Referanser
+###Arbeidsforhold
+<95> Vikaren (tidligere jobbsøker)
+<95> Vikariatet (som nå ikke er ledig lenger)
+
+
 ### Registrering av elementer
 Bruker skal ha muligheten til å registrere individuelle elementer fra et grafisk brukergrensesnitt. Hvis
 brukeren taster inn ugyldig data, skal brukeren få beskjed om dette. Det skal dermed ikke være mulig
