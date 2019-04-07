@@ -35,17 +35,17 @@ fungerer som et bindeledd mellom front og back-end, men skal ikke ha andre ansva
 
 • Evaluering av grupperapporten og den individuelle rapporten.
 
-##Alternativ 2: Vikarbyrå
+### Alternativ 2: Vikarbyrå
 Det skal lages et Java-program til et vikarbyrå. Vikarbyråets oppgave er å formidle kontakt mellom
 personer som ønsker seg et midlertidig engasjement og virksomheter som trenger vikarer.
 Programmet som skal utvikles skal gjøre det lettere å få rett vikar til rett virksomhet.
-###Registreringsdata:
+### Registreringsdata:
 * Arbeidsgiver
 * Bransje
 * Kontaktinformasjon
 * Liste av ledige vikariater
 
-###Ledige vikariater
+### Ledige vikariater
 * Offentlig eller privat sektor
 * Arbeidssted
 * Arbeidsgiver
@@ -59,7 +59,7 @@ Programmet som skal utvikles skal gjøre det lettere å få rett vikar til rett vir
 * Kontaktinformasjon
 * Stillingsbeskrivelse
 * Liste over søkere
-###Jobbsøker
+### Jobbsøker
 * Kontaktinformasjon
 * Personlig informasjon som alder
 * Ønsket jobbkategori
@@ -67,7 +67,7 @@ Programmet som skal utvikles skal gjøre det lettere å få rett vikar til rett vir
 * Jobberfaring
 * Lønnskrav
 * Referanser
-###Arbeidsforhold
+### Arbeidsforhold
 * Vikaren (tidligere jobbsøker)
 * Vikariatet (som nå ikke er ledig lenger)
 
