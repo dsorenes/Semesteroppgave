@@ -1,11 +1,8 @@
 package savetofile;
 
-import model.Person;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.util.EnumSet;
 import java.util.List;
 
 import static java.nio.file.StandardOpenOption.CREATE;
