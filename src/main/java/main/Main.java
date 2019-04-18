@@ -10,11 +10,18 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private Stage stage;
+
+    public Stage getStage() {
+        return this.stage;
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("JavaFX");
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("MainView.fxml"))));
-        stage.show();
+        this.stage = stage;
+        this.stage.setTitle("JavaFX");
+        this.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("MainView.fxml"))));
+        this.stage.show();
     }
 
     public static void main(String[] args) {
