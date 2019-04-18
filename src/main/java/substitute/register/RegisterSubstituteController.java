@@ -35,9 +35,6 @@ public class RegisterSubstituteController implements Initializable {
     @FXML
     TextField address;
 
-    @FXML
-    static Button returnButton;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Substitute> list = new ArrayList<>();
@@ -45,10 +42,13 @@ public class RegisterSubstituteController implements Initializable {
         register.setOnAction(e -> {
             list.add(new Substitute(firstName.getText(), lastName.getText(), eMail.getText(), address.getText(), phoneNumber.getText(), dateOfBirth.getValue()));
 
-            list.forEach((n) -> System.out.println(n.toString()));
-            if (save.SaveToFile("substitute", list)) {
-                System.out.println("saved!");
+            if (!list.isEmpty()) {
+                list.forEach((n) -> System.out.println(n.toString()));
+                if (save.SaveToFile("substitute", list)) {
+                    System.out.println("saved!");
+                }
             }
+
 
         });
 

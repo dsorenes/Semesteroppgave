@@ -5,10 +5,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ReadFromCSV implements ReadFromFile {
     @Override
-    public void ReadFromFile(String fileName) {
+    public boolean ReadFromFile(String fileName) {
         Path path = Paths.get(fileName.concat(".csv"));
         String line;
         try (
@@ -19,8 +21,12 @@ public class ReadFromCSV implements ReadFromFile {
                 System.out.println(line);
             }
 
+            return true;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return false;
     }
 }

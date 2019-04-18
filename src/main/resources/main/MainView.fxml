@@ -9,8 +9,8 @@
 
 <!--    <fx:include fx:id="InputView" source="../input/InputView.fxml" />-->
 <!--    <fx:include fx:id="RegisterSubstituteView" source="../substitute.substitute/RegisterSubstituteView.fxml" />-->
-
-    <Button fx:id="registerSubstitute" layoutX="14.0" layoutY="14.0" onAction="#loadRegisterSubstitute" text="Register substitute" />
-
     <fx:include fx:id="SubstituteTableView" source="../substitute/tableview/SubstituteTableView.fxml" />
+
+    <Button fx:id="registerSubstitute" layoutX="14.0" layoutY="14.0" text="Register substitute" />
+
 </AnchorPane>

@@ -31,7 +31,7 @@ public class MainController {
 
     @FXML
     private void loadRegisterSubstitute() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/substitute/registersubstitute/RegisterSubstituteView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/substitute/register/RegisterSubstituteView.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Register Substitute");
         stage.setScene(new Scene(root));

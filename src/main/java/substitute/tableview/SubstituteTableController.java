@@ -27,11 +27,11 @@ public class SubstituteTableController implements Initializable {
     private void initializeSubstituteTable() {
         ObservableList<Substitute> list = FXCollections.observableArrayList();
         ReadFromCSV read = new ReadFromCSV();
-        read.ReadFromFile("substitute");
+//        read.ReadFromFile("substitute");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeSubstituteTable();
+//        initializeSubstituteTable();
     }
 }
