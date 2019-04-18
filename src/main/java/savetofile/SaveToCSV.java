@@ -9,10 +9,9 @@ import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.APPEND;
 
 
-public class SaveToCSV extends WriteToFile {
+public class SaveToCSV implements WriteToFile {
 
-    @Override
-    public <T> void SaveToFile(String fileName, List<T> list) {
+    public <T> boolean SaveToFile(String fileName, List<T> list) {
         OpenOption[] options = new OpenOption[] {CREATE, APPEND};
         Path path = Paths.get(fileName.concat(".csv"));
 
@@ -24,8 +23,12 @@ public class SaveToCSV extends WriteToFile {
                 writer.newLine();
             }
 
+            return true;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return false;
     }
 }

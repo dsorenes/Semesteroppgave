@@ -38,8 +38,17 @@ public class RegisterSubstituteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<Substitute> list = new ArrayList<>();
+        SaveToCSV save = new SaveToCSV();
+        register.setOnAction(e -> {
+            list.add(new Substitute(firstName.getText(), lastName.getText(), eMail.getText(), address.getText(), phoneNumber.getText(), dateOfBirth.getValue()));
 
+            list.forEach((n) -> System.out.println(n.toString()));
+            if (save.SaveToFile("substitute", list)) {
+                System.out.println("saved!");
+            }
 
+        });
 
     }
 }
