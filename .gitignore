@@ -8,4 +8,5 @@ target/
 nbactions.xml
 nb-configuration.xml
 .DS_Store
+*.txt
 
