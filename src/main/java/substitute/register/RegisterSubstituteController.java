@@ -1,14 +1,20 @@
 package substitute.register;
 
+import employer.Industry;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import savetofile.SaveToCSV;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,6 +41,9 @@ public class RegisterSubstituteController implements Initializable {
     @FXML
     TextField address;
 
+    @FXML
+    ComboBox<Industry> industryDropdown;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Substitute> list = new ArrayList<>();
@@ -51,6 +60,15 @@ public class RegisterSubstituteController implements Initializable {
 
         });
 
+        initializeIndustryDropdown();
+
+    }
+
+    void initializeIndustryDropdown() {
+        ObservableList<Industry> industries = FXCollections.observableArrayList();
+        industries.addAll(EnumSet.allOf(Industry.class));
+
+        industryDropdown.setItems(industries);
     }
 
 }
