@@ -45,5 +45,5 @@
       </TableView>
       <TextField layoutX="23.0" layoutY="202.0" prefHeight="25.0" prefWidth="170.0" promptText="Position" />
       <ComboBox fx:id="industryDropdown" layoutX="209.0" layoutY="202.0" prefWidth="150.0" promptText="Industry" visibleRowCount="6" />
-      <ComboBox layoutX="209.0" layoutY="160.0" prefWidth="150.0" promptText="Sector" />
+      <ComboBox fx:id="sectorDropdown" layoutX="209.0" layoutY="160.0" prefWidth="150.0" promptText="Sector" />
    </children></AnchorPane>

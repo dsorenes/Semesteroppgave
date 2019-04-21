@@ -1,6 +1,7 @@
 package substitute.register;
 
 import employer.Industry;
+import employer.Sector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -44,6 +45,9 @@ public class RegisterSubstituteController implements Initializable {
     @FXML
     ComboBox<Industry> industryDropdown;
 
+    @FXML
+    ComboBox<Sector> sectorDropdown;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Substitute> list = new ArrayList<>();
@@ -61,6 +65,7 @@ public class RegisterSubstituteController implements Initializable {
         });
 
         initializeIndustryDropdown();
+        initializeSectorDropdown();
 
     }
 
@@ -69,6 +74,13 @@ public class RegisterSubstituteController implements Initializable {
         industries.addAll(EnumSet.allOf(Industry.class));
 
         industryDropdown.setItems(industries);
+    }
+
+    void initializeSectorDropdown() {
+        ObservableList<Sector> sectors = FXCollections.observableArrayList();
+        sectors.addAll(EnumSet.allOf(Sector.class));
+
+        sectorDropdown.setItems(sectors);
     }
 
 }
