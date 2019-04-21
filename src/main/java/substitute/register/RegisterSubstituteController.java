@@ -1,18 +1,12 @@
-package registersubstitute;
+package substitute.register;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import main.MainController;
-import model.Person;
 import savetofile.SaveToCSV;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,9 +35,6 @@ public class RegisterSubstituteController implements Initializable {
     @FXML
     TextField address;
 
-    @FXML
-    static Button returnButton;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Substitute> list = new ArrayList<>();
@@ -51,9 +42,11 @@ public class RegisterSubstituteController implements Initializable {
         register.setOnAction(e -> {
             list.add(new Substitute(firstName.getText(), lastName.getText(), eMail.getText(), address.getText(), phoneNumber.getText(), dateOfBirth.getValue()));
 
-            list.forEach((n) -> System.out.println(n.toString()));
-            if (save.SaveToFile("substitute", list)) {
-                System.out.println("saved!");
+            if (!list.isEmpty()) {
+                list.forEach((n) -> System.out.println(n.toString()));
+                if (save.SaveToFile("substitute", list)) {
+                    System.out.println("saved!");
+                }
             }
 
         });

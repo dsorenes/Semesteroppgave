@@ -1,4 +1,4 @@
-package registersubstitute;
+package substitute.register;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

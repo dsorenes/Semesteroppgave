@@ -1,12 +1,10 @@
 package main;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -20,6 +18,9 @@ public class MainController {
     @FXML
     private Button registerSubstitute;
 
+    @FXML
+    private Button registerEmployer;
+
     public void initialize() {
         registerSubstitute.setOnAction(e -> {
             try {
@@ -28,11 +29,27 @@ public class MainController {
                 ex.printStackTrace();
             }
         });
+
+        registerEmployer.setOnAction(e -> {
+            try {
+                loadRegisterEmployer();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
     }
 
-    @FXML
+    private void loadRegisterEmployer() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/employer/register/RegisterEmployerView.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Register employer");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     private void loadRegisterSubstitute() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/registersubstitute/RegisterSubstituteView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/substitute/register/RegisterSubstituteView.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Register Substitute");
         stage.setScene(new Scene(root));

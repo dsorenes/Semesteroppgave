@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="registersubstitute.RegisterSubstituteController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="substitute.register.RegisterSubstituteController">
    <children>
       <TextField fx:id="firstName" layoutX="54.0" layoutY="98.0" promptText="First name" />
       <TextField fx:id="lastName" layoutX="214.0" layoutY="98.0" promptText="Last name" />
@@ -21,5 +21,4 @@
       <Label layoutX="54.0" layoutY="167.0" text="Phone number" />
       <Label layoutX="214.0" layoutY="167.0" text="E-mail" />
       <Label layoutX="372.0" layoutY="167.0" text="Address" />
-   </children>
-</AnchorPane>
+   </children></AnchorPane>
