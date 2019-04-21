@@ -1,5 +1,8 @@
 package main;
 
+import employer.Employer;
+import employer.Industry;
+import employer.Sector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,6 +40,13 @@ public class MainController {
                 ex.printStackTrace();
             }
         });
+
+        Employer e = new Employer(Sector.PUBLIC, Industry.AUTOMOTIVE);
+
+        if (e.getIndustry() == Industry.AUTOMOTIVE) {
+            System.out.println("CORRECT");
+            System.out.println(e.getIndustry().getDescription());
+        }
 
     }
 

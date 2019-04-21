@@ -19,7 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        this.stage.setTitle("JavaFX");
+        this.stage.setTitle("Application");
         this.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("MainView.fxml"))));
         this.stage.show();
     }
