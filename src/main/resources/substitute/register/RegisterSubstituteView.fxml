@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="539.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="substitute.register.RegisterSubstituteController">
-    <children>
+<AnchorPane prefHeight="873.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="substitute.register.RegisterSubstituteController">
+
+    <AnchorPane prefHeight="46.0" prefWidth="482.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <TextField fx:id="firstName" layoutX="19.0" layoutY="40.0" promptText="First name" />
         <TextField fx:id="lastName" layoutX="174.0" layoutY="40.0" promptText="Last name" />
         <DatePicker fx:id="dateOfBirth" layoutX="328.0" layoutY="40.0" promptText="Date of birth" />
         <TextField fx:id="phoneNumber" layoutX="19.0" layoutY="84.0" promptText="Phone number" />
         <TextField fx:id="address" layoutX="328.0" layoutY="84.0" promptText="Address" />
         <TextField fx:id="eMail" layoutX="174.0" layoutY="84.0" promptText="E-mail" />
-        <Button fx:id="register" layoutX="276.0" layoutY="500.0" mnemonicParsing="false" text="Register" />
         <Label layoutX="19.0" layoutY="23.0" text="First name" />
         <Label layoutX="174.0" layoutY="23.0" text="Last name" />
         <Label layoutX="328.0" layoutY="23.0" text="Date of birth" />
         <Label layoutX="19.0" layoutY="67.0" text="Phone number" />
         <Label layoutX="174.0" layoutY="67.0" text="E-mail" />
         <Label layoutX="328.0" layoutY="67.0" text="Address" />
+    </AnchorPane>
 
-
-    </children>
-
-    <fx:include fx:id="RegisterWorkExperienceView" source="work/RegisterWorkExperienceView.fxml" AnchorPane.bottomAnchor="10" />
+    <fx:include fx:id="RegisterWorkExperienceView" source="work/RegisterWorkExperienceView.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="110" />
+    <fx:include fx:id="RegisterEducationView" source="education/RegisterEducationView.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="453" />
+   <Button layoutX="237.0" layoutY="834.0" mnemonicParsing="false" text="Register substitute" />
 
 </AnchorPane>
