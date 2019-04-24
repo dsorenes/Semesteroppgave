@@ -52,6 +52,7 @@ public class RegisterSubstituteController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Substitute> list = new ArrayList<>();
         SaveToCSV save = new SaveToCSV();
+        //Should this logic be moved somewhere else to adhere to the MVC pattern?
         register.setOnAction(e -> {
             list.add(new Substitute(firstName.getText(), lastName.getText(), eMail.getText(), address.getText(), phoneNumber.getText(), dateOfBirth.getValue()));
 
@@ -81,6 +82,10 @@ public class RegisterSubstituteController implements Initializable {
         sectors.addAll(EnumSet.allOf(Sector.class));
 
         sectorDropdown.setItems(sectors);
+    }
+
+    void onAddWorkExperience() {
+
     }
 
 }

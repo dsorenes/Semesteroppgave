@@ -25,25 +25,5 @@
       <Label layoutX="19.0" layoutY="67.0" text="Phone number" />
       <Label layoutX="174.0" layoutY="67.0" text="E-mail" />
       <Label layoutX="328.0" layoutY="67.0" text="Address" />
-      <TextField layoutX="21.0" layoutY="160.0" prefHeight="25.0" prefWidth="174.0" promptText="Company" />
-      <Label layoutX="19.0" layoutY="127.0" text="Work experience" />
-      <Button layoutX="556.0" layoutY="257.0" mnemonicParsing="false" text="Add" />
-      <Separator layoutX="-2.0" layoutY="109.0" prefHeight="17.0" prefWidth="612.0" />
-      <Separator layoutY="453.0" prefHeight="17.0" prefWidth="612.0" />
-      <Label layoutX="19.0" layoutY="6.0" text="Contact Information" />
-      <DatePicker layoutX="402.0" layoutY="202.0" promptText="Employed to" />
-      <DatePicker layoutX="402.0" layoutY="160.0" promptText="Employed from" />
-      <TableView layoutX="13.0" layoutY="238.0" prefHeight="200.0" prefWidth="392.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="Company" />
-          <TableColumn prefWidth="82.0" text="Position" />
-            <TableColumn prefWidth="178.0" text="Duration" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-      <TextField layoutX="23.0" layoutY="202.0" prefHeight="25.0" prefWidth="170.0" promptText="Position" />
-      <ComboBox fx:id="industryDropdown" layoutX="209.0" layoutY="202.0" prefWidth="150.0" promptText="Industry" visibleRowCount="6" />
-      <ComboBox fx:id="sectorDropdown" layoutX="209.0" layoutY="160.0" prefWidth="150.0" promptText="Sector" />
+
    </children></AnchorPane>
