@@ -26,4 +26,10 @@
       <Label layoutX="174.0" layoutY="67.0" text="E-mail" />
       <Label layoutX="328.0" layoutY="67.0" text="Address" />
 
-   </children></AnchorPane>
+
+
+   </children>
+
+   <fx:include fx:id="RegisterWorkExperienceView" source="work/RegisterWorkExperienceView.fxml" AnchorPane.bottomAnchor="10" />
+
+</AnchorPane>

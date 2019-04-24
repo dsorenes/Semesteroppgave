@@ -11,25 +11,25 @@
 
 <AnchorPane prefHeight="343.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="substitute.register.work.RegisterWorkExperienceController">
 
-    <TextField fx:id="" layoutX="21.0" layoutY="47.0" prefHeight="25.0" prefWidth="174.0" promptText="Company" />
     <Label layoutX="19.0" layoutY="14.0" text="Work experience" />
-    <Button layoutX="414.0" layoutY="125.0" mnemonicParsing="false" text="Add work experience" />
-    <DatePicker layoutX="402.0" layoutY="89.0" promptText="Employed to" />
-    <DatePicker layoutX="402.0" layoutY="47.0" promptText="Employed from" />
-    <TableView layoutX="13.0" layoutY="125.0" prefHeight="200.0" prefWidth="392.0">
+    <TextField fx:id="inputCompanyName" layoutX="21.0" layoutY="47.0" prefHeight="25.0" prefWidth="174.0" promptText="Company name" />
+    <TextField fx:id="inputPositionName" layoutX="23.0" layoutY="89.0" prefHeight="25.0" prefWidth="170.0" promptText="Position" />
+    <ComboBox fx:id="industryDropdown" layoutX="209.0" layoutY="47.0" prefWidth="150.0" promptText="Industry" visibleRowCount="6" />
+    <ComboBox fx:id="sectorDropdown" layoutX="209.0" layoutY="89.0" prefWidth="150.0" promptText="Sector" />
+    <DatePicker fx:id="inputEmployedFrom" layoutX="402.0" layoutY="47.0" promptText="Employed from" />
+    <DatePicker fx:id="inputEmployedTo" layoutX="402.0" layoutY="89.0" promptText="Employed to" />
+    <TableView fx:id="workExperienceTable" layoutX="13.0" layoutY="125.0" prefHeight="200.0" prefWidth="392.0">
       <columns>
-        <TableColumn prefWidth="75.0" text="Company" />
-        <TableColumn prefWidth="82.0" text="Position" />
-        <TableColumn prefWidth="178.0" text="Industry" />
-        <TableColumn prefWidth="178.0" text="Sector" />
-        <TableColumn prefWidth="178.0" text="Duration" />
+        <TableColumn fx:id="companyCol" prefWidth="75.0" text="Company" />
+        <TableColumn fx:id="positionCol" prefWidth="82.0" text="Position" />
+        <TableColumn fx:id="industryCol" prefWidth="178.0" text="Industry" />
+        <TableColumn fx:id="sectorCol" prefWidth="178.0" text="Sector" />
+        <TableColumn fx:id="fromCol" prefWidth="178.0" text="Employed from" />
+        <TableColumn fx:id="toCol" prefWidth="178.0" text="Employed to" />
       </columns>
        <columnResizePolicy>
           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
        </columnResizePolicy>
     </TableView>
-    <TextField layoutX="23.0" layoutY="89.0" prefHeight="25.0" prefWidth="170.0" promptText="Position" />
-    <ComboBox fx:id="industryDropdown" layoutX="209.0" layoutY="47.0" prefWidth="150.0" promptText="Industry" visibleRowCount="6" />
-    <ComboBox fx:id="sectorDropdown" layoutX="209.0" layoutY="89.0" prefWidth="150.0" promptText="Sector" />
-
+    <Button layoutX="414.0" layoutY="125.0" mnemonicParsing="false" text="Add work experience" onAction="#onAddWorkExperience" />
 </AnchorPane>

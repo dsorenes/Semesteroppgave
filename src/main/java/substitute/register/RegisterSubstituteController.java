@@ -65,27 +65,6 @@ public class RegisterSubstituteController implements Initializable {
 
         });
 
-        initializeIndustryDropdown();
-        initializeSectorDropdown();
-
-    }
-
-    void initializeIndustryDropdown() {
-        ObservableList<Industry> industries = FXCollections.observableArrayList();
-        industries.addAll(EnumSet.allOf(Industry.class));
-
-        industryDropdown.setItems(industries);
-    }
-
-    void initializeSectorDropdown() {
-        ObservableList<Sector> sectors = FXCollections.observableArrayList();
-        sectors.addAll(EnumSet.allOf(Sector.class));
-
-        sectorDropdown.setItems(sectors);
-    }
-
-    void onAddWorkExperience() {
-
     }
 
 }
