@@ -24,7 +24,7 @@
     </AnchorPane>
 
     <fx:include fx:id="RegisterWorkExperienceView" source="work/RegisterWorkExperienceView.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="110" />
-    <fx:include fx:id="RegisterEducationView" source="education/RegisterEducationView.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="453" />
+    <fx:include fx:id="RegisterEducationView" source="education/RegisterEducationView.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="400" />
    <Button layoutX="237.0" layoutY="834.0" mnemonicParsing="false" text="Register substitute" />
 
 </AnchorPane>
