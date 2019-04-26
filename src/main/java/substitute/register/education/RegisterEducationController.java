@@ -26,7 +26,7 @@ public class RegisterEducationController implements Initializable {
     private TextField degree;
 
     @FXML
-    private ComboBox<Subject> subjectDropdown;
+    private ComboBox<String> subjectDropdown;
 
     @FXML
     private ComboBox<String> educationLevelDropdown;
@@ -54,6 +54,7 @@ public class RegisterEducationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeIsCurrentlyStudyingCheckbox();
+        initializeSubjectDropdown();
 
         initializePeriodDropdown();
         initializeEducationLevelDropdown();
@@ -62,10 +63,18 @@ public class RegisterEducationController implements Initializable {
     void initializeEducationLevelDropdown() {
         ObservableList<EducationLevel> industries = FXCollections.observableArrayList(EnumSet.allOf(EducationLevel.class));
         ObservableList<String> descriptions = FXCollections.observableArrayList();
-        industries.forEach((e) -> descriptions.add(e.getDescription()));
+        industries.forEach((industry) -> descriptions.add(industry.getDescription()));
 
         educationLevelDropdown.setItems(descriptions);
 
+    }
+
+    void initializeSubjectDropdown() {
+        ObservableList<Subject> subjects = FXCollections.observableArrayList(EnumSet.allOf(Subject.class));
+        ObservableList<String> descriptions = FXCollections.observableArrayList();
+        subjects.forEach((subject) -> descriptions.add(subject.getDescription()));
+
+        subjectDropdown.setItems(descriptions);
     }
 
     void initializePeriodDropdown () {
@@ -86,4 +95,5 @@ public class RegisterEducationController implements Initializable {
             toYear.setDisable(currentlyStudyingCheck.isSelected());
         });
     }
+
 }
