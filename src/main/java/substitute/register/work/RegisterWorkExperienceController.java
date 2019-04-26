@@ -89,8 +89,7 @@ public class RegisterWorkExperienceController implements Initializable {
     }
 
     void initializeIndustryDropdown() {
-        ObservableList<Industry> industries = FXCollections.observableArrayList();
-        industries.addAll(EnumSet.allOf(Industry.class));
+        ObservableList<Industry> industries = FXCollections.observableArrayList(EnumSet.allOf(Industry.class));
         ObservableList<String> descriptions = FXCollections.observableArrayList();
         industries.forEach((e) -> descriptions.add(e.getDescription()));
 
@@ -98,9 +97,7 @@ public class RegisterWorkExperienceController implements Initializable {
     }
 
     void initializeSectorDropdown() {
-        ObservableList<Sector> sectors = FXCollections.observableArrayList();
-        sectors.addAll(EnumSet.allOf(Sector.class));
-
+        ObservableList<Sector> sectors = FXCollections.observableArrayList(EnumSet.allOf(Sector.class));
         sectorDropdown.setItems(sectors);
     }
 

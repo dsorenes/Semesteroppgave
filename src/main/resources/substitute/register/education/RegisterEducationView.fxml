@@ -12,24 +12,24 @@
 
 <AnchorPane prefHeight="324.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="substitute.register.education.RegisterEducationController">
    <children>
-      <ComboBox layoutX="19.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" />
-      <ComboBox layoutX="134.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" />
-      <ComboBox layoutX="268.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" />
-      <ComboBox layoutX="373.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" />
-      <CheckBox layoutX="19.0" layoutY="168.0" mnemonicParsing="false" text="Currently studying" />
+      <ComboBox fx:id="fromMonth" layoutX="19.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" promptText="Month" />
+      <ComboBox fx:id="fromYear" layoutX="134.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" promptText="Year" />
+      <ComboBox fx:id="toMonth" layoutX="268.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" promptText="Month" />
+      <ComboBox fx:id="toYear" layoutX="373.0" layoutY="138.0" prefHeight="25.0" prefWidth="91.0" promptText="Year" />
+      <CheckBox fx:id="currentlyStudyingCheck" layoutX="19.0" layoutY="168.0" mnemonicParsing="false" text="Currently studying" />
       <Label layoutX="14.0" layoutY="4.0" text="Education">
          <font>
             <Font size="16.0" />
          </font></Label>
       <Label layoutX="19.0" layoutY="119.0" text="Period from *" />
       <Label layoutX="268.0" layoutY="116.0" text="to *" />
-      <TextField layoutX="17.0" layoutY="46.0" prefHeight="25.0" prefWidth="552.0" />
+      <TextField fx:id="schoolName" layoutX="17.0" layoutY="46.0" prefHeight="25.0" prefWidth="552.0" promptText="School name" />
       <Label layoutX="15.0" layoutY="26.0" text="School *" />
-      <ComboBox layoutX="314.0" layoutY="92.0" prefHeight="25.0" prefWidth="104.0" />
+      <ComboBox fx:id="subjectDropdown" layoutX="314.0" layoutY="92.0" prefHeight="25.0" prefWidth="104.0" promptText="Subject" />
       <Label layoutX="316.0" layoutY="75.0" text="Subject *" />
       <Label layoutX="430.0" layoutY="73.0" text="Education level *" />
-      <ComboBox layoutX="429.0" layoutY="92.0" prefHeight="25.0" prefWidth="141.0" />
-      <TextField layoutX="17.0" layoutY="90.0" prefHeight="25.0" prefWidth="274.0" />
+      <ComboBox fx:id="educationLevelDropdown" layoutX="429.0" layoutY="92.0" prefHeight="25.0" prefWidth="141.0" promptText="Level of education" />
+      <TextField fx:id="degree" layoutX="17.0" layoutY="90.0" prefHeight="25.0" prefWidth="274.0" promptText="Degree" />
       <Label layoutX="19.0" layoutY="73.0" text="Degree" />
       <Button defaultButton="true" layoutX="472.0" layoutY="138.0" mnemonicParsing="false" text="Add education" />
       <Label layoutX="241.0" layoutY="142.0" text="➜" />
