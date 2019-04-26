@@ -28,7 +28,7 @@ public class RegisterWorkExperienceController implements Initializable {
     private DatePicker inputEmployedTo;
 
     @FXML
-    private ComboBox<Industry> industryDropdown;
+    private ComboBox<String> industryDropdown;
 
     @FXML
     private ComboBox<Sector> sectorDropdown;
@@ -91,8 +91,10 @@ public class RegisterWorkExperienceController implements Initializable {
     void initializeIndustryDropdown() {
         ObservableList<Industry> industries = FXCollections.observableArrayList();
         industries.addAll(EnumSet.allOf(Industry.class));
+        ObservableList<String> descriptions = FXCollections.observableArrayList();
+        industries.forEach((e) -> descriptions.add(e.getDescription()));
 
-        industryDropdown.setItems(industries);
+        industryDropdown.setItems(descriptions);
     }
 
     void initializeSectorDropdown() {

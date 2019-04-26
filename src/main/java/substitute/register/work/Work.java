@@ -11,22 +11,22 @@ public class Work {
     private String companyName;
     private String position;
     private Sector sector;
-    private Industry industry;
+    private String industryDescription;
     private LocalDate employedFrom;
     private LocalDate employedTo;
 
-    public Work(String companyName, String position, Sector sector, Industry industry, LocalDate employedFrom, LocalDate employedTo) {
+    public Work(String companyName, String position, Sector sector, String industry, LocalDate employedFrom, LocalDate employedTo) {
         this.companyName = companyName;
         this.position = position;
         this.sector = sector;
-        this.industry = industry;
+        this.industryDescription = industry;
         this.employedFrom = employedFrom;
         this.employedTo = employedTo;
     }
 
     @Override
     public String toString() {
-        return this.companyName + ", " + this.position + ", " + this.sector + ", " + this.industry + ", " + this.employedTo;
+        return this.companyName + ", " + this.position + ", " + this.sector + ", " + this.industryDescription + ", " + this.employedTo;
     }
 
     public String getCompanyName() {
@@ -41,8 +41,8 @@ public class Work {
         return sector;
     }
 
-    public Industry getIndustry() {
-        return industry;
+    public String getIndustry() {
+        return industryDescription;
     }
 
     public LocalDate getEmployedFrom() {
