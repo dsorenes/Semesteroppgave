@@ -24,31 +24,7 @@ import java.util.ResourceBundle;
 public class RegisterSubstituteController implements Initializable {
 
     @FXML
-    TextField firstName;
-
-    @FXML
-    TextField lastName;
-
-    @FXML
     Button register;
-
-    @FXML
-    TextField phoneNumber;
-
-    @FXML
-    DatePicker dateOfBirth;
-
-    @FXML
-    TextField eMail;
-
-    @FXML
-    TextField address;
-
-    @FXML
-    ComboBox<Industry> industryDropdown;
-
-    @FXML
-    ComboBox<Sector> sectorDropdown;
 
     @FXML
     private RegisterEducationController RegisterEducationViewController;
@@ -56,14 +32,19 @@ public class RegisterSubstituteController implements Initializable {
     @FXML
     private RegisterWorkExperienceController RegisterWorkExperienceViewController;
 
+    @FXML
+    private RegisterContactInformationController RegisterContactInformationViewController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
     @FXML
     void onRegister() {
-        Substitute sub = new Substitute(firstName.getText(), lastName.getText(), eMail.getText(), address.getText(), phoneNumber.getText(), dateOfBirth.getValue(),
-                RegisterWorkExperienceViewController.previousWorkTable, RegisterEducationViewController.educations);
+        Substitute sub = new Substitute(RegisterContactInformationViewController.firstName.getText(), RegisterContactInformationViewController.lastName.getText(),
+                RegisterContactInformationViewController.eMail.getText(), RegisterContactInformationViewController.address.getText(), RegisterContactInformationViewController.phoneNumber.getText(),
+                RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterWorkExperienceViewController.previousWorkTable, RegisterEducationViewController.educations, RegisterContactInformationViewController.salaryDemand.getText(),
+                RegisterContactInformationViewController.wantedField);
         System.out.println(sub);
     }
 }
