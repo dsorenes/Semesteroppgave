@@ -1,70 +1,44 @@
 package substitute.register;
 
-import employer.Industry;
-import employer.Sector;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import savetofile.SaveToCSV;
+import substitute.register.education.RegisterEducationController;
+import substitute.register.references.RegisterWorkReferenceController;
+import substitute.register.work.RegisterWorkExperienceController;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class RegisterSubstituteController implements Initializable {
 
     @FXML
-    TextField firstName;
-
-    @FXML
-    TextField lastName;
-
-    @FXML
     Button register;
 
     @FXML
-    TextField phoneNumber;
+    private RegisterEducationController RegisterEducationViewController;
 
     @FXML
-    DatePicker dateOfBirth;
+    private RegisterWorkExperienceController RegisterWorkExperienceViewController;
 
     @FXML
-    TextField eMail;
+    private RegisterContactInformationController RegisterContactInformationViewController;
 
     @FXML
-    TextField address;
-
-    @FXML
-    ComboBox<Industry> industryDropdown;
-
-    @FXML
-    ComboBox<Sector> sectorDropdown;
+    private RegisterWorkReferenceController RegisterReferenceViewController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        List<Substitute> list = new ArrayList<>();
-//        SaveToCSV save = new SaveToCSV();
-//        //Should this logic be moved somewhere else to adhere to the MVC pattern?
-//        register.setOnAction(e -> {
-//            list.add(new Substitute(firstName.getText(), lastName.getText(), eMail.getText(), address.getText(), phoneNumber.getText(), dateOfBirth.getValue()));
-//
-//            if (!list.isEmpty()) {
-//                list.forEach((n) -> System.out.println(n.toString()));
-//                if (save.SaveToFile("substitute", list)) {
-//                    System.out.println("saved!");
-//                }
-//            }
-//
-//        });
 
     }
-
+    @FXML
+    void onRegister() {
+        Substitute sub = new Substitute(RegisterContactInformationViewController.firstName.getText(), RegisterContactInformationViewController.lastName.getText(),
+                RegisterContactInformationViewController.eMail.getText(), RegisterContactInformationViewController.address.getText(), RegisterContactInformationViewController.phoneNumber.getText(),
+                RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterWorkExperienceViewController.previousWorkTable, RegisterEducationViewController.educations, RegisterContactInformationViewController.salaryDemand.getText(),
+                RegisterContactInformationViewController.wantedField, RegisterReferenceViewController.references);
+        System.out.println(sub);
+    }
 }
+
+

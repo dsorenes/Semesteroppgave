@@ -5,6 +5,7 @@ import employer.Sector;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Work {
 

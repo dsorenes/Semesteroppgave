@@ -57,7 +57,7 @@ public class RegisterWorkExperienceController implements Initializable {
     @FXML
     private TableColumn<Work, LocalDate> toCol;
 
-    ObservableList<Work> previousWorkTable = FXCollections.observableArrayList();
+    public ObservableList<Work> previousWorkTable = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -89,17 +89,12 @@ public class RegisterWorkExperienceController implements Initializable {
     }
 
     void initializeIndustryDropdown() {
-        ObservableList<Industry> industries = FXCollections.observableArrayList();
-        industries.addAll(EnumSet.allOf(Industry.class));
+        industryDropdown.getItems().setAll(Industry.values());
 
-        industryDropdown.setItems(industries);
     }
 
     void initializeSectorDropdown() {
-        ObservableList<Sector> sectors = FXCollections.observableArrayList();
-        sectors.addAll(EnumSet.allOf(Sector.class));
-
-        sectorDropdown.setItems(sectors);
+        sectorDropdown.getItems().addAll(Sector.values());
     }
 
 }

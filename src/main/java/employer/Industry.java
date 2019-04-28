@@ -10,8 +10,10 @@ public enum Industry {
     SCIENCE("Research, education and science"),
     HEALTH("Health and care"),
     PRODUCTION("Industry and production"),
+    ENGINEER("Engineer"),
     IT("IT"),
-    SOFTWARE("IT - Software"),
+    CUSTOMERSERVICE("Customer Service"),
+    ITSOFTWARE("IT - Software"),
     CONSULTANT("Consultant and advice"),
     ADMINISTRATION("Administration"),
     OILANDGAS("Oil and gas"),
@@ -24,8 +26,9 @@ public enum Industry {
         this.description = description;
     }
 
-    public String getDescription() {
-        return description;
+    @Override
+    public String toString() {
+        return this.description;
     }
 
 }

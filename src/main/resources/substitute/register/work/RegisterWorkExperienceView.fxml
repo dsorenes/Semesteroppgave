@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="304.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="substitute.register.work.RegisterWorkExperienceController">
+<AnchorPane prefHeight="304.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="substitute.register.work.RegisterWorkExperienceController">
 
     <Label layoutX="5.0" layoutY="6.0" text="Work experience">
       <font>
@@ -20,9 +20,9 @@
     <TextField fx:id="inputPositionName" layoutX="194.0" layoutY="45.0" prefHeight="25.0" prefWidth="170.0" promptText="Position" />
     <ComboBox fx:id="industryDropdown" layoutX="6.0" layoutY="91.0" prefHeight="25.0" prefWidth="170.0" promptText="Industry" visibleRowCount="6" />
     <ComboBox fx:id="sectorDropdown" layoutX="194.0" layoutY="91.0" prefHeight="25.0" prefWidth="170.0" promptText="Sector" />
-    <DatePicker fx:id="inputEmployedFrom" layoutX="376.0" layoutY="45.0" promptText="Employed from" />
-    <DatePicker fx:id="inputEmployedTo" layoutX="376.0" layoutY="89.0" promptText="Employed to" />
-    <TableView fx:id="workExperienceTable" layoutX="3.0" layoutY="172.0" prefHeight="127.0" prefWidth="550.0">
+    <DatePicker fx:id="inputEmployedFrom" layoutX="376.0" layoutY="45.0" prefHeight="25.0" prefWidth="128.0" promptText="Employed from" />
+    <DatePicker fx:id="inputEmployedTo" layoutX="376.0" layoutY="89.0" prefHeight="25.0" prefWidth="128.0" promptText="Employed to" />
+    <TableView fx:id="workExperienceTable" layoutX="3.0" layoutY="172.0" prefHeight="127.0" prefWidth="502.0">
       <columns>
         <TableColumn fx:id="companyCol" prefWidth="75.0" text="Company" />
         <TableColumn fx:id="positionCol" prefWidth="82.0" text="Position" />
