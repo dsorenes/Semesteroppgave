@@ -26,10 +26,10 @@ public class RegisterEducationController implements Initializable {
     private TextField degree;
 
     @FXML
-    private ComboBox<String> subjectDropdown;
+    private ComboBox<Subject> subjectDropdown;
 
     @FXML
-    private ComboBox<String> educationLevelDropdown;
+    private ComboBox<EducationLevel> educationLevelDropdown;
 
     @FXML
     private ComboBox<Month> fromMonth;
@@ -61,32 +61,22 @@ public class RegisterEducationController implements Initializable {
     }
 
     void initializeEducationLevelDropdown() {
-        ObservableList<EducationLevel> industries = FXCollections.observableArrayList(EnumSet.allOf(EducationLevel.class));
-        ObservableList<String> descriptions = FXCollections.observableArrayList();
-        industries.forEach((industry) -> descriptions.add(industry.getDescription()));
-
-        educationLevelDropdown.setItems(descriptions);
+        educationLevelDropdown.getItems().setAll(EducationLevel.values());
 
     }
 
     void initializeSubjectDropdown() {
-        ObservableList<Subject> subjects = FXCollections.observableArrayList(EnumSet.allOf(Subject.class));
-        ObservableList<String> descriptions = FXCollections.observableArrayList();
-        subjects.forEach((subject) -> descriptions.add(subject.getDescription()));
-
-        subjectDropdown.setItems(descriptions);
+        subjectDropdown.getItems().setAll(Subject.values());
     }
 
     void initializePeriodDropdown () {
 
         //Month
-        ObservableList<Month> month = FXCollections.observableArrayList(EnumSet.allOf(Month.class));
-        fromMonth.setItems(month);
-        toMonth.setItems(month);
+        fromMonth.getItems().addAll(Month.values());
+        toMonth.getItems().addAll(Month.values());
         //Year
-        ObservableList<Integer> year = FXCollections.observableArrayList(years);
-        fromYear.setItems(year);
-        toYear.setItems(year);
+        fromYear.getItems().addAll(years);
+        toYear.getItems().addAll(years);
     }
 
     void initializeIsCurrentlyStudyingCheckbox() {

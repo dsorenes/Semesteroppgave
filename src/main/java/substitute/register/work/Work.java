@@ -5,28 +5,29 @@ import employer.Sector;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Work {
 
     private String companyName;
     private String position;
     private Sector sector;
-    private String industryDescription;
+    private Industry industry;
     private LocalDate employedFrom;
     private LocalDate employedTo;
 
-    public Work(String companyName, String position, Sector sector, String industry, LocalDate employedFrom, LocalDate employedTo) {
+    public Work(String companyName, String position, Sector sector, Industry industry, LocalDate employedFrom, LocalDate employedTo) {
         this.companyName = companyName;
         this.position = position;
         this.sector = sector;
-        this.industryDescription = industry;
+        this.industry = industry;
         this.employedFrom = employedFrom;
         this.employedTo = employedTo;
     }
 
     @Override
     public String toString() {
-        return this.companyName + ", " + this.position + ", " + this.sector + ", " + this.industryDescription + ", " + this.employedTo;
+        return this.companyName + ", " + this.position + ", " + this.sector + ", " + this.industry + ", " + this.employedTo;
     }
 
     public String getCompanyName() {
@@ -41,8 +42,8 @@ public class Work {
         return sector;
     }
 
-    public String getIndustry() {
-        return industryDescription;
+    public Industry getIndustry() {
+        return industry;
     }
 
     public LocalDate getEmployedFrom() {

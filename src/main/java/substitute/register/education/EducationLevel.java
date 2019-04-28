@@ -13,8 +13,8 @@ public enum EducationLevel {
       this.description = description;
    }
 
-   public String getDescription() {
+   @Override
+   public String toString() {
       return this.description;
    }
-
 }

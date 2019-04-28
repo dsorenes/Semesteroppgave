@@ -28,7 +28,7 @@ public class RegisterWorkExperienceController implements Initializable {
     private DatePicker inputEmployedTo;
 
     @FXML
-    private ComboBox<String> industryDropdown;
+    private ComboBox<Industry> industryDropdown;
 
     @FXML
     private ComboBox<Sector> sectorDropdown;
@@ -89,17 +89,12 @@ public class RegisterWorkExperienceController implements Initializable {
     }
 
     void initializeIndustryDropdown() {
-        //TODO: use a cellFactory/callback to make the ComboBox use the object, but display the descriptions. see: https://stackoverflow.com/questions/20283940/javafx-combobox-with-custom-object-displays-object-address-though-custom-cell-fa
-        ObservableList<Industry> industries = FXCollections.observableArrayList(EnumSet.allOf(Industry.class));
-        ObservableList<String> descriptions = FXCollections.observableArrayList();
-        industries.forEach((e) -> descriptions.add(e.getDescription()));
+        industryDropdown.getItems().setAll(Industry.values());
 
-        industryDropdown.setItems(descriptions);
     }
 
     void initializeSectorDropdown() {
-        ObservableList<Sector> sectors = FXCollections.observableArrayList(EnumSet.allOf(Sector.class));
-        sectorDropdown.setItems(sectors);
+        sectorDropdown.getItems().addAll(Sector.values());
     }
 
 }
