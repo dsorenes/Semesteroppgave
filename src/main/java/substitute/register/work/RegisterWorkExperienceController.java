@@ -89,6 +89,7 @@ public class RegisterWorkExperienceController implements Initializable {
     }
 
     void initializeIndustryDropdown() {
+        //TODO: use a cellFactory/callback to make the ComboBox use the object, but display the descriptions. see: https://stackoverflow.com/questions/20283940/javafx-combobox-with-custom-object-displays-object-address-though-custom-cell-fa
         ObservableList<Industry> industries = FXCollections.observableArrayList(EnumSet.allOf(Industry.class));
         ObservableList<String> descriptions = FXCollections.observableArrayList();
         industries.forEach((e) -> descriptions.add(e.getDescription()));
