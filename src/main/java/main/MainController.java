@@ -24,6 +24,9 @@ public class MainController {
     @FXML
     private Button registerEmployer;
 
+    @FXML
+    private Button registerSubstitutePosition;
+
     public void initialize() {
         registerSubstitute.setOnAction(e -> {
             try {
@@ -41,12 +44,14 @@ public class MainController {
             }
         });
 
-        Employer e = new Employer(Sector.PUBLIC, Industry.AUTOMOTIVE);
+        registerSubstitutePosition.setOnAction(e -> {
+            try {
+                loadRegisterSubstitutePosition();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
 
-        if (e.getIndustry() == Industry.AUTOMOTIVE) {
-            System.out.println("CORRECT");
-            System.out.println(e.getIndustry().getDescription());
-        }
 
     }
 
@@ -62,6 +67,14 @@ public class MainController {
         Parent root = FXMLLoader.load(getClass().getResource("/substitute/register/RegisterSubstituteView.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Register Substitute");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    private void loadRegisterSubstitutePosition() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/substituteposition/register/RegisterSubstitutePositionView.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Register Substitute position");
         stage.setScene(new Scene(root));
         stage.show();
     }
