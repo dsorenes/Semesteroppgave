@@ -1,6 +1,7 @@
 package substitute.register;
 
 import javafx.beans.property.SimpleStringProperty;
+import substitute.register.education.Education;
 import substitute.register.work.Work;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ public class Substitute {
     private SimpleStringProperty phoneNumber;
     private LocalDate dateOfBirth;
     private List<Work> workExperience;
+    private List<Education> education;
 
     public Substitute(String firstName, String lastName, String eMail, String address, String phoneNumber, LocalDate dateOfBirth) {
         this.firstName = new SimpleStringProperty(firstName);

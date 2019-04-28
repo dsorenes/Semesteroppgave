@@ -1,10 +1,13 @@
 package substitute.register.education;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import substitute.register.work.Work;
 import utils.Year;
 
 import java.net.URL;
@@ -40,6 +43,35 @@ public class RegisterEducationController implements Initializable {
     @FXML
     private CheckBox currentlyStudyingCheck;
 
+    @FXML
+    private TableView<Education> educationTable;
+
+    @FXML
+    private TableColumn<Education, String> schoolNameCol;
+
+    @FXML
+    private TableColumn<Education, String> degreeCol;
+
+    @FXML
+    private TableColumn<Education, Subject> subjectCol;
+
+    @FXML
+    private TableColumn<Education, EducationLevel> educationLevelCol;
+
+    @FXML
+    private TableColumn<Education, String> fromCol;
+
+    @FXML
+    private TableColumn<Education, String> toCol;
+
+    @FXML
+    private TableColumn<Education, Boolean> isStudyingCol;
+
+    @FXML
+    private Button addEducation;
+
+    private ObservableList<Education> educations = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeIsCurrentlyStudyingCheckbox();
@@ -47,6 +79,19 @@ public class RegisterEducationController implements Initializable {
 
         initializePeriodDropdown();
         initializeEducationLevelDropdown();
+        initializeEducationTable();
+
+        addEducation.setOnAction(e -> onAddEducation());
+    }
+
+    void initializeEducationTable() {
+        schoolNameCol.setCellValueFactory(new PropertyValueFactory<>("schoolName"));
+        degreeCol.setCellValueFactory(new PropertyValueFactory<>("degree"));
+        subjectCol.setCellValueFactory(new PropertyValueFactory<>("subject"));
+        educationLevelCol.setCellValueFactory(new PropertyValueFactory<>("educationLevel"));
+        fromCol.setCellValueFactory(new PropertyValueFactory<>("from"));
+        toCol.setCellValueFactory(new PropertyValueFactory<>("to"));
+        isStudyingCol.setCellValueFactory(new PropertyValueFactory<>("isCurrentlyStudying"));
     }
 
     void initializeEducationLevelDropdown() {
@@ -73,6 +118,15 @@ public class RegisterEducationController implements Initializable {
             toMonth.setDisable(currentlyStudyingCheck.isSelected());
             toYear.setDisable(currentlyStudyingCheck.isSelected());
         });
+    }
+
+    void onAddEducation() {
+        Education education = new Education(schoolName.getText(), subjectDropdown.getValue(), educationLevelDropdown.getValue(), degree.getText(),
+                                            fromMonth.getValue(), fromYear.getValue(), toMonth.getValue(), toYear.getValue(), currentlyStudyingCheck.isSelected());
+        educations.add(education);
+
+        educationTable.setItems(educations);
+
     }
 
 }
