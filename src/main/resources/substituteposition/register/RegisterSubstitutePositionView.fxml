@@ -10,14 +10,14 @@
 
 <AnchorPane prefHeight="486.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="employer.substituteposition.register.RegisterSubstitutePositionController">
    <children>
-      <ComboBox layoutX="227.0" layoutY="70.0" prefWidth="150.0" promptText="Sector" />
+      <ComboBox fx:id="sectorDropdown" layoutX="227.0" layoutY="70.0" prefWidth="150.0" promptText="Sector" />
       <TextField layoutX="397.0" layoutY="24.0" promptText="Arbeidssted" />
       <TextField layoutX="569.0" layoutY="24.0" promptText="Arbeidstid" />
-      <ComboBox layoutX="227.0" layoutY="24.0" prefWidth="150.0" promptText="Jobbkategori" />
-      <ComboBox layoutX="227.0" layoutY="121.0" prefHeight="25.0" prefWidth="67.0" />
-      <ComboBox layoutX="308.0" layoutY="121.0" prefHeight="25.0" prefWidth="67.0" />
-      <ComboBox layoutX="228.0" layoutY="165.0" prefHeight="25.0" prefWidth="67.0" />
-      <ComboBox layoutX="310.0" layoutY="165.0" prefHeight="25.0" prefWidth="67.0" />
+      <ComboBox fx:id="industryDropdown" layoutX="227.0" layoutY="24.0" prefWidth="150.0" promptText="Jobbkategori" />
+      <ComboBox fx:id="fromMonth" layoutX="227.0" layoutY="121.0" prefHeight="25.0" prefWidth="67.0" />
+      <ComboBox fx:id="fromYear" layoutX="308.0" layoutY="121.0" prefHeight="25.0" prefWidth="67.0" />
+      <ComboBox fx:id="toMonth" layoutX="228.0" layoutY="165.0" prefHeight="25.0" prefWidth="67.0" />
+      <ComboBox fx:id="toYear" layoutX="310.0" layoutY="165.0" prefHeight="25.0" prefWidth="67.0" />
       <ListView layoutX="460.0" layoutY="235.0" prefHeight="200.0" prefWidth="267.0" />
       <TextField layoutX="460.0" layoutY="208.0" prefHeight="25.0" prefWidth="200.0" promptText="Krav til kvalifikasjoner" />
       <TextArea layoutX="12.0" layoutY="235.0" prefHeight="200.0" prefWidth="420.0" promptText="Stillingsbeskrivelse" />
