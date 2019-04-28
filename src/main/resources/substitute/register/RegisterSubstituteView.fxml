@@ -27,7 +27,7 @@
     <fx:include fx:id="RegisterReferenceView" source="references/RegisterReferenceView.fxml" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="330" />
 
     <fx:include fx:id="RegisterWorkExperienceView" source="work/RegisterWorkExperienceView.fxml" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="110" />
-   <Button layoutX="237.0" layoutY="834.0" mnemonicParsing="false" text="Register substitute" AnchorPane.bottomAnchor="5" />
+   <Button fx:id="register" layoutX="237.0" layoutY="834.0" mnemonicParsing="false" text="Register substitute" AnchorPane.bottomAnchor="5" onAction="#onRegister" />
    <ComboBox layoutX="14.0" layoutY="431.0" prefWidth="150.0" promptText="Wanted industry" />
    <ComboBox layoutX="193.0" layoutY="431.0" prefWidth="150.0" promptText="Wanted position" />
 

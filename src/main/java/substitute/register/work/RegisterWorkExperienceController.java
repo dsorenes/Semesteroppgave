@@ -57,7 +57,7 @@ public class RegisterWorkExperienceController implements Initializable {
     @FXML
     private TableColumn<Work, LocalDate> toCol;
 
-    ObservableList<Work> previousWorkTable = FXCollections.observableArrayList();
+    public ObservableList<Work> previousWorkTable = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

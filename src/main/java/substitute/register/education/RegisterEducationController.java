@@ -70,7 +70,7 @@ public class RegisterEducationController implements Initializable {
     @FXML
     private Button addEducation;
 
-    private ObservableList<Education> educations = FXCollections.observableArrayList();
+    public ObservableList<Education> educations = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
