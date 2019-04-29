@@ -11,25 +11,32 @@ import java.io.IOException;
 
 public class WelcomeScreenController {
 
-
     @FXML
     private Button LoggInn;
+
 
     public void initialize() {
         LoggInn.setOnAction(e -> {
             try {
+
                 MainView();
+
+                Stage stage = (Stage) LoggInn.getScene().getWindow();
+                stage.close();
+
             } catch (IOException ex) {
+
                 ex.printStackTrace();
+
             }
         });
-
     }
 
     private void MainView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
         Stage stage = new Stage();
-        stage.setTitle("Velkommen");
+        stage.setTitle("Vikarbyrå AS");
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
     }

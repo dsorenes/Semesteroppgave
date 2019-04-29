@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        this.stage.setTitle("Vikarbyrå AS");
+        this.stage.setTitle("Velkommen");
         this.stage.setResizable(false);
         this.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/WelcomeScreen.fxml"))));
         this.stage.show();
