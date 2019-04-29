@@ -16,7 +16,7 @@
       </ImageView>
       <ToolBar layoutY="-1.0" prefHeight="33.0" prefWidth="303.0" styleClass="tab-header-background" stylesheets="@../dark-theme.css">
         <items>
-          <Button fx:id="LoggInn" mnemonicParsing="false" styleClass="toolbar-button" text="Logg inn">
+          <Button fx:id="LoggInn" mnemonicParsing="false" styleClass="toolbar-button" text="Logg inn" onAction="#LoggInn">
                <font>
                   <Font name="Calibri" size="14.0" />
                </font>

@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,22 +15,22 @@ public class WelcomeScreenController {
     @FXML
     private Button LoggInn;
 
+    @FXML
+    public void LoggInn(ActionEvent event) {
 
-    public void initialize() {
-        LoggInn.setOnAction(e -> {
-            try {
+        try {
 
-                MainView();
+            MainView();
 
-                Stage stage = (Stage) LoggInn.getScene().getWindow();
-                stage.close();
+            Stage stage = (Stage) LoggInn.getScene().getWindow();
+            stage.close();
 
-            } catch (IOException ex) {
+        } catch (IOException ex) {
 
-                ex.printStackTrace();
+            ex.printStackTrace();
 
-            }
-        });
+        }
+
     }
 
     private void MainView() throws IOException {

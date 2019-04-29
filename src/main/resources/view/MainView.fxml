@@ -16,8 +16,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Open" />
+                <MenuItem fx:id="save" mnemonicParsing="false" text="Save" onAction="#saveFile"/>
+                <MenuItem fx:id="open" mnemonicParsing="false" text="Open" onAction="#openFile"/>
             </items>
           </Menu>
         </menus>
@@ -30,7 +30,7 @@
       <VBox alignment="CENTER" layoutY="29.0" prefHeight="581.0" prefWidth="160.0" style="-fx-spacing: 40;" styleClass="custom-pane">
          <children>
             <Button fx:id="RegisterSubstituteView" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="toolbar-button" stylesheets="@../dark-theme.css" text="Reg vik" onAction="#handleChangeView" />
-            <Button fx:id="RegJobb" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="toolbar-button" stylesheets="@../dark-theme.css" text="Reg jobb" onAction="#handleChangeView" />
+            <Button fx:id="RegisterEmployerView" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="toolbar-button" stylesheets="@../dark-theme.css" text="Reg jobb" onAction="#handleChangeView" />
             <Button fx:id="ViewVik" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="toolbar-button" stylesheets="@../dark-theme.css" text="View vik" onAction="#handleChangeView" />
             <Button fx:id="ViewJobb" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="toolbar-button" stylesheets="@../dark-theme.css" text="View jobb" onAction="#handleChangeView"/>
             <Button fx:id="Match" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" styleClass="toolbar-button" stylesheets="@../dark-theme.css" text="Match" onAction="#handleChangeView"/>
