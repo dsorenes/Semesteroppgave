@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,26 +13,12 @@ public class WelcomeScreenController {
 
 
     @FXML
-    public AnchorPane mainPane;
-
-    @FXML
-    private Button registerSubstitute;
-
-    @FXML
-    private Button registerEmployer;
+    private Button LoggInn;
 
     public void initialize() {
-        registerSubstitute.setOnAction(e -> {
+        LoggInn.setOnAction(e -> {
             try {
-                loadRegisterSubstitute();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        registerEmployer.setOnAction(e -> {
-            try {
-                loadRegisterEmployer();
+                MainView();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -41,18 +26,10 @@ public class WelcomeScreenController {
 
     }
 
-    private void loadRegisterEmployer() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/employer/register/RegisterEmployerView.fxml"));
+    private void MainView() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
         Stage stage = new Stage();
-        stage.setTitle("Register employer");
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-    private void loadRegisterSubstitute() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/substitute/register/RegisterSubstituteView.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Register Substitute");
+        stage.setTitle("Velkommen");
         stage.setScene(new Scene(root));
         stage.show();
     }
