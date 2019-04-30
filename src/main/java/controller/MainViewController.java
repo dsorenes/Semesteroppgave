@@ -1,9 +1,8 @@
 package controller;
 
+import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 
@@ -16,19 +15,34 @@ public class MainViewController {
     private BorderPane ChangeableView;
 
     @FXML
-    private void handleChangeView(ActionEvent event) {
-
+    private void RegisterSubstitute(ActionEvent event) {
         try {
-            String buttonID = ((Button) event.getSource()).getId();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + buttonID + ".fxml"));
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/substitute/RegisterContactInformationView.fxml"));
             ChangeableView.setCenter(loader.load());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void RegisterEmployer(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/employer/RegisterEmployerView.fxml"));
+            ChangeableView.setCenter(loader.load());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
 
 
     /**

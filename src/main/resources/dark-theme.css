@@ -30,7 +30,7 @@
     -fx-font-size: 12pt;
 }
 
-.button:hover, .button:focused{
+.button:hover, .button:active{
     -fx-border-color: -fx-secondary;
     -fx-background-color: -fx-secondary;
     -fx-text-fill: -fx-primary;
@@ -41,7 +41,7 @@
     -fx-text-fill: -fx-primarytext;
     -fx-font-size : 12pt;
     -jfx-focus-color: -fx-secondary;
-    -fx-text-fill: derive(-fx-secondary, 20%);
+    -fx-text-fill: black;
 }
 
 /*Login Screen Specific*/
@@ -66,7 +66,7 @@
 
 .tab-label{
     -fx-text-fill: -fx-secondary;
-    -fx-font-size: 10pt; 
+    -fx-font-size: 10pt;
 }
 
 
@@ -254,6 +254,13 @@
 .table-view > .virtual-flow > .scroll-bar > .decrement-button {
     -fx-text-fill: white;
 }
+
+.scroll-pane > .viewport  {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb{
     -fx-background-color: derive(-fx-primary, 60%);
