@@ -2,9 +2,7 @@ package readfromfile;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +31,11 @@ public class ReadFromCSV implements ReadFromFile {
     public static int createID(String filename) {
         Path path = Paths.get(filename.concat(".csv"));
         int ID = 0;
+        String line;
         try (
                 var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
         ) {
-
-            while (reader.readLine() != null) {
+            while ((line = reader.readLine()) != null) {
                 ID++;
             }
 
@@ -50,7 +48,7 @@ public class ReadFromCSV implements ReadFromFile {
         return 0;
     }
 
-     public List<String> findAttributes(String filename, int id) {
+     public ArrayList<String> findAttributes(String filename, int id) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         String ID = Integer.toString(id);

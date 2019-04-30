@@ -67,9 +67,9 @@ public class RegisterSubstituteController implements Initializable {
 
         ReadFromCSV read = new ReadFromCSV();
 
-        ArrayList<String> reference = new ArrayList<>(read.findAttributes("data/workReference", 1));
-        ArrayList<String> edu = new ArrayList<>(read.findAttributes("data/education", 1));
-        ArrayList<String> wor = new ArrayList<>(read.findAttributes("data/workExperience", 1));
+        ArrayList<String> reference = read.findAttributes("data/workReference", 1);
+        ArrayList<String> edu = read.findAttributes("data/education", 1);
+        ArrayList<String> wor = read.findAttributes("data/workExperience", 1);
         reference.forEach(System.out::println);
         edu.forEach(System.out::println);
         wor.forEach(System.out::println);
