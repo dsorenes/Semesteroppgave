@@ -44,32 +44,16 @@ public class RegisterSubstituteController implements Initializable {
                 RegisterContactInformationViewController.eMail.getText(), RegisterContactInformationViewController.address.getText(), RegisterContactInformationViewController.phoneNumber.getText(),
                 RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterContactInformationViewController.salaryDemand.getText());
 
-        int subID = ReadFromCSV.getID("data/substitute");
+        int subID = ReadFromCSV.createID("data/substitute");
+        int educationID = ReadFromCSV.createID("data/education");
+        int referenceID = ReadFromCSV.createID("data/workReference");
+        int workExperienceID = ReadFromCSV.createID("data/workExperience");
+
         sub.setID(subID);
-        sub.setEducation(RegisterEducationViewController.educations);
-        sub.setReferences(RegisterReferenceViewController.references);
-        sub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable);
+        sub.setEducation(RegisterEducationViewController.educations, educationID);
+        sub.setReferences(RegisterReferenceViewController.references, referenceID);
+        sub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable, workExperienceID);
         sub.setWorkField(RegisterContactInformationViewController.wantedField);
-
-        int educationID = ReadFromCSV.getID("data/education");
-        int referenceID = ReadFromCSV.getID("data/workReference");
-        int workExperienceID = ReadFromCSV.getID("data/workExperience");
-
-        for (Work w : sub.getWorkExperience()) {
-            w.assignSubstitute(sub);
-            w.setID(workExperienceID++);
-        }
-
-        for (Education e : sub.getEducation()) {
-            e.assignSubstitute(sub);
-            e.setID(educationID++);
-        }
-
-        for (WorkReference wr : sub.getReferences()) {
-            wr.assignSubstitute(sub);
-            wr.setID(referenceID++);
-        }
-
 
         SaveToCSV save = new SaveToCSV();
 

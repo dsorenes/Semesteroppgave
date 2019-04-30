@@ -98,7 +98,8 @@ public class Education {
 
     @Override
     public String toString() {
-        return substitute.getID() + ";" +
+        return this.educationID + ";" +
+                substitute.getID() + ";" +
                schoolName + ";" +
                 educationLevel + ";" +
                 degree + ';' +

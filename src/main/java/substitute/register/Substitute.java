@@ -34,20 +34,32 @@ public class Substitute {
         this.salaryDemand = salaryDemand;
     }
 
-    public void setWorkExperience(List<Work> workExperience) {
+    public void setWorkExperience(List<Work> workExperience, int ID) {
         this.workExperience = workExperience;
+        for (Work w : this.workExperience) {
+            w.assignSubstitute(this);
+            w.setID(ID++);
+        }
     }
 
-    public void setEducation(List<Education> education) {
+    public void setEducation(List<Education> education, int ID) {
         this.education = education;
+        for (Education e : this.education) {
+            e.assignSubstitute(this);
+            e.setID(ID++);
+        }
     }
 
     public void setWorkField(List<Industry> workField) {
         this.workField = workField;
     }
 
-    public void setReferences(List<WorkReference> references) {
+    public void setReferences(List<WorkReference> references, int ID) {
         this.references = references;
+        for (WorkReference wr : this.references) {
+            wr.assignSubstitute(this);
+            wr.setID(ID++);
+        }
     }
 
     @Override

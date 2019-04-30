@@ -34,7 +34,7 @@ public class Work {
 
     @Override
     public String toString() {
-        return 0 + ";" + this.substitute.getID() + ";" + this.companyName + ";" + this.position + ";" + this.sector + ";" + this.industry + ";" + this.employedFrom + ";" + this.employedTo;
+        return this.workID + ";" + this.substitute.getID() + ";" + this.companyName + ";" + this.position + ";" + this.sector + ";" + this.industry + ";" + this.employedFrom + ";" + this.employedTo;
     }
 
     public void setID (int ID) {

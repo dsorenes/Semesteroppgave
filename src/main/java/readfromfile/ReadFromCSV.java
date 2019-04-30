@@ -28,7 +28,7 @@ public class ReadFromCSV implements ReadFromFile {
         return false;
     }
 
-    public static int getID(String filename) {
+    public static int createID(String filename) {
         Path path = Paths.get(filename.concat(".csv"));
         int ID = 0;
         try (
