@@ -1,13 +1,11 @@
 workID;substituteID;Company name;position;sector;industry;from;to
-0;10;HERE;yku;null;Research, education and science;11.04.2019;27.04.2019
-0;10;AND HERE;DFG;null;Research, education and science;11.04.2019;27.04.2019
-0;11;AF;rwegfwerg;null;null;null;null
-0;11;AF;rwegfwerg;PRIVATE;Car, vehicle and workshop;null;null
-0;12;AF;rwegfwerg;null;null;null;null
-0;12;AF;rwegfwerg;PRIVATE;Car, vehicle and workshop;null;null
-0;13;hjklhjkl;hjklhjkl;PRIVATE;Store and retail;null;null
-0;13;hjklhjkl;hjklhjkl;PRIVATE;Children, school and education;null;null
-0;13;hjklhjkl;hjklhjkl;PRIVATE;Research, education and science;null;null
-10;14;iuoø;øiopøioø;PRIVATE;Store and retail;null;null
-11;14;iuoø;øiopøioø;PRIVATE;Children, school and education;null;null
-12;14;iuoø;øiopøioø;PRIVATE;Finance and accounting;null;null
+1;1;AF gruppen;Worker;PRIVATE;Construction;2017-06-14;2017-08-10
+2;1;Coop mega;Retail worker;PRIVATE;Store and retail;2018-05-29;2019-04-30
+3;3;tdyj;tdyjtdyjtdyej;PRIVATE;Store and retail;null;null
+4;3;klliol;kjløjkl,,;PRIVATE;Children, school and education;null;null
+5;4;rtjyurtjyrty;jrtyjruyjuytj;PRIVATE;Construction;null;null
+6;4;rtjyurtjyrty;jrtyjruyjuytj;PUBLIC;Construction;null;null
+7;4;rtjyurtjyrty;jrtyjruyjuytj;PUBLIC;Store and retail;null;null
+8;4;rtjyurtjyrty;jrtyjruyjuytj;PUBLIC;Health and care;null;null
+9;6;tyjtjy;tjy;PRIVATE;Store and retail;null;null
+10;6;tyjtjy;tjy;PRIVATE;Construction;null;null

@@ -42,10 +42,10 @@ public class WorkReference {
     public String toString() {
         return referenceID + ";" +
                 substitute.getID() + ";" +
+                employerName + ";" +
                 fullName + ';' +
                 phoneNumber + ';' +
-                eMail + ';' +
-                employerName + "";
+                eMail;
     }
 
     public void setID (int ID) {

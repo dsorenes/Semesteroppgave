@@ -103,12 +103,9 @@ public class Education {
                schoolName + ";" +
                 educationLevel + ";" +
                 degree + ';' +
-               fromMonth + ";" +
-               fromYear + ";" +
-               toMonth + ";" +
-                toYear + ";" +
-               isCurrentlyStudying + ";"
-               + from + ';' +
-               to;
+               from + ";" +
+               to + ";" +
+               isCurrentlyStudying;
+
     }
 }

@@ -1,20 +1,14 @@
-substitute.register.education.Education@226a850e
-substitute.register.education.Education@1a771d65
-substitute.register.education.Education@7c3e8da2
-ewedf;University;gsfdhbh;JUNE;2021;MAY;2022;false;JUNE, 2021;MAY, 2022
-74566745;University;56775;JUNE;2021;MAY;2022;false;JUNE, 2021;MAY, 2022
-74566745;University;56775;JUNE;2021;MAY;2022;false;JUNE, 2021;MAY, 2022
-74566745;University;56775;JUNE;2021;MAY;2022;false;JUNE, 2021;MAY, 2022
-74566745;University;56775;JUNE;2021;MAY;2022;false;JUNE, 2021;MAY, 2022
-KUYKU;null;KUYKUYYKUUILYOLØ;JUNE;2021;null;null;false;JUNE, 2021;null, null
-KUYKU;null;KUYKUYYKUUILYOLØ;JUNE;2021;null;null;false;JUNE, 2021;null, null
-11;htrh;College;thrth;null;null;null;null;false;null, null;null, null
-12;htrh;College;thrth;null;null;null;null;false;null, null;null, null
-13;uyhil;Vocational School;løioøioø;null;null;null;null;false;null, null;null, null
-13;uyhil;Vocational School;løioøioø;null;null;null;null;false;null, null;null, null
-13;uyhil;High school;løioøioø;null;null;null;null;false;null, null;null, null
-13;uyhil;Secondary school;løioøioø;null;null;null;null;false;null, null;null, null
-16;14;køælækøl;College;øælkæpææp;null;null;null;null;false;null, null;null, null
-17;14;køælækøl;Folk high school;øælkæpææp;null;null;null;null;false;null, null;null, null
-18;14;køælækøl;High school;øælkæpææp;null;null;null;null;false;null, null;null, null
-19;14;køælækøl;University;øælkæpææp;null;null;null;null;false;null, null;null, null
+educationID;substituteID;School name;Level of Education;Degree;from;to;studying
+;;;;;;;
+2;1;Elvis;High school;;MAY, 2012;JUNE, 2015;false
+3;1;Oslomet;University;Bachelor;AUGUST, 2017;;true
+4;3;iløklø;University;jioøioøhoil;null, null;null, null;false
+5;3;3452345;University;jioøioøhoil;APRIL, 2022;null, null;false
+6;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
+7;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
+8;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
+9;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
+10;5;rtyjrtyj;null;rtyjrtyjrtyj;null, null;null, null;false
+11;5;rtyjrtyj;null;rtyjrtyjrtyj;null, null;null, null;false
+12;5;rtyjrtyj;null;rtyjrtyjrtyj;null, null;null, null;false
+13;6;ftyjtfyj;null;ftyjftyj;null, null;null, null;false
