@@ -1,5 +1,10 @@
 package substitute.register;
 
+import javafx.scene.control.Alert;
+import model.exceptions.InvalidEmailException;
+import model.inputvalidation.InputValidation;
+import utils.errorpopup.ErrorPopup;
+
 import employer.Industry;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,6 +48,18 @@ public class RegisterSubstituteController implements Initializable {
         Substitute sub = new Substitute(RegisterContactInformationViewController.firstName.getText(), RegisterContactInformationViewController.lastName.getText(),
                 RegisterContactInformationViewController.eMail.getText(), RegisterContactInformationViewController.address.getText(), RegisterContactInformationViewController.phoneNumber.getText(),
                 RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterContactInformationViewController.salaryDemand.getText());
+
+        try {
+
+            InputValidation.checkEmail(RegisterContactInformationViewController.eMail.getText());
+            sub.setEMail(RegisterContactInformationViewController.eMail.getText());
+
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid eMail", "Invalid eMail");
+        }
+
 
         int subID = ReadFromCSV.createID("data/substitute");
         int educationID = ReadFromCSV.createID("data/education");

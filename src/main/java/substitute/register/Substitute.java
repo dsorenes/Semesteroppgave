@@ -34,6 +34,22 @@ public class Substitute {
         this.salaryDemand = salaryDemand;
     }
 
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getLastNamee() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+
+    public String getEMail() { return eMail; }
+    public void setEMail(String lastName) { this.eMail = eMail; }
+
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public String geteMail() { return eMail; }
+    public void seteMail(String lastName) { this.eMail = eMail; }
+
+
     public void setWorkExperience(List<Work> workExperience, int ID) {
         this.workExperience = workExperience;
         for (Work w : this.workExperience) {
