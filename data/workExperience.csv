@@ -1,2 +1,3 @@
-workExperienceID	SubstituteID	companyName	position	sector	industry	employedfrom	employedto
-2	1						
+workID;substituteID;Company name;position;sector;industry;from;to
+0;10;HERE;yku;null;Research, education and science;11.04.2019;27.04.2019
+0;10;AND HERE;DFG;null;Research, education and science;11.04.2019;27.04.2019

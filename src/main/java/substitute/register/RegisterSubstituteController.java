@@ -5,10 +5,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
+import substitute.register.education.Education;
 import substitute.register.education.RegisterEducationController;
 import substitute.register.references.RegisterWorkReferenceController;
+import substitute.register.references.WorkReference;
 import substitute.register.work.RegisterWorkExperienceController;
-
+import substitute.register.work.Work;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,9 @@ public class RegisterSubstituteController implements Initializable {
                 RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterWorkExperienceViewController.previousWorkTable, RegisterEducationViewController.educations, RegisterContactInformationViewController.salaryDemand.getText(),
                 RegisterContactInformationViewController.wantedField, RegisterReferenceViewController.references);
 
+        for (Work e : sub.getWorkExperience()) {
+            e.assignSubstitute(sub);
+        }
 
         int id = ReadFromCSV.getID("data/substitute");
         sub.setID(id);
@@ -49,9 +54,13 @@ public class RegisterSubstituteController implements Initializable {
         SaveToCSV save = new SaveToCSV();
 
         List<Substitute> data = new ArrayList<>();
+        List<Work> work = new ArrayList<>(RegisterWorkExperienceViewController.previousWorkTable);
+        List<Education> education = new ArrayList<>(RegisterEducationViewController.educations);
+        List<WorkReference> references = new ArrayList<>(RegisterReferenceViewController.references);
         data.add(sub);
-
-
+        save.SaveToFile("data/education", education);
+        save.SaveToFile("data/workReference", references);
+        save.SaveToFile("data/workExperience", work);
         save.SaveToFile("data/substitute", data);
         System.out.println(sub.getID());
     }

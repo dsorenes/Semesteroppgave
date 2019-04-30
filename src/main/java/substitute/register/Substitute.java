@@ -43,10 +43,26 @@ public class Substitute {
     public String toString() {
         return ID + ";" + firstName + ';' +
                 lastName + ';' +
-               eMail + ';' +
+               dateOfBirth + ";" +
                address + ';' +
                phoneNumber + ';' +
-               dateOfBirth;
+               eMail;
+    }
+
+    public List<Work> getWorkExperience() {
+        return workExperience;
+    }
+
+    public List<Education> getEducation() {
+        return education;
+    }
+
+    public List<Industry> getWorkField() {
+        return workField;
+    }
+
+    public List<WorkReference> getReferences() {
+        return references;
     }
 
     public void setID(int ID) {

@@ -4,6 +4,11 @@ import java.time.Month;
 
 public class Education {
 
+    public void setID(int educationID) {
+        this.educationID = educationID;
+    }
+
+    private int educationID;
     private String schoolName;
     private Subject subject;
     private EducationLevel educationLevel;
@@ -34,6 +39,10 @@ public class Education {
         if (isCurrentlyStudying) {
             this.to = "";
         }
+    }
+
+    public int getID () {
+        return this.educationID;
     }
 
     public String getFrom() {
@@ -80,5 +89,18 @@ public class Education {
         return isCurrentlyStudying;
     }
 
-
+    @Override
+    public String toString() {
+        return
+               schoolName + ";" +
+                educationLevel + ";" +
+                degree + ';' +
+               fromMonth + ";" +
+               fromYear + ";" +
+               toMonth + ";" +
+                toYear + ";" +
+               isCurrentlyStudying + ";"
+               + from + ';' +
+               to;
+    }
 }

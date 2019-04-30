@@ -2,6 +2,7 @@ package substitute.register.work;
 
 import employer.Industry;
 import employer.Sector;
+import substitute.register.Substitute;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,12 +10,14 @@ import java.util.stream.IntStream;
 
 public class Work {
 
+    private int workID;
     private String companyName;
     private String position;
     private Sector sector;
     private Industry industry;
     private LocalDate employedFrom;
     private LocalDate employedTo;
+    private Substitute substitute;
 
     public Work(String companyName, String position, Sector sector, Industry industry, LocalDate employedFrom, LocalDate employedTo) {
         this.companyName = companyName;
@@ -25,9 +28,21 @@ public class Work {
         this.employedTo = employedTo;
     }
 
+    public void assignSubstitute (Substitute substitute) {
+        this.substitute = substitute;
+    }
+
     @Override
     public String toString() {
-        return this.companyName + ", " + this.position + ", " + this.sector + ", " + this.industry + ", " + this.employedTo;
+        return 0 + ";" + this.substitute.getID() + ";" + this.companyName + ";" + this.position + ";" + this.sector + ";" + this.industry + ";" + this.employedFrom + ";" + this.employedTo;
+    }
+
+    public void setID (int ID) {
+        this.workID = ID;
+    }
+
+    public int getID () {
+        return this.workID;
     }
 
     public String getCompanyName() {

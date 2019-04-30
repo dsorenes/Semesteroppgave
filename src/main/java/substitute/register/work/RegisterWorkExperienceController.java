@@ -82,10 +82,7 @@ public class RegisterWorkExperienceController implements Initializable {
 
         Work previousWork = new Work(inputCompanyName.getText(), inputPositionName.getText(), sectorDropdown.getValue(), industryDropdown.getValue(), inputEmployedFrom.getValue(), inputEmployedTo.getValue());
         previousWorkTable.add(previousWork);
-
         workExperienceTable.setItems(previousWorkTable);
-
-        System.out.println(previousWork);
     }
 
     void initializeIndustryDropdown() {

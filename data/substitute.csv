@@ -1,8 +1,11 @@
-substituteID
+substituteID;First name;Last name;Born;address;phone number;E-mail
 1;Daniel;Sørenes;;;;null
 2;Ern;Sol;;;;null
-3;Petter;Solberg;wefwef;wefwefwef;675865786;2019-04-18
-4;Morten;Stordalen;wefwef;wefwefwef;675865786;2019-04-18
-5;Peer;gynt;wefwef;wefwefwef;675865786;2019-04-18
+3;Petter;Solberg;wefwef;wefwefwef;675865786;18.04.2019
+4;Morten;Stordalen;wefwef;wefwefwef;675865786;18.04.2019
+5;Peer;gynt;wefwef;wefwefwef;675865786;18.04.2019
 6;Jon;Almaas;;;;null
 7;Jon;Rudberg;;;;null
+8;HEI;Q;W;W;E;null
+9;d;e;;e;ew;29.04.2019
+10;tyukktyu;kytuktuyytuk;null;tyukkuyt;ytukkyut;tyku
