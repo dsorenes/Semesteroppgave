@@ -1,7 +1,10 @@
 package substitute.register.references;
 
+import substitute.register.Substitute;
+
 public class WorkReference {
 
+    private Substitute substitute;
     private int referenceID;
     private String fullName;
     private String phoneNumber;
@@ -13,6 +16,10 @@ public class WorkReference {
         this.phoneNumber = phoneNumber;
         this.eMail = eMail;
         this.employerName = employerName;
+    }
+
+    public void assignSubstitute(Substitute sub) {
+        this.substitute = sub;
     }
 
     public String getEmployerName() {
@@ -33,7 +40,9 @@ public class WorkReference {
 
     @Override
     public String toString() {
-        return fullName + ';' +
+        return referenceID + ";" +
+                substitute.getID() + ";" +
+                fullName + ';' +
                 phoneNumber + ';' +
                 eMail + ';' +
                 employerName + "";

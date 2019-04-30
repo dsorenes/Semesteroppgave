@@ -24,18 +24,29 @@ public class Substitute {
     private List<WorkReference> references;
 
     public Substitute(String firstName, String lastName, String eMail, String address, String phoneNumber,
-                      LocalDate dateOfBirth, List<Work> workExperience, List<Education> education, String salaryDemand,
-                      List<Industry> workField, List<WorkReference> references) {
+                      LocalDate dateOfBirth, String salaryDemand) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.eMail = eMail;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
-        this.workExperience =workExperience;
-        this.education = education;
         this.salaryDemand = salaryDemand;
+    }
+
+    public void setWorkExperience(List<Work> workExperience) {
+        this.workExperience = workExperience;
+    }
+
+    public void setEducation(List<Education> education) {
+        this.education = education;
+    }
+
+    public void setWorkField(List<Industry> workField) {
         this.workField = workField;
+    }
+
+    public void setReferences(List<WorkReference> references) {
         this.references = references;
     }
 
@@ -46,7 +57,7 @@ public class Substitute {
                dateOfBirth + ";" +
                address + ';' +
                phoneNumber + ';' +
-               eMail;
+               eMail + ";" + salaryDemand;
     }
 
     public List<Work> getWorkExperience() {

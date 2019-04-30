@@ -1,5 +1,7 @@
 package substitute.register.education;
 
+import substitute.register.Substitute;
+
 import java.time.Month;
 
 public class Education {
@@ -8,6 +10,7 @@ public class Education {
         this.educationID = educationID;
     }
 
+    private Substitute substitute;
     private int educationID;
     private String schoolName;
     private Subject subject;
@@ -39,6 +42,10 @@ public class Education {
         if (isCurrentlyStudying) {
             this.to = "";
         }
+    }
+
+    public void assignSubstitute (Substitute sub) {
+        this.substitute = sub;
     }
 
     public int getID () {
@@ -91,7 +98,7 @@ public class Education {
 
     @Override
     public String toString() {
-        return
+        return substitute.getID() + ";" +
                schoolName + ";" +
                 educationLevel + ";" +
                 degree + ';' +

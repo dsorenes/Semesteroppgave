@@ -1,5 +1,6 @@
 package substitute.register;
 
+import employer.Industry;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -41,26 +42,42 @@ public class RegisterSubstituteController implements Initializable {
     void onRegister() {
         Substitute sub = new Substitute(RegisterContactInformationViewController.firstName.getText(), RegisterContactInformationViewController.lastName.getText(),
                 RegisterContactInformationViewController.eMail.getText(), RegisterContactInformationViewController.address.getText(), RegisterContactInformationViewController.phoneNumber.getText(),
-                RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterWorkExperienceViewController.previousWorkTable, RegisterEducationViewController.educations, RegisterContactInformationViewController.salaryDemand.getText(),
-                RegisterContactInformationViewController.wantedField, RegisterReferenceViewController.references);
+                RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterContactInformationViewController.salaryDemand.getText());
 
-        for (Work e : sub.getWorkExperience()) {
-            e.assignSubstitute(sub);
+        int subID = ReadFromCSV.getID("data/substitute");
+        sub.setID(subID);
+        sub.setEducation(RegisterEducationViewController.educations);
+        sub.setReferences(RegisterReferenceViewController.references);
+        sub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable);
+        sub.setWorkField(RegisterContactInformationViewController.wantedField);
+
+        int educationID = ReadFromCSV.getID("data/education");
+        int referenceID = ReadFromCSV.getID("data/workReference");
+        int workExperienceID = ReadFromCSV.getID("data/workExperience");
+
+        for (Work w : sub.getWorkExperience()) {
+            w.assignSubstitute(sub);
+            w.setID(workExperienceID++);
         }
 
-        int id = ReadFromCSV.getID("data/substitute");
-        sub.setID(id);
+        for (Education e : sub.getEducation()) {
+            e.assignSubstitute(sub);
+            e.setID(educationID++);
+        }
+
+        for (WorkReference wr : sub.getReferences()) {
+            wr.assignSubstitute(sub);
+            wr.setID(referenceID++);
+        }
+
 
         SaveToCSV save = new SaveToCSV();
 
         List<Substitute> data = new ArrayList<>();
-        List<Work> work = new ArrayList<>(RegisterWorkExperienceViewController.previousWorkTable);
-        List<Education> education = new ArrayList<>(RegisterEducationViewController.educations);
-        List<WorkReference> references = new ArrayList<>(RegisterReferenceViewController.references);
         data.add(sub);
-        save.SaveToFile("data/education", education);
-        save.SaveToFile("data/workReference", references);
-        save.SaveToFile("data/workExperience", work);
+        save.SaveToFile("data/education", sub.getEducation());
+        save.SaveToFile("data/workReference", sub.getReferences());
+        save.SaveToFile("data/workExperience", sub.getWorkExperience());
         save.SaveToFile("data/substitute", data);
         System.out.println(sub.getID());
     }
