@@ -5,8 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class ReadFromCSV implements ReadFromFile {
     @Override
@@ -14,7 +12,7 @@ public class ReadFromCSV implements ReadFromFile {
         Path path = Paths.get(fileName.concat(".csv"));
         String line;
         try (
-            var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8);
+            var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
             ) {
 
             while ((line = reader.readLine()) != null) {
@@ -29,4 +27,25 @@ public class ReadFromCSV implements ReadFromFile {
 
         return false;
     }
+
+    public static int getID(String filename) {
+        Path path = Paths.get(filename.concat(".csv"));
+        int ID = 0;
+        try (
+                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+        ) {
+
+            while (reader.readLine() != null) {
+                ID++;
+            }
+
+            return ID;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
 }

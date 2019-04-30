@@ -20,7 +20,7 @@
       <ComboBox fx:id="toYear" layoutX="310.0" layoutY="165.0" prefHeight="25.0" prefWidth="67.0" />
       <ListView layoutX="460.0" layoutY="235.0" prefHeight="200.0" prefWidth="267.0" />
       <TextField layoutX="460.0" layoutY="208.0" prefHeight="25.0" prefWidth="200.0" promptText="Krav til kvalifikasjoner" />
-      <TextArea layoutX="12.0" layoutY="235.0" prefHeight="200.0" prefWidth="420.0" promptText="Stillingsbeskrivelse" wrapText="true" />
+      <TextArea layoutX="12.0" layoutY="264.0" prefHeight="169.0" prefWidth="420.0" promptText="Stillingsbeskrivelse" wrapText="true" />
       <Label layoutX="227.0" layoutY="106.0" text="Varighet fra" />
       <Label layoutX="230.0" layoutY="150.0" text="til" />
       <ListView layoutX="14.0" layoutY="26.0" prefHeight="169.0" prefWidth="200.0" />
@@ -31,7 +31,8 @@
       <TextField layoutX="324.0" layoutY="444.0" prefHeight="25.0" prefWidth="240.0" promptText="E-post" />
       <TextArea layoutX="397.0" layoutY="66.0" prefHeight="126.0" prefWidth="150.0" promptText="Arbeidsvilkår" />
       <TextArea layoutX="569.0" layoutY="66.0" prefHeight="126.0" prefWidth="161.0" promptText="Lønnsbetingelser" />
-      <TextField layoutX="15.0" layoutY="204.0" prefHeight="25.0" prefWidth="278.0" promptText="Stillingstittel" />
+      <TextField layoutX="15.0" layoutY="233.0" prefHeight="25.0" prefWidth="278.0" promptText="Stillingstittel" />
       <Button layoutX="580.0" layoutY="444.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Opprett nytt vikariat" />
+      <TextField disable="true" editable="false" layoutX="15.0" layoutY="198.0" prefHeight="25.0" prefWidth="200.0" promptText="Employer" />
    </children>
 </AnchorPane>

@@ -10,6 +10,7 @@ import java.util.List;
 
 public class Substitute {
 
+    private int ID;
     private String firstName;
     private String lastName;
     private String eMail;
@@ -40,7 +41,19 @@ public class Substitute {
 
     @Override
     public String toString() {
-        return firstName + ", " + lastName + ", " + eMail + ", " + workExperience.size() + ", " + education.size();
+        return ID + ";" + firstName + ';' +
+                lastName + ';' +
+               eMail + ';' +
+               address + ';' +
+               phoneNumber + ';' +
+               dateOfBirth;
     }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public int getID() {
+        return this.ID;
+    }
 }
