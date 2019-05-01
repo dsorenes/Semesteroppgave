@@ -31,4 +31,11 @@ public enum Industry {
         return this.description;
     }
 
+    public static Industry fromString (String description) {
+        for (Industry i : Industry.values()) {
+            if (i.description.equalsIgnoreCase(description)) return i;
+            }
+        return null;
+        }
+
 }

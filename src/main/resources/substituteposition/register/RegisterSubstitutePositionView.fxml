@@ -23,7 +23,7 @@
       <TextArea layoutX="12.0" layoutY="264.0" prefHeight="169.0" prefWidth="420.0" promptText="Stillingsbeskrivelse" wrapText="true" />
       <Label layoutX="227.0" layoutY="106.0" text="Varighet fra" />
       <Label layoutX="230.0" layoutY="150.0" text="til" />
-      <ListView layoutX="14.0" layoutY="26.0" prefHeight="169.0" prefWidth="200.0" />
+      <ListView fx:id="employerList" layoutX="14.0" layoutY="26.0" prefHeight="169.0" prefWidth="200.0" />
       <Label layoutX="12.0" layoutY="9.0" text="Arbeidsgiver" />
       <Button layoutX="670.0" layoutY="207.0" mnemonicParsing="false" text="Legg til" />
       <TextField layoutX="12.0" layoutY="444.0" promptText="Navn" />
@@ -33,6 +33,6 @@
       <TextArea layoutX="569.0" layoutY="66.0" prefHeight="126.0" prefWidth="161.0" promptText="Lønnsbetingelser" />
       <TextField layoutX="15.0" layoutY="233.0" prefHeight="25.0" prefWidth="278.0" promptText="Stillingstittel" />
       <Button layoutX="580.0" layoutY="444.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Opprett nytt vikariat" />
-      <TextField disable="true" editable="false" layoutX="15.0" layoutY="198.0" prefHeight="25.0" prefWidth="200.0" promptText="Employer" />
+      <TextField fx:id="selectedEmployer" disable="true" editable="false" layoutX="15.0" layoutY="198.0" prefHeight="25.0" prefWidth="200.0" promptText="Employer" />
    </children>
 </AnchorPane>

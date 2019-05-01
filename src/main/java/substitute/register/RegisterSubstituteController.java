@@ -36,7 +36,6 @@ public class RegisterSubstituteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
     @FXML
     void onRegister() {
