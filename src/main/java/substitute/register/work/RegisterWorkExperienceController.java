@@ -9,9 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import utils.ClearInput;
+import utils.DateTableFormat;
 
 import java.net.URL;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class RegisterWorkExperienceController implements Initializable {
@@ -65,6 +69,9 @@ public class RegisterWorkExperienceController implements Initializable {
         initializeIndustryDropdown();
         initializeSectorDropdown();
         initCol();
+
+        DateTableFormat.setFormatTo(fromCol, toCol);
+
     }
 
     private void initCol() {

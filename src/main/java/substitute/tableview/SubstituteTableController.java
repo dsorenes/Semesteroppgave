@@ -30,9 +30,6 @@ public class SubstituteTableController implements Initializable {
     @FXML
     private TableColumn<Substitute, String> lastNameCol;
 
-    @FXML
-    private TextFlow textFlow;
-
     private void initializeSubstituteTable() {
         ObservableList<Substitute> substitutes = FXCollections.observableArrayList(ReadFromCSV.getSubstitutesFromCSV());
         substituteTable.getItems().setAll(substitutes);
@@ -43,14 +40,12 @@ public class SubstituteTableController implements Initializable {
         initializeCol();
         initializeSubstituteTable();
 
-        substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSelection());
+//        substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSelection());
 
     }
 
     private void onSelection() {
         Substitute s = substituteTable.getSelectionModel().getSelectedItem();
-        System.out.println(s.getEducation().get(0));
-        System.out.println(s.getReferences().get(0));
     }
     private void initializeCol() {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));

@@ -195,8 +195,8 @@ public class ReadFromCSV implements ReadFromFile {
                     String position = data[3];
                     Sector s = Sector.valueOf(data[4].toUpperCase().trim());
                     Industry i = Industry.fromString(data[5]);
-                    LocalDate from = LocalDate.parse(data[6].trim(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-                    LocalDate to = LocalDate.parse(data[7].trim(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                    LocalDate from = LocalDate.parse(data[6].trim());
+                    LocalDate to = LocalDate.parse(data[7].trim());
 
                     Work w = new Work(companyName, position, s, i, from, to);
                     w.setSubstituteID(substituteID);
@@ -279,7 +279,7 @@ public class ReadFromCSV implements ReadFromFile {
                     int subID = Integer.parseInt(data[0]);
                     String first = data[1];
                     String last = data[2];
-                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                    LocalDate born = LocalDate.parse(data[3]);
                     String address = data[4];
                     String phone = data[5];
                     String eMail = data[6];
