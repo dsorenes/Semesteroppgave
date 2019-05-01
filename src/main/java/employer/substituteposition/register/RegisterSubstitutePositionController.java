@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
+import utils.ClearInput;
 import utils.Year;
 
 import java.net.URL;
@@ -96,12 +97,7 @@ public class RegisterSubstitutePositionController implements Initializable {
         initializeDropdowns();
 
         populateEmployerList();
-
-        employerList.getSelectionModel().selectedItemProperty().addListener(e -> {
-            selectEmployer();
-            Employer employer = employerList.getSelectionModel().getSelectedItem();
-            System.out.println(employer);
-        });
+        selectedEmployer();
 
         addQualification.setOnAction(e -> onAddQualification());
 
@@ -112,6 +108,7 @@ public class RegisterSubstitutePositionController implements Initializable {
     private void onAddQualification() {
         qualifications.add(posQualityField.getText());
         qualificationList.getItems().setAll(qualifications);
+        ClearInput.clearInputFields(posQualityField);
     }
 
     private void onCreatePosition() {
@@ -135,6 +132,20 @@ public class RegisterSubstitutePositionController implements Initializable {
 
         SaveToCSV save = new SaveToCSV();
         save.SaveToFile("data/position/position", pos);
+
+        ClearInput.clearDropdowns(fromMonth, fromYear, toMonth, toYear, industryDropdown, sectorDropdown);
+        ClearInput.clearInputFields(selectedEmployer, posLocation, posHours, positionTitle, contactEmail, contactName, contactPhone);
+        ClearInput.clearLists(qualificationList);
+        ClearInput.clearTextArea(posConditions, posDescription, posSalary, posDescription);
+        ClearInput.clearListSelection(employerList);
+    }
+
+    private void selectedEmployer() {
+        employerList.getSelectionModel().selectedItemProperty().addListener(e -> {
+            if (employerList.getSelectionModel().getSelectedItem() != null) {
+                selectedEmployer.setText(employerList.getSelectionModel().getSelectedItem().getCompanyName());
+            }
+        });
     }
 
     private void populateEmployerList() {
@@ -152,11 +163,7 @@ public class RegisterSubstitutePositionController implements Initializable {
               }
           }
         });
-    }
 
-    private void selectEmployer() {
-        String employer = employerList.getSelectionModel().getSelectedItem().getCompanyName();
-        selectedEmployer.setText(employer);
     }
 
     private void initializeDropdowns () {

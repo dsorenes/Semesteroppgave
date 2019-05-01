@@ -86,6 +86,7 @@ public class RegisterWorkExperienceController implements Initializable {
         workExperienceTable.setItems(previousWorkTable);
 
         ClearInput.clearInputFields(inputCompanyName, inputPositionName);
+        ClearInput.clearDropdowns(industryDropdown, sectorDropdown);
     }
 
     void initializeIndustryDropdown() {

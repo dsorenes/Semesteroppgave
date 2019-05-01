@@ -71,6 +71,7 @@ public class EmployerController implements Initializable {
 
 
         ClearInput.clearInputFields(firstName, lastName, phoneNumber, companyName, companyAddress, eMail);
+        ClearInput.clearDropdowns(industryDropdown, sectorDropdown);
 
     }
 }
