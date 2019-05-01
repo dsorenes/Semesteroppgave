@@ -45,7 +45,7 @@ public class RegisterEducationController implements Initializable {
     private CheckBox currentlyStudyingCheck;
 
     @FXML
-    private TableView<Education> educationTable;
+    public TableView<Education> educationTable;
 
     @FXML
     private TableColumn<Education, String> schoolNameCol;
@@ -129,6 +129,8 @@ public class RegisterEducationController implements Initializable {
         educationTable.setItems(educations);
 
         ClearInput.clearInputFields(schoolName, degree);
+        ClearInput.clearDropdowns(subjectDropdown, educationLevelDropdown, fromMonth, fromYear, toMonth, toYear);
+
 
     }
 

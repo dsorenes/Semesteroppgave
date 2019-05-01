@@ -38,7 +38,7 @@ public class RegisterWorkExperienceController implements Initializable {
     private Button addWorkExperience;
 
     @FXML
-    private TableView<Work> workExperienceTable;
+    public TableView<Work> workExperienceTable;
 
     @FXML
     private TableColumn<Work, String> companyCol;

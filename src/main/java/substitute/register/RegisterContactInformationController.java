@@ -35,7 +35,7 @@ public class RegisterContactInformationController implements Initializable {
     private ComboBox<Industry> industryDropdown;
 
     @FXML
-    private ListView<Industry> industryListView;
+    public ListView<Industry> industryListView;
 
     @FXML
     private Button addWantedIndustry;

@@ -29,7 +29,7 @@ public class RegisterWorkReferenceController implements Initializable {
     private TextField referenceEmployer;
 
     @FXML
-    private TableView<WorkReference> referenceTableView;
+    public TableView<WorkReference> referenceTableView;
 
     @FXML
     private TableColumn<WorkReference, String> fullNameCol;

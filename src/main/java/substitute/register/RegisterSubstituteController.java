@@ -71,12 +71,11 @@ public class RegisterSubstituteController implements Initializable {
         ArrayList<String> reference = read.findAttributes("data/workReference", sub.getID());
         ArrayList<String> edu = read.findAttributes("data/education", sub.getID());
         ArrayList<String> wor = read.findAttributes("data/workExperience", sub.getID());
-        reference.forEach(System.out::println);
-        edu.forEach(System.out::println);
-        wor.forEach(System.out::println);
 
         ClearInput.clearInputFields(RegisterContactInformationViewController.firstName, RegisterContactInformationViewController.lastName, RegisterContactInformationViewController.eMail,
                                     RegisterContactInformationViewController.address, RegisterContactInformationViewController.phoneNumber);
+        ClearInput.clearLists(RegisterContactInformationViewController.industryListView);
+        ClearInput.clearTables(RegisterEducationViewController.educationTable, RegisterReferenceViewController.referenceTableView, RegisterWorkExperienceViewController.workExperienceTable);
     }
 }
 
