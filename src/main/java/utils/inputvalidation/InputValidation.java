@@ -74,17 +74,24 @@ public class InputValidation {
 
     public static boolean checkAddress(String address) throws InvalidAddressException {
 
-        if (address.split(" ").length>2) {
+        if (address.length() < 3) {
 
-            throw new InvalidAddressException("Invalid adress");
-        }
-
-        if (!address.matches("[A-Za-z0-9'\\.\\-\\s\\,]\n")) {
-
-            throw new InvalidAddressException("Invalid adress");
+            throw new InvalidAddressException("A address can not be shorter that 3 characters");
 
         }
 
+        if (address.length() > 20) {
+
+            throw new InvalidAddressException("A address can not be longer that 20 characters");
+
+        }
+/*
+        if (!address.matches("^\\d+\\s[ÆØÅæøåA-z]+\\s[A-z]+")) {
+
+            throw new InvalidAddressException("Invalid adress");
+
+        }
+*/
         return true;
 
     }

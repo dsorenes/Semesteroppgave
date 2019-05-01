@@ -5,10 +5,11 @@ import substitute.register.education.Education;
 import substitute.register.references.WorkReference;
 import substitute.register.work.Work;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Substitute {
+public class Substitute implements Serializable {
 
     private int ID;
     private String firstName;
@@ -22,6 +23,8 @@ public class Substitute {
     private String salaryDemand;
     private List<Industry> workField;
     private List<WorkReference> references;
+
+    public Substitute() {}
 
     public Substitute(String firstName, String lastName, String eMail, String address, String phoneNumber,
                       LocalDate dateOfBirth, String salaryDemand) {
