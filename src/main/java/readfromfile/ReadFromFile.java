@@ -1,6 +1,8 @@
 package readfromfile;
 
+import java.util.ArrayList;
+
 public interface ReadFromFile {
 
-    boolean ReadFromFile(String fileName);
+    ArrayList<String> ReadFromFile(String fileName);
 }

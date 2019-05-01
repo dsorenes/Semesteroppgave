@@ -27,29 +27,22 @@ public class Substitute implements Serializable {
 
     public Substitute() {}
 
-    public Substitute(String firstName, String lastName, String eMail, String address, String phoneNumber,
-                      LocalDate dateOfBirth, String salaryDemand) {
+    public Substitute(String firstName, String lastName, LocalDate dateOfBirth, String address, String phoneNumber, String eMail) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.eMail = eMail;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
-        this.salaryDemand = salaryDemand;
     }
 
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-    public int getID() {
-        return this.ID;
-    }
+    public int getID() { return this.ID; }
+    public void setID(int ID) { this.ID = ID; }
 
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public String getLastNamee() { return lastName; }
+    public String getLastName() { return lastName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
 
     public String getEMail() { return eMail; }
@@ -67,10 +60,10 @@ public class Substitute implements Serializable {
     public String geteSaleryDemand() { return salaryDemand; }
     public void setSalaryDemand(String salaryDemand) { this.salaryDemand = salaryDemand; }
 
+    public boolean getIsEmployed() { return isEmployed; }
+    public void settIsEmployed(boolean isEmployed) { this.isEmployed = isEmployed; }
 
-    public List<Work> getWorkExperience() {
-        return workExperience;
-    }
+    public List<Work> getWorkExperience() { return workExperience; }
     public void setWorkExperience(List<Work> workExperience, int ID) {
         this.workExperience = workExperience;
         for (Work w : this.workExperience) {
@@ -79,9 +72,7 @@ public class Substitute implements Serializable {
         }
     }
 
-    public List<Education> getEducation() {
-        return education;
-    }
+    public List<Education> getEducation() { return education; }
     public void setEducation(List<Education> education, int ID) {
         this.education = education;
         for (Education e : this.education) {
@@ -90,16 +81,12 @@ public class Substitute implements Serializable {
         }
     }
 
-    public List<Industry> getWorkField() {
-        return workField;
-    }
+    public List<Industry> getWorkField() { return workField; }
     public void setWorkField(List<Industry> workField) {
         this.workField = workField;
     }
 
-    public List<WorkReference> getReferences() {
-        return references;
-    }
+    public List<WorkReference> getReferences() { return references; }
     public void setReferences(List<WorkReference> references, int ID) {
         this.references = references;
         for (WorkReference wr : this.references) {
@@ -115,6 +102,7 @@ public class Substitute implements Serializable {
                dateOfBirth + ";" +
                address + ';' +
                phoneNumber + ';' +
-               eMail + ";" + salaryDemand;
+               eMail;
     }
+
 }

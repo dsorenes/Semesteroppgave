@@ -6,16 +6,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
 import utils.ClearInput;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.ResourceBundle;
 
 public class EmployerController implements Initializable {
@@ -62,18 +59,10 @@ public class EmployerController implements Initializable {
 
     private void onRegister() {
         Employer employer = new Employer(companyName.getText(), companyAddress.getText(), firstName.getText(), lastName.getText(), phoneNumber.getText(), eMail.getText(), industryDropdown.getValue(), sectorDropdown.getValue());
-
-
-
-
-
-
         ArrayList<Employer> employees = new ArrayList<>();
-        int employerID = ReadFromCSV.createID("data/employer/employer");
-
+        int employerID = ReadFromCSV.createIdCSV("data/employer/employer");
         employer.setID(employerID);
         employees.add(employer);
-
         SaveToCSV save = new SaveToCSV();
         save.SaveToFile("data/employer/employer", employees);
 

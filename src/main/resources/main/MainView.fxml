@@ -12,8 +12,9 @@
     <Button fx:id="registerSubstitute" prefHeight="150.0" prefWidth="200.0" text="Register substitute" />
     <Button fx:id="registerEmployer" layoutY="150.0" prefHeight="150.0" prefWidth="200.0" text="Register Employer" />
    <Button fx:id="registerSubstitutePosition" layoutY="300.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" text="Register new substitute position" />
-   <Button layoutY="450.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" text="Available substitutes" />
+   <Button fx:id="availableSubstitutes" layoutY="450.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" text="Available substitutes" />
+   <Button fx:id="substitutePositions" layoutX="200.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="200.0" text="Substitute positions" />
 
-
+<!--    <fx:include source="../substitute/tableview/SubstituteTableView.fxml" fx:id="SubstituteTableViewController" />-->
 
 </AnchorPane>

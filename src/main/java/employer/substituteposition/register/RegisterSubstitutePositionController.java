@@ -1,20 +1,14 @@
 package employer.substituteposition.register;
 
-import employer.Position;
 import employer.register.Employer;
 import employer.Industry;
 import employer.Sector;
 import employer.substituteposition.SubstitutePosition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
 import utils.ClearInput;
@@ -112,7 +106,7 @@ public class RegisterSubstitutePositionController implements Initializable {
     }
 
     private void onCreatePosition() {
-        int positionID = ReadFromCSV.createID("data/position/position");
+        int positionID = ReadFromCSV.createIdCSV("data/position/position");
         SubstitutePosition position = new SubstitutePosition(employerList.getSelectionModel().getSelectedItem(), industryDropdown.getValue(), sectorDropdown.getValue(), fromMonth.getValue(), fromYear.getValue(),
                                                              toMonth.getValue(), toYear.getValue());
         position.setID(positionID);
@@ -149,7 +143,7 @@ public class RegisterSubstitutePositionController implements Initializable {
     }
 
     private void populateEmployerList() {
-        ObservableList<Employer> employers = FXCollections.observableArrayList(ReadFromCSV.getEmployers());
+        ObservableList<Employer> employers = FXCollections.observableArrayList(ReadFromCSV.getEmployersFomCSV());
         employerList.setItems(employers);
         employerList.setCellFactory(e -> new ListCell<>() {
           @Override

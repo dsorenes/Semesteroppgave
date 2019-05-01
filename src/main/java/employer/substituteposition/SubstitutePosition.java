@@ -3,11 +3,11 @@ package employer.substituteposition;
 import employer.Industry;
 import employer.Sector;
 import employer.register.Employer;
-import employer.Position;
+import readfromfile.ReadFromCSV;
 import substitute.register.Substitute;
 
-import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubstitutePosition {
@@ -25,7 +25,6 @@ public class SubstitutePosition {
     private String employmentConditions;
     private Employer employer;
     private String description;
-    private List<Substitute> applicants;
     private Substitute substitute;
     private Sector sector;
     private String workHours;
@@ -36,6 +35,7 @@ public class SubstitutePosition {
     private String contactEMail;
     private String to;
     private String from;
+    private String companyName;
 
     public SubstitutePosition (Employer employer, Industry position, Sector sector, Month fromMonth, int fromYear, Month toMonth, int toYear) {
         this.employer =employer;
@@ -45,6 +45,7 @@ public class SubstitutePosition {
         this.fromYear = fromYear;
         this.toMonth = toMonth;
         this.toYear = toYear;
+        this.companyName = employer.getCompanyName();
 
         this.from = fromMonth + ", " + fromYear;
         this.to = toMonth + ", " + toYear;
@@ -63,8 +64,14 @@ public class SubstitutePosition {
                 to;
     }
 
+
+
     public int getEmployerID() {
         return this.employer.getID();
+    }
+
+    public String getCompanyName() {
+        return this.companyName;
     }
 
 
@@ -90,10 +97,6 @@ public class SubstitutePosition {
 
     public Employer getEmployer() {
         return employer;
-    }
-
-    public List<Substitute> getApplicants() {
-        return applicants;
     }
 
     public Substitute getSubstitute() {
@@ -164,4 +167,27 @@ public class SubstitutePosition {
         this.substitutePositionID = ID;
     }
 
+    public String getTo() {
+        return this.to;
+    }
+
+    public String getFrom() {
+        return this.from;
+    }
+
+    public Industry getPosition() {
+        return position;
+    }
+
+    public String getPositionType() {
+        return positionType;
+    }
+
+    public Sector getSector() {
+        return sector;
+    }
+
+    public String getPositionTitle() {
+        return positionTitle;
+    }
 }

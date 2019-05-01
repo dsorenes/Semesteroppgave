@@ -1,21 +1,22 @@
 package substitute.register;
 
-import javafx.scene.control.Alert;
-import utils.ClearInput;
-import utils.exceptions.*;
-import utils.inputvalidation.*;
-import utils.errorpopup.ErrorPopup;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
+
 import substitute.register.education.RegisterEducationController;
 import substitute.register.references.RegisterWorkReferenceController;
 import substitute.register.work.RegisterWorkExperienceController;
 
 import utils.inputvalidation.InputValidation;
+import utils.ClearInput;
+import utils.exceptions.*;
+import utils.inputvalidation.*;
+import utils.errorpopup.ErrorPopup;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -66,12 +67,11 @@ public class RegisterSubstituteController implements Initializable {
             sub.setPhoneNumber(RegisterContactInformationViewController.phoneNumber.getText());
 
             sub.setDateOfBirth(RegisterContactInformationViewController.dateOfBirth.getValue());
-            sub.setSalaryDemand(RegisterContactInformationViewController.salaryDemand.getText());
 
-            int subID = ReadFromCSV.createID("data/substitute");
-            int educationID = ReadFromCSV.createID("data/education");
-            int referenceID = ReadFromCSV.createID("data/workReference");
-            int workExperienceID = ReadFromCSV.createID("data/workExperience");
+            int subID = ReadFromCSV.createIdCSV("data/substitute");
+            int educationID = ReadFromCSV.createIdCSV("data/education");
+            int referenceID = ReadFromCSV.createIdCSV("data/workReference");
+            int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
 
             sub.setID(subID);
             sub.setEducation(RegisterEducationViewController.educations, educationID);
@@ -94,9 +94,7 @@ public class RegisterSubstituteController implements Initializable {
             ArrayList<String> reference = read.findAttributes("data/workReference", 1);
             ArrayList<String> edu = read.findAttributes("data/education", 1);
             ArrayList<String> wor = read.findAttributes("data/workExperience", 1);
-            reference.forEach(System.out::println);
-            edu.forEach(System.out::println);
-            wor.forEach(System.out::println);
+
 
 
             ClearInput.clearInputFields(RegisterContactInformationViewController.firstName,

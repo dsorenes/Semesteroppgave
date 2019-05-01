@@ -24,6 +24,12 @@ public class MainController {
     @FXML
     private Button registerSubstitutePosition;
 
+    @FXML
+    private Button availableSubstitutes;
+
+    @FXML
+    private Button substitutePositions;
+
     public void initialize() {
         registerSubstitute.setOnAction(e -> {
             try {
@@ -44,6 +50,22 @@ public class MainController {
         registerSubstitutePosition.setOnAction(e -> {
             try {
                 loadRegisterSubstitutePosition();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        availableSubstitutes.setOnAction(e -> {
+            try {
+                loadAvailableSubstitutes();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        substitutePositions.setOnAction(e -> {
+            try {
+                loadSubstitutePositions();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -72,6 +94,22 @@ public class MainController {
         Parent root = FXMLLoader.load(getClass().getResource("/substituteposition/register/RegisterSubstitutePositionView.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Register Substitute position");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    private void loadAvailableSubstitutes() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/substitute/tableview/SubstituteTableView.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Available substitutes");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    private void loadSubstitutePositions() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/substituteposition/register/SubstitutePositionsView.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Available substitute positions");
         stage.setScene(new Scene(root));
         stage.show();
     }
