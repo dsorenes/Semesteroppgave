@@ -55,17 +55,25 @@ public class EmployerController implements Initializable {
 
     }
 
-    void populateDropdowns() {
+    private void populateDropdowns() {
         industryDropdown.getItems().setAll(Industry.values());
         sectorDropdown.getItems().setAll(Sector.values());
     }
 
     private void onRegister() {
         Employer employer = new Employer(companyName.getText(), companyAddress.getText(), firstName.getText(), lastName.getText(), phoneNumber.getText(), eMail.getText(), industryDropdown.getValue(), sectorDropdown.getValue());
+
+
+
+
+
+
         ArrayList<Employer> employees = new ArrayList<>();
         int employerID = ReadFromCSV.createID("data/employer/employer");
+
         employer.setID(employerID);
         employees.add(employer);
+
         SaveToCSV save = new SaveToCSV();
         save.SaveToFile("data/employer/employer", employees);
 

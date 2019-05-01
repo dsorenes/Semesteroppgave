@@ -58,16 +58,8 @@ public class RegisterWorkExperienceController implements Initializable {
     @FXML
     private TableColumn<Work, LocalDate> toCol;
 
+    @FXML
     public ObservableList<Work> previousWorkTable = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        initializeIndustryDropdown();
-        initializeSectorDropdown();
-        initCol();
-
-    }
 
     private void initializeIndustryDropdown() {
         industryDropdown.getItems().setAll(Industry.values());
@@ -89,8 +81,17 @@ public class RegisterWorkExperienceController implements Initializable {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        initializeIndustryDropdown();
+        initializeSectorDropdown();
+        initCol();
+
+    }
+
     @FXML
-    void onAddWorkExperience() {
+    private void onAddWorkExperience() {
 
         Work previousWork = new Work();
 

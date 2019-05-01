@@ -46,7 +46,16 @@ public class RegisterWorkReferenceController implements Initializable {
     @FXML
     private Button addReference;
 
+    @FXML
     public ObservableList<WorkReference> references = FXCollections.observableArrayList();
+
+
+    private void initializeReferenceTableView() {
+        employerCol.setCellValueFactory(new PropertyValueFactory<>("employerName"));
+        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        phoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        eMailCol.setCellValueFactory(new PropertyValueFactory<>("eMail"));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -55,16 +64,21 @@ public class RegisterWorkReferenceController implements Initializable {
         addReference.setOnAction(e -> onAddReference());
     }
 
-    void initializeReferenceTableView() {
-        employerCol.setCellValueFactory(new PropertyValueFactory<>("employerName"));
-        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-        phoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        eMailCol.setCellValueFactory(new PropertyValueFactory<>("eMail"));
+    private void onAddReference() {
+
+        WorkReference ref = new WorkReference();
+
+        ref.setFullName(referenceName.getText());
+        ref.setPhoneNumber(referencePhone.getText());
+        ref.seteEMail(referenceEmail.getText());
+        ref.setEmployerName(referenceEmployer.getText());
+
+        references.add(ref);
+        referenceTableView.setItems(references);
+
+        ClearInput.clearInputFields(referenceName, referenceEmail, referenceEmployer, referencePhone);
+
     }
 
-    void onAddReference() {
-        references.add(new WorkReference(referenceName.getText(), referencePhone.getText(), referenceEmail.getText(), referenceEmployer.getText()));
-        referenceTableView.setItems(references);
-        ClearInput.clearInputFields(referenceName, referenceEmail, referenceEmployer, referencePhone);
-    }
+
 }

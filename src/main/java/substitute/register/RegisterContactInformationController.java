@@ -44,6 +44,7 @@ public class RegisterContactInformationController implements Initializable {
     @FXML
     protected TextArea salaryDemand;
 
+    @FXML
     protected ObservableList<Industry> wantedField = FXCollections.observableArrayList();
 
     @Override
@@ -52,14 +53,14 @@ public class RegisterContactInformationController implements Initializable {
         addWantedIndustry.setOnAction(e-> onAddWantedIndustry());
     }
 
-    void initializeIndustryDropdown() {
+    private void initializeIndustryDropdown() {
         industryDropdown.getItems().setAll(Industry.values());
     }
 
-    void onAddWantedIndustry() {
+    private void onAddWantedIndustry() {
        wantedField.add(industryDropdown.getValue());
        industryListView.setItems(wantedField);
 
-        ClearInput.clearDropdowns(industryDropdown);
+       ClearInput.clearDropdowns(industryDropdown);
     }
 }

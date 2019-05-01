@@ -106,9 +106,10 @@ public class RegisterSubstituteController implements Initializable {
                                         RegisterContactInformationViewController.phoneNumber);
 
             ClearInput.clearLists(RegisterContactInformationViewController.industryListView);
-            ClearInput.clearTables( RegisterEducationViewController.educationTable,
-                                    RegisterReferenceViewController.referenceTableView,
-                                    RegisterWorkExperienceViewController.workExperienceTable);
+
+            ClearInput.clearTables(RegisterEducationViewController.educationTable,
+                                   RegisterReferenceViewController.referenceTableView,
+                                   RegisterWorkExperienceViewController.workExperienceTable);
 
 
 

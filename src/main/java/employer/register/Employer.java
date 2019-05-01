@@ -51,7 +51,6 @@ public class Employer {
     public int getID () {
         return this.employerID;
     }
-
     public void setID(int id) {
         this.employerID = id;
     }
@@ -59,7 +58,6 @@ public class Employer {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -67,7 +65,6 @@ public class Employer {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -75,7 +72,6 @@ public class Employer {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -83,7 +79,6 @@ public class Employer {
     public String getEMail() {
         return eMail;
     }
-
     public void setEMail(String eMail) {
         this.eMail = eMail;
     }
@@ -91,7 +86,6 @@ public class Employer {
     public Sector getSector() {
         return sector;
     }
-
     public void setSector(Sector sector) {
         this.sector = sector;
     }
@@ -99,7 +93,6 @@ public class Employer {
     public Industry getIndustry() {
         return industry;
     }
-
     public void setIndustry(Industry industry) {
         this.industry = industry;
     }

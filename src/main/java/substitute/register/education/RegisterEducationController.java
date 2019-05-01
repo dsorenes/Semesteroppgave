@@ -72,6 +72,7 @@ public class RegisterEducationController implements Initializable {
     @FXML
     private Button addEducation;
 
+    @FXML
     public ObservableList<Education> educations = FXCollections.observableArrayList();
 
     @Override
@@ -86,7 +87,7 @@ public class RegisterEducationController implements Initializable {
         addEducation.setOnAction(e -> onAddEducation());
     }
 
-    void initializeEducationTable() {
+    private void initializeEducationTable() {
         schoolNameCol.setCellValueFactory(new PropertyValueFactory<>("schoolName"));
         degreeCol.setCellValueFactory(new PropertyValueFactory<>("degree"));
         subjectCol.setCellValueFactory(new PropertyValueFactory<>("subject"));
@@ -96,16 +97,16 @@ public class RegisterEducationController implements Initializable {
         isStudyingCol.setCellValueFactory(new PropertyValueFactory<>("isCurrentlyStudying"));
     }
 
-    void initializeEducationLevelDropdown() {
+    private void initializeEducationLevelDropdown() {
         educationLevelDropdown.getItems().setAll(EducationLevel.values());
 
     }
 
-    void initializeSubjectDropdown() {
+    private void initializeSubjectDropdown() {
         subjectDropdown.getItems().setAll(Subject.values());
     }
 
-    void initializePeriodDropdown () {
+    private void initializePeriodDropdown () {
 
         //Month
         fromMonth.getItems().addAll(Month.values());
@@ -115,18 +116,27 @@ public class RegisterEducationController implements Initializable {
         toYear.getItems().addAll(Year.YEARS);
     }
 
-    void initializeIsCurrentlyStudyingCheckbox() {
+    private void initializeIsCurrentlyStudyingCheckbox() {
         currentlyStudyingCheck.setOnAction(e -> {
             toMonth.setDisable(currentlyStudyingCheck.isSelected());
             toYear.setDisable(currentlyStudyingCheck.isSelected());
         });
     }
 
-    void onAddEducation() {
-        Education education = new Education(schoolName.getText(), subjectDropdown.getValue(), educationLevelDropdown.getValue(), degree.getText(),
-                                            fromMonth.getValue(), fromYear.getValue(), toMonth.getValue(), toYear.getValue(), currentlyStudyingCheck.isSelected());
-        educations.add(education);
+    private void onAddEducation() {
+        Education education = new Education();
 
+        education.setSchoolName(schoolName.getText());
+        education.setSubject(subjectDropdown.getValue());
+        education.setEducationLevel(educationLevelDropdown.getValue());
+        education.setDegree(degree.getText());
+        education.setFromMonth(fromMonth.getValue());
+        education.setFromYear(fromYear.getValue());
+        education.setToMonth(toMonth.getValue());
+        education.setToYear(toYear.getValue());
+        education.setIsCurrentlyStudying(currentlyStudyingCheck.isSelected());
+
+        educations.add(education);
         educationTable.setItems(educations);
 
         ClearInput.clearInputFields(schoolName, degree);

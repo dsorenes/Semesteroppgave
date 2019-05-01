@@ -94,7 +94,7 @@ public class Education {
     }
 
     public Month getToMonth() { return toMonth; }
-    public void setID(Month toMonth) {
+    public void setToMonth(Month toMonth) {
         this.toMonth = toMonth;
     }
 
