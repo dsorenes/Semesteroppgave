@@ -47,7 +47,6 @@ public class Employer {
         this.industry = industry;
     }
 
-
     public int getID () {
         return this.employerID;
     }

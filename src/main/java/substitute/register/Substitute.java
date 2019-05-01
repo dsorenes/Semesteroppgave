@@ -24,15 +24,13 @@ public class Substitute {
     private boolean isEmployed;
     private List<WorkReference> references;
 
-    public Substitute(String firstName, String lastName, String eMail, String address, String phoneNumber,
-                      LocalDate dateOfBirth, String salaryDemand) {
+    public Substitute(String firstName, String lastName, LocalDate dateOfBirth, String address, String phoneNumber, String eMail) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.eMail = eMail;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
-        this.salaryDemand = salaryDemand;
     }
 
     public void setWorkExperience(List<Work> workExperience, int ID) {
@@ -70,7 +68,7 @@ public class Substitute {
                dateOfBirth + ";" +
                address + ';' +
                phoneNumber + ';' +
-               eMail + ";" + salaryDemand;
+               eMail;
     }
 
     public List<Work> getWorkExperience() {
@@ -91,6 +89,38 @@ public class Substitute {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getSalaryDemand() {
+        return salaryDemand;
+    }
+
+    public boolean isEmployed() {
+        return isEmployed;
     }
 
     public int getID() {

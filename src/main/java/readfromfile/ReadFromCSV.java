@@ -3,34 +3,36 @@ package readfromfile;
 import employer.Industry;
 import employer.Sector;
 import employer.register.Employer;
+import substitute.register.Substitute;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFromCSV implements ReadFromFile {
     @Override
-    public boolean ReadFromFile(String fileName) {
+    public ArrayList<String> ReadFromFile(String fileName) {
         Path path = Paths.get(fileName.concat(".csv"));
         String line;
+        ArrayList<String> data = new ArrayList<>();
         try (
             var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
             ) {
 
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                data.add(line);
             }
-
-            return true;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return false;
+        return data;
     }
 
     public static int createID(String filename) {
@@ -85,10 +87,44 @@ public class ReadFromCSV implements ReadFromFile {
         }
 
         if (employers.isEmpty()) {
-            return null;
+            return new ArrayList<>();
         }
 
         return employers;
+    }
+
+    public static ArrayList<Substitute> getSubstitutes() {
+        Path path = Paths.get("data/substitute.csv");
+        String line;
+        ArrayList<Substitute> substitutes = new ArrayList<>();
+
+        try (
+                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                ) {
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+
+                if (data.length > 0 && (data[0].compareTo("substituteID") != 0)) {
+                    int subID = Integer.parseInt(data[0]);
+                    String first = data[1];
+                    String last = data[2];
+                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                    String address = data[4];
+                    String phone = data[5];
+                    String eMail = data[6];
+                    Substitute substitute = new Substitute(first, last, born, address, phone, eMail);
+                    substitute.setID(subID);
+                    substitutes.add(substitute);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (substitutes.isEmpty()) return new ArrayList<>();
+
+        return substitutes;
     }
 
      public ArrayList<String> findAttributes(String filename, int id) {
