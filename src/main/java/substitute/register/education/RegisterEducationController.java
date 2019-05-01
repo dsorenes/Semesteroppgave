@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import substitute.register.work.Work;
+import utils.ClearInput;
 import utils.Year;
 
 import java.net.URL;
@@ -126,6 +127,8 @@ public class RegisterEducationController implements Initializable {
         educations.add(education);
 
         educationTable.setItems(educations);
+
+        ClearInput.clearInputFields(schoolName, degree);
 
     }
 

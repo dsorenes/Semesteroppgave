@@ -12,6 +12,8 @@ import substitute.register.references.RegisterWorkReferenceController;
 import substitute.register.references.WorkReference;
 import substitute.register.work.RegisterWorkExperienceController;
 import substitute.register.work.Work;
+import utils.ClearInput;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,12 +68,15 @@ public class RegisterSubstituteController implements Initializable {
 
         ReadFromCSV read = new ReadFromCSV();
 
-        ArrayList<String> reference = read.findAttributes("data/workReference", 1);
-        ArrayList<String> edu = read.findAttributes("data/education", 1);
-        ArrayList<String> wor = read.findAttributes("data/workExperience", 1);
+        ArrayList<String> reference = read.findAttributes("data/workReference", sub.getID());
+        ArrayList<String> edu = read.findAttributes("data/education", sub.getID());
+        ArrayList<String> wor = read.findAttributes("data/workExperience", sub.getID());
         reference.forEach(System.out::println);
         edu.forEach(System.out::println);
         wor.forEach(System.out::println);
+
+        ClearInput.clearInputFields(RegisterContactInformationViewController.firstName, RegisterContactInformationViewController.lastName, RegisterContactInformationViewController.eMail,
+                                    RegisterContactInformationViewController.address, RegisterContactInformationViewController.phoneNumber);
     }
 }
 

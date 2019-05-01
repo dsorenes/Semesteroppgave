@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import utils.ClearInput;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -83,6 +84,8 @@ public class RegisterWorkExperienceController implements Initializable {
         Work previousWork = new Work(inputCompanyName.getText(), inputPositionName.getText(), sectorDropdown.getValue(), industryDropdown.getValue(), inputEmployedFrom.getValue(), inputEmployedTo.getValue());
         previousWorkTable.add(previousWork);
         workExperienceTable.setItems(previousWorkTable);
+
+        ClearInput.clearInputFields(inputCompanyName, inputPositionName);
     }
 
     void initializeIndustryDropdown() {
