@@ -1,17 +1,13 @@
 package substitute.register;
 
-import employer.Industry;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
-import substitute.register.education.Education;
 import substitute.register.education.RegisterEducationController;
 import substitute.register.references.RegisterWorkReferenceController;
-import substitute.register.references.WorkReference;
 import substitute.register.work.RegisterWorkExperienceController;
-import substitute.register.work.Work;
 import utils.ClearInput;
 
 import java.net.URL;
@@ -45,10 +41,10 @@ public class RegisterSubstituteController implements Initializable {
                 RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterContactInformationViewController.address.getText(),
                 RegisterContactInformationViewController.phoneNumber.getText(), RegisterContactInformationViewController.eMail.getText());
 
-        int subID = ReadFromCSV.createID("data/substitute");
-        int educationID = ReadFromCSV.createID("data/education");
-        int referenceID = ReadFromCSV.createID("data/workReference");
-        int workExperienceID = ReadFromCSV.createID("data/workExperience");
+        int subID = ReadFromCSV.createIdCSV("data/substitute");
+        int educationID = ReadFromCSV.createIdCSV("data/education");
+        int referenceID = ReadFromCSV.createIdCSV("data/workReference");
+        int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
 
         sub.setID(subID);
         sub.setEducation(RegisterEducationViewController.educations, educationID);

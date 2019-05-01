@@ -3,11 +3,9 @@ package employer.substituteposition;
 import employer.Industry;
 import employer.Sector;
 import employer.register.Employer;
-import employer.Position;
 import readfromfile.ReadFromCSV;
 import substitute.register.Substitute;
 
-import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,42 +64,7 @@ public class SubstitutePosition {
                 to;
     }
 
-    public static ArrayList<SubstitutePosition> positionFromCSV(ArrayList<String> attributes) {
-        ArrayList<SubstitutePosition> substitutes = new ArrayList<>();
-        ArrayList<Employer> employers = new ArrayList<>(ReadFromCSV.getEmployers());
-        attributes.remove(0);
 
-        for (String i : attributes) {
-            String[] data = i.split(";");
-            Employer emp = null;
-            if (data.length > 0) {
-                int ID = Integer.parseInt(data[0]);
-                int employerID = Integer.parseInt(data[1]);
-                for (Employer e : employers) {
-                    if (e.getID() == employerID) emp = e;
-                }
-                String[] from = data[7].split(",");
-                String[] to = data[8].split(",");
-                Month fromMonth = Month.valueOf(from[0]);
-                int fromYear = Integer.parseInt(from[1].trim());
-                Month toMonth = Month.valueOf(to[0]);
-                int toYear = Integer.parseInt(from[1].trim());
-
-                Industry e = Industry.fromString(data[5]);
-                Sector s = Sector.valueOf(data[6]);
-
-                SubstitutePosition sub = new SubstitutePosition(emp, e, s, fromMonth, fromYear, toMonth, toYear);
-                sub.setID(ID);
-                sub.setPositionTitle(data[3]);
-                substitutes.add(sub);
-            }
-
-        }
-
-        if (substitutes.isEmpty()) return new ArrayList<SubstitutePosition>();
-
-        return substitutes;
-    }
 
     public int getEmployerID() {
         return this.employer.getID();

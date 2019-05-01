@@ -15,7 +15,6 @@ import readfromfile.ReadFromCSV;
 import substitute.register.Substitute;
 import substitute.register.references.WorkReference;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -35,7 +34,7 @@ public class SubstituteTableController implements Initializable {
     private TextFlow textFlow;
 
     private void initializeSubstituteTable() {
-        ObservableList<Substitute> substitutes = FXCollections.observableArrayList(ReadFromCSV.getSubstitutes());
+        ObservableList<Substitute> substitutes = FXCollections.observableArrayList(ReadFromCSV.getSubstitutesFromCSV());
         substituteTable.getItems().setAll(substitutes);
     }
 

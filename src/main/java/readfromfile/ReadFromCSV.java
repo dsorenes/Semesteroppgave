@@ -3,13 +3,16 @@ package readfromfile;
 import employer.Industry;
 import employer.Sector;
 import employer.register.Employer;
+import employer.substituteposition.SubstitutePosition;
 import substitute.register.Substitute;
+import substitute.register.work.Work;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +38,7 @@ public class ReadFromCSV implements ReadFromFile {
         return data;
     }
 
-    public static int createID(String filename) {
+    public static int createIdCSV(String filename) {
         Path path = Paths.get(filename.concat(".csv"));
         int ID = 0;
         String line;
@@ -55,7 +58,7 @@ public class ReadFromCSV implements ReadFromFile {
         return 0;
     }
 
-    public static ArrayList<Employer> getEmployers () {
+    public static ArrayList<Employer> getEmployersFomCSV() {
         Path path = Paths.get("data/employer/employer.csv");
         String line;
         ArrayList<Employer> employers = new ArrayList<>();
@@ -93,7 +96,75 @@ public class ReadFromCSV implements ReadFromFile {
         return employers;
     }
 
-    public static ArrayList<Substitute> getSubstitutes() {
+    public static ArrayList<Work> getWorkFromCSV(String filename) {
+        Path path = Paths.get(filename.concat(".csv"));
+        String line;
+        ArrayList<Work> work = new ArrayList<>();
+
+        try (
+                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                ) {
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+
+            }
+
+        } catch (IOException e) {
+
+        }
+
+        return null;
+    }
+
+    public static ArrayList<SubstitutePosition> substitutePositionFromCSV(String filename) {
+        Path path = Paths.get(filename.concat(".csv"));
+        String line;
+        ArrayList<SubstitutePosition> substitutes = new ArrayList<>();
+        ArrayList<Employer> employers = new ArrayList<>(ReadFromCSV.getEmployersFomCSV());
+
+        try (
+                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                ) {
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                Employer emp;
+                if (data.length > 0 && data[0].compareTo("positionID") != 0) {
+                    int ID = Integer.parseInt(data[0]);
+                    int employerID = Integer.parseInt(data[1]);
+                    for (Employer e : employers) {
+                        if (e.getID() == employerID) {
+                            emp = e;
+                            String[] from = data[7].split(",");
+                            String[] to = data[8].split(",");
+                            Month fromMonth = Month.valueOf(from[0]);
+                            int fromYear = Integer.parseInt(from[1].trim());
+                            Month toMonth = Month.valueOf(to[0]);
+                            int toYear = Integer.parseInt(from[1].trim());
+
+                            Industry w = Industry.fromString(data[5]);
+                            Sector s = Sector.valueOf(data[6]);
+
+                            SubstitutePosition sub = new SubstitutePosition(emp, w, s, fromMonth, fromYear, toMonth, toYear);
+                            sub.setID(ID);
+                            sub.setPositionTitle(data[3]);
+                            substitutes.add(sub);
+                        }
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (substitutes.isEmpty()) return new ArrayList<>();
+
+        return substitutes;
+    }
+
+    public static ArrayList<Substitute> getSubstitutesFromCSV() {
         Path path = Paths.get("data/substitute.csv");
         String line;
         ArrayList<Substitute> substitutes = new ArrayList<>();
@@ -114,6 +185,7 @@ public class ReadFromCSV implements ReadFromFile {
                     String eMail = data[6];
                     Substitute substitute = new Substitute(first, last, born, address, phone, eMail);
                     substitute.setID(subID);
+
                     substitutes.add(substitute);
                 }
             }

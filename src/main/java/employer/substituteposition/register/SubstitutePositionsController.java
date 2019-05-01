@@ -77,8 +77,7 @@ public class SubstitutePositionsController implements Initializable {
 
     private void populateTableView() {
         ReadFromCSV read = new ReadFromCSV();
-        ArrayList<String> positions = read.ReadFromFile("data/position/position");
-        ObservableList<SubstitutePosition> subs = FXCollections.observableArrayList(SubstitutePosition.positionFromCSV(positions));
+        ObservableList<SubstitutePosition> subs = FXCollections.observableArrayList(ReadFromCSV.substitutePositionFromCSV("data/position/position"));
         substitutePositionTableView.setItems(subs);
     }
 }
