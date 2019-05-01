@@ -8,11 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
+import utils.ClearInput;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.ResourceBundle;
 
 public class EmployerController implements Initializable {
@@ -65,6 +68,9 @@ public class EmployerController implements Initializable {
         employees.add(employer);
         SaveToCSV save = new SaveToCSV();
         save.SaveToFile("data/employer/employer", employees);
+
+
+        ClearInput.clearInputFields(firstName, lastName, phoneNumber, companyName, companyAddress, eMail);
 
     }
 }
