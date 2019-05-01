@@ -62,12 +62,24 @@ public class RegisterWorkExperienceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         initializeIndustryDropdown();
         initializeSectorDropdown();
         initCol();
+
+    }
+
+    private void initializeIndustryDropdown() {
+        industryDropdown.getItems().setAll(Industry.values());
+
+    }
+
+    private void initializeSectorDropdown() {
+        sectorDropdown.getItems().addAll(Sector.values());
     }
 
     private void initCol() {
+
         companyCol.setCellValueFactory(new PropertyValueFactory<>("companyName"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
         industryCol.setCellValueFactory(new PropertyValueFactory<>("industry"));
@@ -75,27 +87,26 @@ public class RegisterWorkExperienceController implements Initializable {
         fromCol.setCellValueFactory(new PropertyValueFactory<>("employedFrom"));
         toCol.setCellValueFactory(new PropertyValueFactory<>("employedTo"));
 
-
     }
 
     @FXML
     void onAddWorkExperience() {
 
-        Work previousWork = new Work(inputCompanyName.getText(), inputPositionName.getText(), sectorDropdown.getValue(), industryDropdown.getValue(), inputEmployedFrom.getValue(), inputEmployedTo.getValue());
+        Work previousWork = new Work();
+
+
+        previousWork.setCompanyName(inputCompanyName.getText());
+        previousWork.setPosition(inputPositionName.getText());
+        previousWork.setSector(sectorDropdown.getValue());
+        previousWork.setIndustry(industryDropdown.getValue());
+        previousWork.setEmployedFrom(inputEmployedFrom.getValue());
+        previousWork.setEmployedTo(inputEmployedTo.getValue());
+
         previousWorkTable.add(previousWork);
         workExperienceTable.setItems(previousWorkTable);
 
         ClearInput.clearInputFields(inputCompanyName, inputPositionName);
         ClearInput.clearDropdowns(industryDropdown, sectorDropdown);
-    }
-
-    void initializeIndustryDropdown() {
-        industryDropdown.getItems().setAll(Industry.values());
 
     }
-
-    void initializeSectorDropdown() {
-        sectorDropdown.getItems().addAll(Sector.values());
-    }
-
 }

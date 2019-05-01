@@ -60,7 +60,7 @@ public class Work {
     public LocalDate getEmployedFrom() {
         return employedFrom;
     }
-    public void setCompanyName(LocalDate employedFrom) {this.employedFrom = employedFrom; }
+    public void setEmployedFrom(LocalDate employedFrom) {this.employedFrom = employedFrom; }
 
     public LocalDate getEmployedTo() {
         return employedTo;

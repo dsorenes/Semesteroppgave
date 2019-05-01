@@ -45,6 +45,7 @@ public class RegisterSubstituteController implements Initializable {
     }
     @FXML
     void onRegister() {
+
         Substitute sub = new Substitute();
 
         try {
