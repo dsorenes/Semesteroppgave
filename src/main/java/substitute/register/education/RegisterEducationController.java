@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import substitute.register.work.Work;
+import utils.ClearInput;
+import utils.PromptButtonCell;
 import utils.Year;
 
 import java.net.URL;
@@ -44,7 +46,7 @@ public class RegisterEducationController implements Initializable {
     private CheckBox currentlyStudyingCheck;
 
     @FXML
-    private TableView<Education> educationTable;
+    public TableView<Education> educationTable;
 
     @FXML
     private TableColumn<Education, String> schoolNameCol;
@@ -126,6 +128,9 @@ public class RegisterEducationController implements Initializable {
         educations.add(education);
 
         educationTable.setItems(educations);
+
+        ClearInput.clearInputFields(schoolName, degree);
+        ClearInput.clearDropdowns(subjectDropdown, educationLevelDropdown, fromMonth, fromYear, toMonth, toYear);
 
     }
 

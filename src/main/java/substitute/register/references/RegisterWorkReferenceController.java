@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import utils.ClearInput;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +29,7 @@ public class RegisterWorkReferenceController implements Initializable {
     private TextField referenceEmployer;
 
     @FXML
-    private TableView<WorkReference> referenceTableView;
+    public TableView<WorkReference> referenceTableView;
 
     @FXML
     private TableColumn<WorkReference, String> fullNameCol;
@@ -64,5 +65,6 @@ public class RegisterWorkReferenceController implements Initializable {
     void onAddReference() {
         references.add(new WorkReference(referenceName.getText(), referencePhone.getText(), referenceEmail.getText(), referenceEmployer.getText()));
         referenceTableView.setItems(references);
+        ClearInput.clearInputFields(referenceName, referenceEmail, referenceEmployer, referencePhone);
     }
 }

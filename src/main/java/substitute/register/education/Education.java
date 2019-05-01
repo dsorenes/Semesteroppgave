@@ -6,10 +6,6 @@ import java.time.Month;
 
 public class Education {
 
-    public void setID(int educationID) {
-        this.educationID = educationID;
-    }
-
     private Substitute substitute;
     private int educationID;
     private String schoolName;
@@ -23,6 +19,8 @@ public class Education {
     private Boolean isCurrentlyStudying;
     private String from;
     private String to;
+
+    public Education() {}
 
     public Education (String schoolName, Subject subject, EducationLevel educationLevel, String degree,
                       Month fromMonth, Integer fromYear, Month toMonth, Integer toYear, Boolean isCurrentlyStudying) {
@@ -51,50 +49,83 @@ public class Education {
     public int getID () {
         return this.educationID;
     }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getTo() {
-        return to;
-    }
+    public void setID(int educationID) { this.educationID = educationID;  }
 
     public String getSchoolName() {
         return schoolName;
+    }
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 
     public Subject getSubject() {
         return subject;
     }
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
 
     public EducationLevel getEducationLevel() {
         return educationLevel;
+    }
+    public void setEducationLevel(EducationLevel educationLevel) {
+        this.educationLevel = educationLevel;
     }
 
     public String getDegree() {
         return degree;
     }
+    public void setDegree(String educationID) {
+        this.degree = degree;
+    }
 
     public Month getFromMonth() {
         return fromMonth;
+    }
+    public void setFromMonth(Month month) {
+        this.fromMonth = fromMonth;
     }
 
     public Integer getFromYear() {
         return fromYear;
     }
+    public void setFromYear(Integer fromYear) {
+        this.fromYear = fromYear;
+    }
 
-    public Month getToMonth() {
-        return toMonth;
+    public Month getToMonth() { return toMonth; }
+    public void setID(Month toMonth) {
+        this.toMonth = toMonth;
     }
 
     public Integer getToYear() {
         return toYear;
     }
+    public void setToYear(Integer toYear) {
+        this.toYear = toYear;
+    }
 
     public Boolean getIsCurrentlyStudying() {
         return isCurrentlyStudying;
     }
+    public void setIsCurrentlyStudying(boolean isCurrentlyStudying) {
+        this.isCurrentlyStudying = isCurrentlyStudying;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+    public void setTo(String to) {
+        this.toMonth = toMonth;
+    }
+
 
     @Override
     public String toString() {

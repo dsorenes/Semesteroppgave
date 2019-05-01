@@ -1,6 +1,7 @@
 package substitute.register;
 
 import javafx.scene.control.Alert;
+import utils.ClearInput;
 import utils.exceptions.*;
 import utils.inputvalidation.*;
 import utils.errorpopup.ErrorPopup;
@@ -13,6 +14,8 @@ import savetofile.SaveToCSV;
 import substitute.register.education.RegisterEducationController;
 import substitute.register.references.RegisterWorkReferenceController;
 import substitute.register.work.RegisterWorkExperienceController;
+
+import utils.inputvalidation.InputValidation;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -93,6 +96,19 @@ public class RegisterSubstituteController implements Initializable {
             reference.forEach(System.out::println);
             edu.forEach(System.out::println);
             wor.forEach(System.out::println);
+
+
+            ClearInput.clearInputFields(RegisterContactInformationViewController.firstName,
+                                        RegisterContactInformationViewController.lastName,
+                                        RegisterContactInformationViewController.eMail,
+                                        RegisterContactInformationViewController.address,
+                                        RegisterContactInformationViewController.phoneNumber);
+
+            ClearInput.clearLists(RegisterContactInformationViewController.industryListView);
+            ClearInput.clearTables( RegisterEducationViewController.educationTable,
+                                    RegisterReferenceViewController.referenceTableView,
+                                    RegisterWorkExperienceViewController.workExperienceTable);
+
 
 
         } catch (InvalidNameException e) {
