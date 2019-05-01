@@ -21,6 +21,7 @@ public class Substitute {
     private List<Education> education;
     private String salaryDemand;
     private List<Industry> workField;
+    private boolean isEmployed;
     private List<WorkReference> references;
 
     public Substitute(String firstName, String lastName, String eMail, String address, String phoneNumber,

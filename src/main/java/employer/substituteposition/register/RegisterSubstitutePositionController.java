@@ -1,8 +1,10 @@
 package employer.substituteposition.register;
 
+import employer.Position;
 import employer.register.Employer;
 import employer.Industry;
 import employer.Sector;
+import employer.substituteposition.SubstitutePosition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -10,17 +12,16 @@ import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import readfromfile.ReadFromCSV;
+import savetofile.SaveToCSV;
 import utils.Year;
 
 import java.net.URL;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegisterSubstitutePositionController implements Initializable {
@@ -49,13 +50,51 @@ public class RegisterSubstitutePositionController implements Initializable {
     @FXML
     private TextField selectedEmployer;
 
+    @FXML
+    private TextField posLocation;
+
+    @FXML
+    private TextField posHours;
+
+    @FXML
+    private TextArea posConditions;
+
+    @FXML
+    private TextArea posSalary;
+
+    @FXML
+    private TextField positionTitle;
+
+    @FXML
+    private TextArea posDescription;
+
+    @FXML
+    private TextField posQualityField;
+
+    @FXML
+    private Button addQualification;
+
+    @FXML
+    private ListView<String> qualificationList;
+
+    @FXML
+    private TextField contactName;
+
+    @FXML
+    private TextField contactPhone;
+
+    @FXML
+    private TextField contactEmail;
+
+    @FXML
+    private Button createPosition;
+
+    ObservableList<String> qualifications = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeIndustryDropdown();
+        initializeDropdowns();
 
-        initializePeriodDropdown();
-        initializeSectorDropdown();
         populateEmployerList();
 
         employerList.getSelectionModel().selectedItemProperty().addListener(e -> {
@@ -64,14 +103,41 @@ public class RegisterSubstitutePositionController implements Initializable {
             System.out.println(employer);
         });
 
+        addQualification.setOnAction(e -> onAddQualification());
+
+        createPosition.setOnAction(e -> onCreatePosition());
+
     }
 
-    void initializeSectorDropdown() {
-        sectorDropdown.getItems().setAll(Sector.values());
-
+    private void onAddQualification() {
+        qualifications.add(posQualityField.getText());
+        qualificationList.getItems().setAll(qualifications);
     }
 
-    void populateEmployerList() {
+    private void onCreatePosition() {
+        int positionID = ReadFromCSV.createID("data/position/position");
+        SubstitutePosition position = new SubstitutePosition(employerList.getSelectionModel().getSelectedItem(), industryDropdown.getValue(), sectorDropdown.getValue(), fromMonth.getValue(), fromYear.getValue(),
+                                                             toMonth.getValue(), toYear.getValue());
+        position.setID(positionID);
+        position.setLocation(posLocation.getText());
+        position.setEmploymentConditions(posConditions.getText());
+        position.setWorkHours(posHours.getText());
+        position.setSalaryConditions(posSalary.getText());
+        position.setPositionTitle(positionTitle.getText());
+        position.setDescription(posDescription.getText());
+        position.setQualifications(qualifications);
+        position.setContactName(contactName.getText());
+        position.setContactPhone(contactPhone.getText());
+        position.setContactEMail(contactEmail.getText());
+
+        ArrayList<SubstitutePosition> pos = new ArrayList<>();
+        pos.add(position);
+
+        SaveToCSV save = new SaveToCSV();
+        save.SaveToFile("data/position/position", pos);
+    }
+
+    private void populateEmployerList() {
         ObservableList<Employer> employers = FXCollections.observableArrayList(ReadFromCSV.getEmployers());
         employerList.setItems(employers);
         employerList.setCellFactory(e -> new ListCell<>() {
@@ -82,24 +148,18 @@ public class RegisterSubstitutePositionController implements Initializable {
                   setText(null);
                   setGraphic(null);
               } else {
-
                 setText(item.getCompanyName());
               }
-
           }
         });
     }
 
-    void selectEmployer() {
+    private void selectEmployer() {
         String employer = employerList.getSelectionModel().getSelectedItem().getCompanyName();
         selectedEmployer.setText(employer);
     }
 
-    void initializeIndustryDropdown() {
-        industryDropdown.getItems().setAll(Industry.values());
-    }
-
-    void initializePeriodDropdown () {
+    private void initializeDropdowns () {
 
         //Month
         fromMonth.getItems().addAll(Month.values());
@@ -107,5 +167,9 @@ public class RegisterSubstitutePositionController implements Initializable {
         //Year
         fromYear.getItems().addAll(Year.YEARS);
         toYear.getItems().addAll(Year.YEARS);
+
+        industryDropdown.getItems().setAll(Industry.values());
+
+        sectorDropdown.getItems().setAll(Sector.values());
     }
 }
