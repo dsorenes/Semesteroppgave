@@ -60,13 +60,6 @@ public class RegisterSubstituteController implements Initializable {
         save.SaveToFile("data/workReference", sub.getReferences());
         save.SaveToFile("data/workExperience", sub.getWorkExperience());
         save.SaveToFile("data/substitute", data);
-        System.out.println(sub.getID());
-
-        ReadFromCSV read = new ReadFromCSV();
-
-        ArrayList<String> reference = read.findAttributes("data/workReference", sub.getID());
-        ArrayList<String> edu = read.findAttributes("data/education", sub.getID());
-        ArrayList<String> wor = read.findAttributes("data/workExperience", sub.getID());
 
         ClearInput.clearInputFields(RegisterContactInformationViewController.firstName, RegisterContactInformationViewController.lastName, RegisterContactInformationViewController.eMail,
                                     RegisterContactInformationViewController.address, RegisterContactInformationViewController.phoneNumber);

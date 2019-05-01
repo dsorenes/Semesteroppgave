@@ -23,4 +23,11 @@ public enum Subject {
     public String toString() {
         return this.description;
     }
+
+    public static Subject fromString (String description) {
+        for (Subject i : Subject.values()) {
+            if (i.description.equalsIgnoreCase(description)) return i;
+        }
+        return null;
+    }
 }

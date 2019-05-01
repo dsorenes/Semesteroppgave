@@ -1,34 +1,3 @@
-educationID;substituteID;School name;Level of Education;Degree;from;to;studying
-;;;;;;;
-2;1;Elvis;High school;;MAY, 2012;JUNE, 2015;false
-3;1;Oslomet;University;Bachelor;AUGUST, 2017;;true
-4;3;iløklø;University;jioøioøhoil;null, null;null, null;false
-5;3;3452345;University;jioøioøhoil;APRIL, 2022;null, null;false
-6;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
-7;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
-8;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
-9;4;fghjrty;null;jrtyjrtyj;MAY, null;null, null;false
-10;5;rtyjrtyj;null;rtyjrtyjrtyj;null, null;null, null;false
-11;5;rtyjrtyj;null;rtyjrtyjrtyj;null, null;null, null;false
-12;5;rtyjrtyj;null;rtyjrtyjrtyj;null, null;null, null;false
-13;6;ftyjtfyj;null;ftyjftyj;null, null;null, null;false
-14;7;yuky;null;ukyukyuk;APRIL, null;null, null;false
-15;7;yuky;null;ukyukyuk;APRIL, null;null, null;false
-16;7;yuky;null;ukyukyuk;APRIL, null;null, null;false
-17;7;yuky;null;ukyukyuk;APRIL, null;null, null;false
-18;8;tyj;Vocational School;tyj;MAY, 2022;;true
-19;8;tyj;Vocational School;tyj;MAY, 2022;;true
-20;8;tyj;Vocational School;tyj;MAY, 2022;;true
-21;8;tyj;Vocational School;tyj;MAY, 2022;;true
-22;8;tyj;Vocational School;tyj;MAY, 2022;;true
-23;9;tyj;Vocational School;tyj;MAY, 2022;;true
-24;9;tyj;Vocational School;tyj;MAY, 2022;;true
-25;9;tyj;Vocational School;tyj;MAY, 2022;;true
-26;9;tyj;Vocational School;tyj;MAY, 2022;;true
-27;9;tyj;Vocational School;tyj;MAY, 2022;;true
-28;10;rtyjtyj;Vocational School;tyjtryjfghjftyj;APRIL, 2013;MAY, 2023;false
-29;10;ftyjtryj;Vocational School;tyjtyj;APRIL, 2013;MAY, 2023;false
-30;10;tyfjtyj;Vocational School;tyjtyj;APRIL, 2013;MAY, 2023;false
-31;14;yukyuk;University;yukyuk;null, null;null, null;false
-32;14;tyukyuk;College;yukuyk;null, null;null, null;false
-33;14;ytukuyk;Vocational School;ghjkgyk;null, null;null, null;false
+educationID;substituteID;School name;Level of education;Subject;Degree;Study from;to;Studying now
+1;1;FGHJFGHJFGHJ;University;Engineer, technology and data;FGHJFGHJYUKUYUK;APRIL, 2022;APRIL, 2023;false
+2;1;YUKYUK;Vocational School;Engineer, technology and data;YUKYUK;MAY, 2013;APRIL, 2023;false

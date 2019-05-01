@@ -80,7 +80,6 @@ public class RegisterWorkExperienceController implements Initializable {
 
     @FXML
     void onAddWorkExperience() {
-
         Work previousWork = new Work(inputCompanyName.getText(), inputPositionName.getText(), sectorDropdown.getValue(), industryDropdown.getValue(), inputEmployedFrom.getValue(), inputEmployedTo.getValue());
         previousWorkTable.add(previousWork);
         workExperienceTable.setItems(previousWorkTable);

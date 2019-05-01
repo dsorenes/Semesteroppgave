@@ -5,10 +5,13 @@ import employer.Sector;
 import employer.register.Employer;
 import employer.substituteposition.SubstitutePosition;
 import substitute.register.Substitute;
+import substitute.register.education.Education;
+import substitute.register.education.EducationLevel;
+import substitute.register.education.Subject;
+import substitute.register.references.WorkReference;
 import substitute.register.work.Work;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.time.LocalDate;
@@ -96,6 +99,85 @@ public class ReadFromCSV implements ReadFromFile {
         return employers;
     }
 
+    public static ArrayList<WorkReference> getWorkReferenceFromCSV(String filename) {
+        Path path = Paths.get(filename.concat(".csv"));
+        String line;
+        ArrayList<WorkReference> work = new ArrayList<>();
+
+        try (
+                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+        ) {
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data.length > 0 && data[0].compareTo("referenceID") != 0) {
+                    int referenceID = Integer.parseInt(data[0]);
+                    int substituteID = Integer.parseInt(data[1]);
+                    String companyName = data[2];
+                    String contactName = data[3];
+                    String phoneNumber = data[4];
+                    String eMail = data[5];
+
+                    WorkReference w = new WorkReference(contactName, phoneNumber, eMail, companyName);
+                    w.setID(referenceID);
+                    w.setSubstituteID(substituteID);
+                    work.add(w);
+                }
+
+            }
+
+        } catch (IOException e) {
+
+        }
+
+        if (work.isEmpty()) return new ArrayList<>();
+
+        return work;
+    }
+
+    public static ArrayList<Education> getEducationFromCSV(String filename) {
+        Path path = Paths.get(filename.concat(".csv"));
+        String line;
+        ArrayList<Education> education = new ArrayList<>();
+
+        try (
+                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+        ) {
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data.length > 0 && data[0].compareTo("educationID") != 0) {
+                    int educationID = Integer.parseInt(data[0]);
+                    int substituteID = Integer.parseInt(data[1]);
+                    String schoolname = data[2];
+                    EducationLevel level = EducationLevel.fromString(data[3]);
+                    Subject subject = Subject.fromString(data[4]);
+                    String degree = data[5];
+                    String[] from = data[6].split(",");
+                    String[] to = data[7].split(",");
+                    Month fromMonth = Month.valueOf(from[0]);
+                    int fromYear = Integer.parseInt(from[1].trim());
+                    Month toMonth = Month.valueOf(to[0]);
+                    int toYear = Integer.parseInt(from[1].trim());
+                    boolean isStudying = Boolean.parseBoolean(data[8]);
+
+                    Education w = new Education(schoolname, subject, level, degree, fromMonth, fromYear, toMonth, toYear, isStudying);
+                    w.setSubstituteID(substituteID);
+                    w.setID(educationID);
+                    education.add(w);
+                }
+
+            }
+
+        } catch (IOException e) {
+
+        }
+
+        if (education.isEmpty()) return new ArrayList<>();
+
+        return education;
+    }
+
     public static ArrayList<Work> getWorkFromCSV(String filename) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
@@ -107,6 +189,19 @@ public class ReadFromCSV implements ReadFromFile {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
+                if (data.length > 0 && data[0].compareTo("workID") != 0) {
+                    int substituteID = Integer.parseInt(data[1]);
+                    String companyName = data[2];
+                    String position = data[3];
+                    Sector s = Sector.valueOf(data[4].toUpperCase().trim());
+                    Industry i = Industry.fromString(data[5]);
+                    LocalDate from = LocalDate.parse(data[6].trim(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                    LocalDate to = LocalDate.parse(data[7].trim(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+
+                    Work w = new Work(companyName, position, s, i, from, to);
+                    w.setSubstituteID(substituteID);
+                    work.add(w);
+                }
 
             }
 
@@ -114,7 +209,9 @@ public class ReadFromCSV implements ReadFromFile {
 
         }
 
-        return null;
+        if (work.isEmpty()) return new ArrayList<>();
+
+        return work;
     }
 
     public static ArrayList<SubstitutePosition> substitutePositionFromCSV(String filename) {
@@ -168,6 +265,9 @@ public class ReadFromCSV implements ReadFromFile {
         Path path = Paths.get("data/substitute.csv");
         String line;
         ArrayList<Substitute> substitutes = new ArrayList<>();
+        ArrayList<Work> work = new ArrayList<>(ReadFromCSV.getWorkFromCSV("data/workExperience"));
+        ArrayList<WorkReference> wr = new ArrayList<>(ReadFromCSV.getWorkReferenceFromCSV("data/workReference"));
+        ArrayList<Education> edu = new ArrayList<>(ReadFromCSV.getEducationFromCSV("data/education"));
 
         try (
                 var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
@@ -186,6 +286,30 @@ public class ReadFromCSV implements ReadFromFile {
                     Substitute substitute = new Substitute(first, last, born, address, phone, eMail);
                     substitute.setID(subID);
 
+                    List<Work> subwork = new ArrayList<>();
+                    for (Work w : work) {
+                        if (w.getSubstituteID() == substitute.getID()) {
+                            subwork.add(w);
+                        }
+                    }
+
+                    List<WorkReference> ref = new ArrayList<>();
+                    for (WorkReference r : wr) {
+                        if (r.getSubstituteID() == substitute.getID()) {
+                            ref.add(r);
+                        }
+                    }
+
+                    List<Education> education = new ArrayList<>();
+                    for (Education e : edu) {
+                        if (e.getSubstituteID() == substitute.getID()) {
+                            education.add(e);
+                        }
+                    }
+
+                    substitute.setWorkExperience(subwork);
+                    substitute.setReferences(ref);
+                    substitute.setEducation(education);
                     substitutes.add(substitute);
                 }
             }
@@ -206,7 +330,7 @@ public class ReadFromCSV implements ReadFromFile {
 
         ArrayList<String> matches = new ArrayList<>();
         try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8);
+                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
                 ) {
 
             while ((line = reader.readLine()) != null) {

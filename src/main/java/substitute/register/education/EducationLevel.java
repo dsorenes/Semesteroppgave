@@ -17,4 +17,11 @@ public enum EducationLevel {
    public String toString() {
       return this.description;
    }
+
+   public static EducationLevel fromString (String description) {
+      for (EducationLevel i : EducationLevel.values()) {
+         if (i.description.equalsIgnoreCase(description)) return i;
+      }
+      return null;
+   }
 }

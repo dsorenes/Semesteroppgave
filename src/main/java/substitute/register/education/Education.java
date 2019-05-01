@@ -11,6 +11,16 @@ public class Education {
     }
 
     private Substitute substitute;
+
+    public int getSubstituteID() {
+        return substituteID;
+    }
+
+    public void setSubstituteID(int substituteID) {
+        this.substituteID = substituteID;
+    }
+
+    private int substituteID;
     private int educationID;
     private String schoolName;
     private Subject subject;
@@ -46,6 +56,7 @@ public class Education {
 
     public void assignSubstitute (Substitute sub) {
         this.substitute = sub;
+        this.substituteID = substitute.getID();
     }
 
     public int getID () {
@@ -99,9 +110,10 @@ public class Education {
     @Override
     public String toString() {
         return this.educationID + ";" +
-                substitute.getID() + ";" +
+                substituteID + ";" +
                schoolName + ";" +
                 educationLevel + ";" +
+                subject + ";" +
                 degree + ';' +
                from + ";" +
                to + ";" +

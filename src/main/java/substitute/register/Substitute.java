@@ -41,12 +41,20 @@ public class Substitute {
         }
     }
 
+    public void setWorkExperience(List<Work> work) {
+        this.workExperience = work;
+    }
+
     public void setEducation(List<Education> education, int ID) {
         this.education = education;
         for (Education e : this.education) {
             e.assignSubstitute(this);
             e.setID(ID++);
         }
+    }
+
+    public void setEducation(List<Education> education) {
+        this.education = education;
     }
 
     public void setWorkField(List<Industry> workField) {
@@ -59,6 +67,10 @@ public class Substitute {
             wr.assignSubstitute(this);
             wr.setID(ID++);
         }
+    }
+
+    public void setReferences(List<WorkReference> ref) {
+        this.references = ref;
     }
 
     @Override

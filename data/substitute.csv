@@ -1,15 +1,2 @@
-substituteID;First name;Last name;Born;address;phone number;E-mail
-1;Daniel;Sørenes;29.07.1996;St halvardsgate 20A;40634648;danielsorenes@hotmail.no
-2;rthtrh;rthrth;30.07.1996;hrth;rth;hr
-3;tyjtyjdgdfhjtyj;kløkøioø;31.07.1996;oøi;kløoiø;oølkøioø
-4;ertretyh;rteyuerty;01.08.1996;rtyjfghj;tyhjrtyj;fghj
-5;h;rthrth;02.08.1996;htrh;rth;th
-6;fghjfghj;h;03.08.1996;hrth;h;hr
-7;yukyuk;yukyu;04.08.1996;yukyuk;yukyuk;kyukyukyuk
-8;rtyujrtyj;rtyj;05.08.1996;rtyjrtyj;rtyjrtyj;rtyj
-9;NEWEST;rtyj;06.08.1996;rtyjrtyj;rtyjrtyj;rtyj
-10;rtyjrtyj;rtyjrtyj;07.08.1996;rtyj;rtyj;rtyjtryj
-11;rthrth;hrthf;08.08.1996;fg;ghfgh;hfghfgh
-12;rth;th;09.08.1996;;hfgh;hr
-13;rtyjrtyj;rtyjrtyj;10.08.1996;fgh;ghfgh;rtyj
-14;tyuktyuk;tyuk;11.08.1996;tyuk;tyukt;yuktyuk
+substituteID;First name;Last name;Date of birth;Address;Phone number;E-mail
+1;FGHJFG;HJFGHJ;30.04.2019;HJFGHJ;FGHJ;FGHJFG

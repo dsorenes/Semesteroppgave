@@ -48,22 +48,10 @@ public class SubstituteTableController implements Initializable {
     }
 
     private void onSelection() {
-        Text t1 = new Text(substituteTable.getSelectionModel().getSelectedItem().getFirstName());
-        Text t2 = new Text(substituteTable.getSelectionModel().getSelectedItem().getLastName());
-        int subID = substituteTable.getSelectionModel().getSelectedItem().getID();
-        t1.setFont(new Font(15));
-        t2.setFont(new Font(15));
-        ReadFromCSV read = new ReadFromCSV();
-        ArrayList<WorkReference> reference = WorkReference.WorkReferenceFromCSV(read.findAttributes("data/workReference", subID));
-        ArrayList<String> edu = read.findAttributes("data/education", subID);
-        ArrayList<String> wor = read.findAttributes("data/workExperience", subID);
-        Text t3 = new Text(reference.get(0).getEMail());
-
-        textFlow.setTextAlignment(TextAlignment.JUSTIFY);
-        textFlow.setLineSpacing(5.0);
-        textFlow.getChildren().setAll(t3);
+        Substitute s = substituteTable.getSelectionModel().getSelectedItem();
+        System.out.println(s.getEducation().get(0));
+        System.out.println(s.getReferences().get(0));
     }
-
     private void initializeCol() {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
