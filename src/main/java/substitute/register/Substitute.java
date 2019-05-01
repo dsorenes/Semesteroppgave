@@ -43,11 +43,18 @@ public class Substitute {
     public String getEMail() { return eMail; }
     public void setEMail(String lastName) { this.eMail = eMail; }
 
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
     public String getPhoneNumber() { return phoneNumber; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public String geteMail() { return eMail; }
-    public void seteMail(String lastName) { this.eMail = eMail; }
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
+    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+
+    public String geteSaleryDemand() { return salaryDemand; }
+    public void setSalaryDemand(String salaryDemand) { this.salaryDemand = salaryDemand; }
+
 
 
     public void setWorkExperience(List<Work> workExperience, int ID) {

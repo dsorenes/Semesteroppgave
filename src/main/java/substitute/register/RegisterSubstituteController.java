@@ -1,22 +1,19 @@
 package substitute.register;
 
 import javafx.scene.control.Alert;
-import model.exceptions.InvalidEmailException;
-import model.inputvalidation.InputValidation;
+import utils.exceptions.*;
+import utils.inputvalidation.*;
 import utils.errorpopup.ErrorPopup;
 
-import employer.Industry;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import readfromfile.ReadFromCSV;
 import savetofile.SaveToCSV;
-import substitute.register.education.Education;
 import substitute.register.education.RegisterEducationController;
 import substitute.register.references.RegisterWorkReferenceController;
-import substitute.register.references.WorkReference;
 import substitute.register.work.RegisterWorkExperienceController;
-import substitute.register.work.Work;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,13 +48,45 @@ public class RegisterSubstituteController implements Initializable {
 
         try {
 
+            InputValidation.checkName(RegisterContactInformationViewController.firstName.getText());
+            sub.setFirstName(RegisterContactInformationViewController.eMail.getText());
+
+            InputValidation.checkName(RegisterContactInformationViewController.lastName.getText());
+            sub.setLastName(RegisterContactInformationViewController.eMail.getText());
+
             InputValidation.checkEmail(RegisterContactInformationViewController.eMail.getText());
             sub.setEMail(RegisterContactInformationViewController.eMail.getText());
 
+            InputValidation.checkNumber(RegisterContactInformationViewController.phoneNumber.getText());
+            sub.setPhoneNumber(RegisterContactInformationViewController.eMail.getText());
+
+            InputValidation.checkAddress(RegisterContactInformationViewController.address.getText());
+            sub.setAddress(RegisterContactInformationViewController.eMail.getText());
+
+        } catch (InvalidNameException e) {
+
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid name", "Invalid name");
+
         } catch (InvalidEmailException e) {
+
             e.printStackTrace();
             System.out.println(e.getMessage());
             ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid eMail", "Invalid eMail");
+
+        } catch (InvalidNumberException e) {
+
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid phone number", "Invalid phone number");
+
+        } catch (InvalidAddressException e) {
+
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid adress", "Invalid adress");
+
         }
 
 

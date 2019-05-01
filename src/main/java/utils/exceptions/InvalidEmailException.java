@@ -1,4 +1,4 @@
-package model.exceptions;
+package utils.exceptions;
 
 public class InvalidEmailException extends Exception {
 
