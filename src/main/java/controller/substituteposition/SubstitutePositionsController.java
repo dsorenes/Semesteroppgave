@@ -2,7 +2,7 @@ package controller.substituteposition;
 
 import model.data.employer.Industry;
 import model.data.employer.Sector;
-import model.data.posistion.SubstitutePosition;
+import model.data.substituteposition.SubstitutePosition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

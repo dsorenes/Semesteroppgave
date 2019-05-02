@@ -1,6 +1,6 @@
 package model.data.employer;
 
-import model.data.posistion.SubstitutePosition;
+import model.data.substituteposition.SubstitutePosition;
 
 import java.util.Set;
 

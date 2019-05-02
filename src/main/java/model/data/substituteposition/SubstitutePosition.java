@@ -1,4 +1,4 @@
-package model.data.posistion;
+package model.data.substituteposition;
 
 import model.data.employer.Industry;
 import model.data.employer.Sector;

@@ -3,7 +3,7 @@ package model.filemanager.readfromfile;
 import model.data.employer.Industry;
 import model.data.employer.Sector;
 import model.data.employer.Employer;
-import model.data.posistion.SubstitutePosition;
+import model.data.substituteposition.SubstitutePosition;
 import model.data.substitute.Substitute;
 import model.data.substitute.education.Education;
 import model.data.substitute.education.EducationLevel;

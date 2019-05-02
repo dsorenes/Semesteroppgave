@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.data.posistion.display.SubstitutePositionDisplay">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.data.substituteposition.display.SubstitutePositionDisplay">
    <children>
       <Label fx:id="companyName" layoutX="14.0" layoutY="14.0" prefHeight="44.0" prefWidth="158.0" text="c" />
       <Label fx:id="companyName1" layoutX="14.0" layoutY="58.0" prefHeight="44.0" prefWidth="158.0" text="positionTitle" />
