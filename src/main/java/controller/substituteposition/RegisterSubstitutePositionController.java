@@ -1,4 +1,4 @@
-package controller.employer;
+package controller.substituteposition;
 
 import model.data.employer.Employer;
 import model.data.employer.Industry;

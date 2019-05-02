@@ -46,11 +46,37 @@ public class SubstitutePositionsController implements Initializable {
     @FXML
     private MenuItem showDetailsMenu;
 
+    @FXML
+    private Label companyNameLabel;
+
+    @FXML
+    private Label positionLabel;
+
+    @FXML
+    private Label sectorLabel;
+
+    @FXML
+    private Label fromLabel;
+
+    @FXML
+    private Label toLabel;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initTable();
         populateTableView();
 
+        substitutePositionTableView.getSelectionModel().selectedItemProperty().addListener(e -> onSelectDisplayInformation());
+
+    }
+
+    private void onSelectDisplayInformation() {
+        SubstitutePosition substitutePosition = substitutePositionTableView.getSelectionModel().getSelectedItem();
+        companyNameLabel.setText(substitutePosition.getCompanyName());
+        positionLabel.setText(substitutePosition.getPosition().toString());
+        sectorLabel.setText(substitutePosition.getSector().toString());
+        fromLabel.setText(substitutePosition.getFrom());
+        toLabel.setText(substitutePosition.getTo());
     }
 
     private void initTable() {
