@@ -14,11 +14,14 @@ import substitute.register.work.Work;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ReadFromCSV implements ReadFromFile {
     @Override
@@ -195,10 +198,11 @@ public class ReadFromCSV implements ReadFromFile {
                     String position = data[3];
                     Sector s = Sector.valueOf(data[4].toUpperCase().trim());
                     Industry i = Industry.fromString(data[5]);
-                    LocalDate from = LocalDate.parse(data[6].trim());
-                    LocalDate to = LocalDate.parse(data[7].trim());
-
-                    Work w = new Work(companyName, position, s, i, from, to);
+                    String from = data[6];
+                    String to = data[7];
+                    LocalDate f = LocalDate.parse(from, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    LocalDate t = LocalDate.parse(to, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    Work w = new Work(companyName, position, s, i, f, t);
                     w.setSubstituteID(substituteID);
                     work.add(w);
                 }
@@ -206,7 +210,7 @@ public class ReadFromCSV implements ReadFromFile {
             }
 
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
 
         if (work.isEmpty()) return new ArrayList<>();
