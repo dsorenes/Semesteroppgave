@@ -129,9 +129,26 @@ public class RegisterEducationController implements Initializable {
     }
 
     void onAddEducation() {
-        Education education = new Education(schoolName.getText(), subjectDropdown.getValue(), educationLevelDropdown.getValue(), degree.getText(),
-                                            fromMonth.getValue(), fromYear.getValue(), toMonth.getValue(), toYear.getValue(), currentlyStudyingCheck.isSelected());
+
+        Education education = new Education();
+
+        education.setSchoolName(schoolName.getText());
+        education.setSubject(subjectDropdown.getValue());
+        education.setEducationLevel(educationLevelDropdown.getValue());
+        education.setDegree(degree.getText());
+        education.setFromMonth(fromMonth.getValue());
+        education.setFromYear(fromYear.getValue());
+        education.setToMonth(toMonth.getValue());
+        education.setToYear( toYear.getValue());
+        education.setIsCurrentlyStudying(currentlyStudyingCheck.isSelected());
+
         educations.add(education);
+
+
+        // TODO: MAKE IT WORK DANIEELL!
+        setEducationsInfo(educations);
+
+
 
         educationTable.setItems(educations);
 
@@ -149,6 +166,14 @@ public class RegisterEducationController implements Initializable {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/register/substitute/work/RegisterWorkExperienceView.fxml"));
             rootPane.getChildren().setAll(pane);
         } catch (IOException e) { e.printStackTrace(); }
+    }
+
+    // TODO: MAKE IT WORK DANIEELL!
+
+    public void setEducationsInfo(ObservableList<Education> educationsInfo) {
+
+        this.educations = educationsInfo;
+
     }
 
 }

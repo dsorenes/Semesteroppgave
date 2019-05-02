@@ -104,26 +104,20 @@ public class RegisterWorkReferenceController implements Initializable {
     @FXML
     void onRegister() {
 
-        Substitute regSub = new Substitute();
+        Substitute regSub = getSubContactInfo();
 
+        int subID = ReadFromCSV.createIdCSV("data/substitute");
+        int educationID = ReadFromCSV.createIdCSV("data/education");
+        int referenceID = ReadFromCSV.createIdCSV("data/workReference");
+        int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
 
-            regSub.setFirstName(RegisterContactInformationViewController.firstName.getText());
-            regSub.setLastName(RegisterContactInformationViewController.lastName.getText());
-            regSub.setDateOfBirth(RegisterContactInformationViewController.dateOfBirth.getValue());
-            regSub.setAddress(RegisterContactInformationViewController.address.getText());
-            regSub.setPhoneNumber(RegisterContactInformationViewController.phoneNumber.getText());
-            regSub.setEMail(RegisterContactInformationViewController.eMail.getText());
+        regSub.setID(subID);
 
-            int subID = ReadFromCSV.createIdCSV("data/substitute");
-            int educationID = ReadFromCSV.createIdCSV("data/education");
-            int referenceID = ReadFromCSV.createIdCSV("data/workReference");
-            int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
+        regSub.setEducation(RegisterEducationViewController.educations, educationID);
 
-            regSub.setID(subID);
-            regSub.setEducation(RegisterEducationViewController.educations, educationID);
-            regSub.setReferences(RegisterReferenceViewController.references, referenceID);
-            regSub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable, workExperienceID);
-            regSub.setWorkField(RegisterContactInformationViewController.wantedField);
+        regSub.setReferences(RegisterReferenceViewController.references, referenceID);
+        regSub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable, workExperienceID);
+        regSub.setWorkField(RegisterContactInformationViewController.wantedField);
 /*
         SaveToCSV save = new SaveToCSV();
 
@@ -141,25 +135,44 @@ public class RegisterWorkReferenceController implements Initializable {
    */
 
 
+    }
 
-   }
+    public Substitute getSubContactInfo() {
 
-   public Substitute getSubContactInfo() {
+        Substitute sub = new Substitute();
 
-       Substitute sub = new Substitute();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/contact/RegisterContactInformationView.fxml"));
+            Parent root = loader.load();
+            RegisterContactInformationController controller = loader.<RegisterContactInformationController>getController();
+            controller.setData(sub);
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
 
-       try {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/contact/RegisterContactInformationView.fxml"));
-           Parent root = loader.load();
-           RegisterContactInformationController controller = loader.<RegisterContactInformationController>getController();
-           controller.setData(sub);
-       } catch ( IOException e ) {System.out.println(e.toString()); }
-
-       return sub;
+        return sub;
 
     }
 
+/*
+    // TODO: MAKE IT WORK DANIEELL!
 
+    public ObservableList<Education> getEducationsInfo() {
 
+        ObservableList<Education> edu = null;
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/contact/RegisterContactInformationView.fxml"));
+            Parent root = loader.load();
+            RegisterEducationController controller = loader.<RegisterEducationController>getController();
+            controller.setData(edu);
+        } catch (IOException e) {
+            System.out.println(e.toString());
+        }
+
+        return edu;
+
+    }
+
+*/
 }
