@@ -44,7 +44,6 @@ public class Work {
     public int getSubstituteID() {
         return substituteID;
     }
-
     public void setSubstituteID(int ID) {
         this.substituteID = ID;
     }

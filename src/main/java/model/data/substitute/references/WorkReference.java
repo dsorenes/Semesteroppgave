@@ -14,6 +14,8 @@ public class WorkReference {
     private String employerName;
     private int substituteID;
 
+    public WorkReference() {}
+
     public WorkReference(String fullName, String phoneNumber, String eMail, String employerName) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -38,10 +40,16 @@ public class WorkReference {
         this.substituteID = substitute.getID();
     }
 
+    public int getID () {
+        return this.referenceID;
+    }
+    public void setID (int ID) {
+        this.referenceID = ID;
+    }
+
     public int getSubstituteID() {
         return substituteID;
     }
-
     public void setSubstituteID(int id) {
         this.substituteID = id;
     }
@@ -49,18 +57,22 @@ public class WorkReference {
     public String getEmployerName() {
         return employerName;
     }
+    public void setEmployerName(String employerName) { this.employerName = employerName; }
 
     public String getFullName() {
         return fullName;
     }
+    public void setFullName(String fullName) { this.fullName = fullName; }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
     public String getEMail() {
         return eMail;
     }
+    public void setEMail(String eMail) { this.eMail = eMail; }
 
     @Override
     public String toString() {
@@ -72,11 +84,4 @@ public class WorkReference {
                 eMail;
     }
 
-    public void setID (int ID) {
-        this.referenceID = ID;
-    }
-
-    public int getID () {
-        return this.referenceID;
-    }
 }
