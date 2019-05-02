@@ -165,11 +165,10 @@ public class SubstitutePosition {
         String[] a =description.split("[\n\r]+");
         StringBuilder desc = new StringBuilder();
         for (String i : a) {
-            if (!i.isBlank() || !i.isEmpty()) desc.append(i).append(". ");
+            if (!i.isBlank() || !i.isEmpty()) desc.append(i).append(":");
         }
-        int index = desc.lastIndexOf(" ");
+        int index = desc.lastIndexOf(":");
         desc.deleteCharAt(index);
-        System.out.println(desc);
         this.description = desc.toString();
     }
 
@@ -179,6 +178,10 @@ public class SubstitutePosition {
 
     public void setWorkHours(String workHours) {
         this.workHours = workHours;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setSalaryConditions(String salaryConditions) {
@@ -215,5 +218,9 @@ public class SubstitutePosition {
 
     public String getPositionTitle() {
         return positionTitle;
+    }
+
+    public String getQualificationsNeeded() {
+        return qualificationsNeeded;
     }
 }

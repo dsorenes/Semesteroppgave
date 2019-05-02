@@ -20,7 +20,7 @@ public class Substitute {
     private List<Work> workExperience;
     private List<Education> education;
     private String salaryDemand;
-    private List<Industry> workField;
+    private String wantedWorkFields;
     private boolean isEmployed;
     private List<WorkReference> references;
 
@@ -76,8 +76,20 @@ public class Substitute {
     public boolean isEmployed() { return isEmployed; }
     public void setIsEmployed(Boolean isEmployed) { this.isEmployed = isEmployed; }
 
-    public List<Industry> getWorkField() { return workField; }
-    public void setWorkField(List<Industry> workField) { this.workField = workField; }
+    public String getWantedWorkFields() {
+        return wantedWorkFields;
+    }
+    public void setWantedWorkFields(List<Industry> wantedWorkFields) {
+        StringBuilder workFields = new StringBuilder();
+        for (Industry i : wantedWorkFields) {
+            workFields.append(i.toString()).append(":");
+        }
+        this.wantedWorkFields = workFields.toString();
+    }
+
+    public void setWantedWorkFields(String fields) {
+        this.wantedWorkFields = fields;
+    }
 
 
     public List<Work> getWorkExperience() { return workExperience; }
@@ -120,7 +132,9 @@ public class Substitute {
                dateOfBirth + ";" +
                address + ';' +
                phoneNumber + ';' +
-               eMail;
+               eMail + ";" +
+                wantedWorkFields;
+
     }
 
 }

@@ -190,17 +190,22 @@ public class ReadFromCSV implements ReadFromFile {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
                 if (data.length > 0 && data[0].compareTo("workID") != 0) {
+                    int workID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String companyName = data[2];
                     String position = data[3];
-                    Sector s = Sector.valueOf(data[4].toUpperCase().trim());
+                    Sector sector = Sector.NULL;
+                    if (data[4] != null) {
+                        sector = Sector.valueOf(data[4].toUpperCase().trim());
+                    }
                     Industry i = Industry.fromString(data[5]);
                     String from = data[6];
                     String to = data[7];
                     LocalDate f = LocalDate.parse(from, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                     LocalDate t = LocalDate.parse(to, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    Work w = new Work(companyName, position, s, i, f, t);
+                    Work w = new Work(companyName, position, sector, i, f, t);
                     w.setSubstituteID(substituteID);
+                    w.setID(workID);
                     work.add(w);
                 }
 
@@ -303,10 +308,11 @@ public class ReadFromCSV implements ReadFromFile {
                     int subID = Integer.parseInt(data[0]);
                     String first = data[1];
                     String last = data[2];
-                    LocalDate born = LocalDate.parse(data[3]);
+                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("dd.MM.yyyy"));
                     String address = data[4];
                     String phone = data[5];
                     String eMail = data[6];
+                    String wantedWorkFields = data[7];
                     Substitute substitute = new Substitute(first, last, born, address, phone, eMail);
                     substitute.setID(subID);
 
@@ -334,6 +340,7 @@ public class ReadFromCSV implements ReadFromFile {
                     substitute.setWorkExperience(subwork);
                     substitute.setReferences(ref);
                     substitute.setEducation(education);
+                    substitute.setWantedWorkFields(wantedWorkFields);
                     substitutes.add(substitute);
                 }
             }
@@ -347,22 +354,22 @@ public class ReadFromCSV implements ReadFromFile {
         return substitutes;
     }
 
-     public ArrayList<String> findAttributes(String filename, int id) {
+     public static String findLine(String filename, int id) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         String ID = Integer.toString(id);
-
-        ArrayList<String> matches = new ArrayList<>();
+        String found = null;
         try (
                 var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
                 ) {
 
+
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
                 if (data.length > 0) {
-                    String substituteID = data[1];
-                    if (substituteID.compareTo(ID) == 0) {
-                        matches.add(line);
+                    String fileID = data[0];
+                    if (fileID.compareTo(ID) == 0) {
+                        found = line;
                     }
                 }
             }
@@ -370,12 +377,7 @@ public class ReadFromCSV implements ReadFromFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if (matches.isEmpty()) {
-            return null;
-        }
-
-        return matches;
+        return found;
     }
 
 }

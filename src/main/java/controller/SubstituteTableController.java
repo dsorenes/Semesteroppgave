@@ -34,12 +34,13 @@ public class SubstituteTableController implements Initializable {
         initializeCol();
         initializeSubstituteTable();
 
-//        substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSelection());
+        substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSelection());
 
     }
 
     private void onSelection() {
         Substitute s = substituteTable.getSelectionModel().getSelectedItem();
+        System.out.println(s.getWantedWorkFields());
     }
     private void initializeCol() {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));

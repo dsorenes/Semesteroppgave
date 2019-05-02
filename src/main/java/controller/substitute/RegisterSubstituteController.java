@@ -48,7 +48,7 @@ public class RegisterSubstituteController implements Initializable {
         sub.setEducation(RegisterEducationViewController.educations, educationID);
         sub.setReferences(RegisterReferenceViewController.references, referenceID);
         sub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable, workExperienceID);
-        sub.setWorkField(RegisterContactInformationViewController.wantedField);
+        sub.setWantedWorkFields(RegisterContactInformationViewController.wantedField);
 
         SaveToCSV save = new SaveToCSV();
 
