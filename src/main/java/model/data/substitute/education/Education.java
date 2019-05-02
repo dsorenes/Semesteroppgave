@@ -6,20 +6,6 @@ import java.time.Month;
 
 public class Education {
 
-    public void setID(int educationID) {
-        this.educationID = educationID;
-    }
-
-    private Substitute substitute;
-
-    public int getSubstituteID() {
-        return substituteID;
-    }
-
-    public void setSubstituteID(int substituteID) {
-        this.substituteID = substituteID;
-    }
-
     private int substituteID;
     private int educationID;
     private String schoolName;
@@ -33,6 +19,8 @@ public class Education {
     private Boolean isCurrentlyStudying;
     private String from;
     private String to;
+
+    public Education() {}
 
     public Education (String schoolName, Subject subject, EducationLevel educationLevel, String degree,
                       Month fromMonth, Integer fromYear, Month toMonth, Integer toYear, Boolean isCurrentlyStudying) {
@@ -54,58 +42,53 @@ public class Education {
         }
     }
 
+    private Substitute substitute;
+
+
     public void assignSubstitute (Substitute sub) {
         this.substitute = sub;
         this.substituteID = substitute.getID();
     }
 
-    public int getID () {
-        return this.educationID;
-    }
+    public int getSubstituteID() { return substituteID; }
+    public void setSubstituteID(int substituteID) { this.substituteID = substituteID; }
 
-    public String getFrom() {
-        return from;
-    }
+    public void setID(int educationID) { this.educationID = educationID; }
+    public int getID () { return this.educationID; }
 
-    public String getTo() {
-        return to;
-    }
+    public String getFrom() { return from; }
+    public void setFrom(String from) { this.from = from; }
 
-    public String getSchoolName() {
-        return schoolName;
-    }
+    public String getTo() { return to; }
+    public void setTo(String to) { this.to = to; }
 
-    public Subject getSubject() {
-        return subject;
-    }
+    public String getSchoolName() { return schoolName; }
+    public void setSchoolName(String schoolName) { this.schoolName = schoolName; }
 
-    public EducationLevel getEducationLevel() {
-        return educationLevel;
-    }
+    public Subject getSubject() { return subject; }
+    public void setSubject(Subject subject) { this.subject = subject; }
 
-    public String getDegree() {
-        return degree;
-    }
+    public EducationLevel getEducationLevel() { return educationLevel; }
+    public void setEducationLevel(EducationLevel educationLevel) { this.educationLevel = educationLevel; }
 
-    public Month getFromMonth() {
-        return fromMonth;
-    }
+    public String getDegree() { return degree; }
+    public void setDegree(String degree) { this.degree = degree; }
 
-    public Integer getFromYear() {
-        return fromYear;
-    }
+    public Month getFromMonth() { return fromMonth; }
+    public void setFromMonth(Month fromMonth) { this.fromMonth = fromMonth; }
 
-    public Month getToMonth() {
-        return toMonth;
-    }
+    public Integer getFromYear() { return fromYear; }
+    public void setFromYear(Integer fromYear) { this.fromYear = fromYear; }
 
-    public Integer getToYear() {
-        return toYear;
-    }
+    public Month getToMonth() { return toMonth; }
+    public void setToMonth(Month toMonth) { this.toMonth = toMonth; }
 
-    public Boolean getIsCurrentlyStudying() {
-        return isCurrentlyStudying;
-    }
+    public Integer getToYear() { return toYear; }
+    public void setToYear(Integer toYear) { this.toYear = toYear; }
+
+    public Boolean getIsCurrentlyStudying() { return isCurrentlyStudying; }
+    public void setIsCurrentlyStudying(Boolean isCurrentlyStudying) { this.isCurrentlyStudying = isCurrentlyStudying; }
+
 
     @Override
     public String toString() {
@@ -120,4 +103,5 @@ public class Education {
                isCurrentlyStudying;
 
     }
+
 }
