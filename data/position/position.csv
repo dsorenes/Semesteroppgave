@@ -1,20 +1,3 @@
-positionID;employerID;Company name;Company address;Industry;Sector;First name;Last name;phone Number;e-mail
-1;1;AF gruppn;rtyjfytujtj;rtyjrtyjrtyjrtyjrtyjfghjcbvnmfghmfghmn fghm vbn mvbn mvbnmtyj;Construction;PRIVATE;MARCH, 2021;APRIL, 2022;
-2;1;AF gruppn;rtyjfytujtj;rtyjrtyjrtyjrtyjrtyjfghjcbvnmfghmfghmn fghm vbn mvbn mvbnmtyj;Construction;PRIVATE;MARCH, 2021;APRIL, 2022;
-3;1;AF gruppn;YUKYUK;YUKYUKYUK;Store and retail;PRIVATE;MARCH, 2022;APRIL, 2023;
-4;1;AF gruppn;YUKYUK;YUKYUKYUK;Store and retail;PRIVATE;MARCH, 2022;APRIL, 2023;
-5;2;Coop mega;YUKYUK;YUKYUKYUK;Store and retail;PRIVATE;MARCH, 2022;APRIL, 2023;
-6;2;Coop mega;YUKYUK;YUKYUKYUK;Store and retail;PRIVATE;MARCH, 2022;APRIL, 2023;
-7;2;Coop mega;YUKYUK;YUKYUKYUK;Store and retail;PRIVATE;MARCH, 2022;APRIL, 2023;
-8;1;AF gruppn;tyjtyj;tyjfjfghj;Construction;PRIVATE;APRIL, 2023;MARCH, 2023;
-9;4;Adecco;tyjtyj;tyjtyjtyjtyj;Health and care;PRIVATE;MARCH, 2022;MARCH, 2022;
-10;3;yukjyutk;yukuyk;yukyukyuk;Construction;PRIVATE;MARCH, 2022;APRIL, 2023;
-11;1;AF gruppn;tyjtyj;tyjtyj;Construction;PRIVATE;MARCH, 2020;MAY, 2021;
-12;4;Adecco;tyjtyj;ghjtyjtyj;Construction;PRIVATE;MAY, 2023;MARCH, 2022;
-13;3;yukjyutk;tyj;tyjtyjgchj;Construction;PRIVATE;JUNE, 2022;JULY, 2020;
-14;4;Adecco;tyj;tyjtyjghj;Research, education and science;PRIVATE;MARCH, 2025;MARCH, 2022;
-15;4;Adecco;rthr;thrthrthdfghdfgh;Research, education and science;PRIVATE;MAY, 2023;APRIL, 2021;
-16;1;AF gruppn;tyuk;tyukghjk;Construction;PRIVATE;MARCH, 2023;APRIL, 2021;
-17;3;yukjyutk;gfhjkrtyuj;tyrjtryj;Store and retail;PUBLIC;MARCH, 2023;APRIL, 2022;
-18;6;KIWI;ytuktyuktyu;ktyuktyuktyuktyuk;Construction;PRIVATE;APRIL, 2022;APRIL, 2022
-19;5;Statoil;rtyjtryj;tryjfghjfghj;Construction;PRIVATE;MARCH, 2022;APRIL, 2022
+positionID;employerID;Company name;Position title;location;description;Industry;Sector;From;to
+1;3;yukjyutk;uioøiuoøiuoøiuoø;uioøiuoøiuo;erg. erg. erg. dsfgerg. sdfgsdfgs. kjytruktyuk. sdfgsdfgsgdf. tyejrjtyrrtjy. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim . tyjtyj. tyjt. yj. veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis au. te irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.;Construction;PUBLIC;MARCH, 2022;APRIL, 2021;tyjtyj;tyj;tyjtyj;tyjtyjtyjtyj;øjklø;ijuoøiuoøiuoø;jklø
+2;4;Adecco;jkløiuoøiuoøiuoøiuøoiuoø;kfyuk fyuk ;uiøouioøuioøiuoøhjkl. ugil. tyd. j. rtyjh. rtyj. rsth. rsth. ryjs.  sryj. jy . dtyj . jyt. jty . tyj . ty.  jty.;Construction;PRIVATE;MARCH, 2021;APRIL, 2021;yuil;iuyliuyl;yuiluyil;uyilyuilyuiluyil;fyuk fyuk fyuk fyuk ;ukyt yfuk yfuk fyuk fyu;yuiluyilhjkl.yiuolutililkt 

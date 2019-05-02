@@ -234,19 +234,42 @@ public class ReadFromCSV implements ReadFromFile {
                     for (Employer e : employers) {
                         if (e.getID() == employerID) {
                             emp = e;
-                            String[] from = data[7].split(",");
-                            String[] to = data[8].split(",");
+                            String companyName = data[2];
+                            String positionTitle = data[3];
+                            String location = data[4];
+                            String description = data[5];
+                            Industry w = Industry.fromString(data[6]);
+                            Sector s = Sector.valueOf(data[7]);
+                            String[] from = data[8].split(",");
+                            String[] to = data[9].split(",");
                             Month fromMonth = Month.valueOf(from[0]);
                             int fromYear = Integer.parseInt(from[1].trim());
                             Month toMonth = Month.valueOf(to[0]);
                             int toYear = Integer.parseInt(from[1].trim());
+                            String contactName = data[10];
+                            String contactPhone = data[11];
+                            String contactEmail = data[12];
+                            String qualifications = data[13];
+                            String workHours = data[14];
+                            String salaryConditions = data[15];
+                            String employmentConditions = data[16];
 
-                            Industry w = Industry.fromString(data[5]);
-                            Sector s = Sector.valueOf(data[6]);
+
+
 
                             SubstitutePosition sub = new SubstitutePosition(emp, w, s, fromMonth, fromYear, toMonth, toYear);
                             sub.setID(ID);
                             sub.setPositionTitle(data[3]);
+                            sub.setPositionTitle(positionTitle);
+                            sub.setLocation(location);
+                            sub.setDescription(description);
+                            sub.setContactName(contactName);
+                            sub.setContactPhone(contactPhone);
+                            sub.setContactEMail(contactEmail);
+                            sub.setQualificationsNeeded(qualifications);
+                            sub.setWorkHours(workHours);
+                            sub.setSalaryConditions(salaryConditions);
+                            sub.setEmploymentConditions(employmentConditions);
                             substitutes.add(sub);
                         }
                     }

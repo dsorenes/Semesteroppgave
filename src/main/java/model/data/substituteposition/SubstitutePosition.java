@@ -34,6 +34,7 @@ public class SubstitutePosition {
     private String to;
     private String from;
     private String companyName;
+    private String qualificationsNeeded;
 
     public SubstitutePosition (Employer employer, Industry position, Sector sector, Month fromMonth, int fromYear, Month toMonth, int toYear) {
         this.employer =employer;
@@ -55,11 +56,20 @@ public class SubstitutePosition {
                 this.getEmployerID() + ";" +
                 this.employer.getCompanyName()+ ";" +
                 positionTitle + ";" +
+                location + ";" +
                 description + ";" +
                 position + ";" +
                 sector + ";" +
                 from + ';' +
-                to;
+                to + ";" +
+                contactName + ";" +
+                contactPhone + ";" +
+                contactEMail + ";" +
+                qualificationsNeeded + ";" +
+                workHours + ";" +
+                salaryConditions + ";" +
+                employmentConditions;
+
     }
 
 
@@ -135,6 +145,15 @@ public class SubstitutePosition {
 
     public void setQualifications(List<String> qualifications) {
         this.qualifications = qualifications;
+        StringBuilder qual = new StringBuilder();
+        for (String q : qualifications) {
+            qual.append(q);
+        }
+        this.qualificationsNeeded = qual.toString();
+    }
+
+    public void setQualificationsNeeded(String qual) {
+        this.qualificationsNeeded = qual;
     }
 
     public void setEmploymentConditions(String employmentConditions) {
@@ -143,6 +162,15 @@ public class SubstitutePosition {
 
     public void setDescription(String description) {
         this.description = description;
+        String[] a =description.split("[\n\r]+");
+        StringBuilder desc = new StringBuilder();
+        for (String i : a) {
+            if (!i.isBlank() || !i.isEmpty()) desc.append(i).append(". ");
+        }
+        int index = desc.lastIndexOf(" ");
+        desc.deleteCharAt(index);
+        System.out.println(desc);
+        this.description = desc.toString();
     }
 
     public void setSector(Sector sector) {
