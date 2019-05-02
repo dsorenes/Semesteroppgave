@@ -35,9 +35,14 @@ public class RegisterSubstituteController implements Initializable {
     }
     @FXML
     void onRegister() {
-        Substitute sub = new Substitute(RegisterContactInformationViewController.firstName.getText(), RegisterContactInformationViewController.lastName.getText(),
-                RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterContactInformationViewController.address.getText(),
-                RegisterContactInformationViewController.phoneNumber.getText(), RegisterContactInformationViewController.eMail.getText());
+        Substitute sub = new Substitute();
+
+        sub.setFirstName(RegisterContactInformationViewController.firstName.getText());
+        sub.setLastName(RegisterContactInformationViewController.lastName.getText());
+        sub.setDateOfBirth(RegisterContactInformationViewController.dateOfBirth.getValue());
+        sub.setAddress(RegisterContactInformationViewController.address.getText());
+        sub.setPhoneNumber(RegisterContactInformationViewController.phoneNumber.getText());
+        sub.setEMail(RegisterContactInformationViewController.eMail.getText());
 
         int subID = ReadFromCSV.createIdCSV("data/substitute");
         int educationID = ReadFromCSV.createIdCSV("data/education");

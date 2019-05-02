@@ -2,16 +2,22 @@ package controller.substitute;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+
 import utils.ClearInput;
 import utils.Year;
+
 import model.data.substitute.education.Education;
 import model.data.substitute.education.EducationLevel;
 import model.data.substitute.education.Subject;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Month;
 import java.util.*;
@@ -132,6 +138,17 @@ public class RegisterEducationController implements Initializable {
         ClearInput.clearInputFields(schoolName, degree);
         ClearInput.clearDropdowns(subjectDropdown, educationLevelDropdown, fromMonth, fromYear, toMonth, toYear);
 
+    }
+
+    @FXML
+    private AnchorPane rootPane;
+
+    @FXML
+    private void NextPage(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/register/substitute/work/RegisterWorkExperienceView.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
 }

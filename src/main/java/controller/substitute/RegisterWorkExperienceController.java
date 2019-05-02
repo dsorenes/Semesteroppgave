@@ -1,5 +1,8 @@
 package controller.substitute;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import model.data.employer.Industry;
 import model.data.employer.Sector;
 import javafx.collections.FXCollections;
@@ -12,6 +15,7 @@ import utils.ClearInput;
 import utils.DateTableFormat;
 import model.data.substitute.work.Work;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -101,5 +105,17 @@ public class RegisterWorkExperienceController implements Initializable {
     void initializeSectorDropdown() {
         sectorDropdown.getItems().addAll(Sector.values());
     }
+
+    @FXML
+    private AnchorPane rootPane;
+
+    @FXML
+    private void NextPage(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/register/substitute/references/RegisterReferenceView.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+
 
 }
