@@ -40,7 +40,7 @@ public class SaveToCSV implements WriteToFile {
     public boolean editLine(String fileName, int id, String old, String replacement) {
         String lineFromFile = ReadFromCSV.findLine(fileName, id);
         Path path = Paths.get(fileName.concat(".csv"));
-        if (lineFromFile == null) return false;
+        if (lineFromFile == null || !lineFromFile.contains(old)) return false;
 
         String newLine = lineFromFile.replace(old, replacement);
         ReadFromCSV read = new ReadFromCSV();
