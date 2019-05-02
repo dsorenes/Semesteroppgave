@@ -6,10 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import model.data.substitute.Substitute;
+import model.filemanager.readfromfile.ReadFromCSV;
 import utils.ClearInput;
 import utils.Year;
 
@@ -80,6 +83,12 @@ public class RegisterEducationController implements Initializable {
 
     public ObservableList<Education> educations = FXCollections.observableArrayList();
 
+    public void setSubstitute(Substitute substitute) {
+        this.substitute = substitute;
+    }
+
+    public Substitute substitute;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeIsCurrentlyStudyingCheckbox();
@@ -143,13 +152,6 @@ public class RegisterEducationController implements Initializable {
         education.setIsCurrentlyStudying(currentlyStudyingCheck.isSelected());
 
         educations.add(education);
-
-
-        // TODO: MAKE IT WORK DANIEELL!
-        setEducationsInfo(educations);
-
-
-
         educationTable.setItems(educations);
 
         ClearInput.clearInputFields(schoolName, degree);
@@ -163,17 +165,16 @@ public class RegisterEducationController implements Initializable {
     @FXML
     private void NextPage(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/register/substitute/work/RegisterWorkExperienceView.fxml"));
-            rootPane.getChildren().setAll(pane);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/work/RegisterWorkExperienceView.fxml"));
+            Parent root = loader.load();
+            rootPane.getChildren().setAll(root);
+
+            RegisterWorkExperienceController controller = loader.getController();
+            int educationID = ReadFromCSV.createIdCSV("data/education");
+            this.substitute.setEducation(educations, educationID);
+            controller.setSubstitute(this.substitute);
         } catch (IOException e) { e.printStackTrace(); }
     }
 
-    // TODO: MAKE IT WORK DANIEELL!
-
-    public void setEducationsInfo(ObservableList<Education> educationsInfo) {
-
-        this.educations = educationsInfo;
-
-    }
 
 }

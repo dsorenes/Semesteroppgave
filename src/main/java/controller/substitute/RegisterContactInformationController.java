@@ -1,5 +1,6 @@
 package controller.substitute;
 
+import javafx.scene.Parent;
 import model.data.employer.Industry;
 
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import utils.ClearInput;
 import java.io.IOException;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -54,6 +56,9 @@ public class RegisterContactInformationController implements Initializable {
 
     protected ObservableList<Industry> wantedField = FXCollections.observableArrayList();
 
+    public Substitute substitute = new Substitute();
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeIndustryDropdown();
@@ -71,28 +76,30 @@ public class RegisterContactInformationController implements Initializable {
         ClearInput.clearDropdowns(industryDropdown);
     }
 
-
     @FXML
     private AnchorPane rootPane;
 
     @FXML
     private void NextPage(ActionEvent event) {
 
-        Substitute sub = new Substitute();
-
         try {
 
-            sub.setFirstName(firstName.getText());
-            sub.setLastName(lastName.getText());
-            sub.setDateOfBirth(dateOfBirth.getValue());
-            sub.setAddress(address.getText());
-            sub.setPhoneNumber(phoneNumber.getText());
-            sub.setEMail(eMail.getText());
+            substitute.setFirstName(firstName.getText());
+            substitute.setLastName(lastName.getText());
+            substitute.setDateOfBirth(dateOfBirth.getValue());
+            substitute.setAddress(address.getText());
+            substitute.setPhoneNumber(phoneNumber.getText());
+            substitute.setEMail(eMail.getText());
 
-            setData(sub);
+            System.out.println(substitute);
 
-            AnchorPane pane =FXMLLoader.load(getClass().getResource("/view/register/substitute/education/RegisterEducationView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/education/RegisterEducationView.fxml"));
+            Parent pane = loader.load();
             rootPane.getChildren().setAll(pane);
+
+            RegisterEducationController controller = loader.getController();
+            controller.setSubstitute(this.substitute);
+
 
 
         } catch (IOException e) { e.printStackTrace();
@@ -102,15 +109,8 @@ public class RegisterContactInformationController implements Initializable {
 
     }
 
-    public void setData(Substitute subContactInfo) {
-
-        subContactInfo.setFirstName(firstName.getText());
-        subContactInfo.setLastName(lastName.getText());
-        subContactInfo.setDateOfBirth(dateOfBirth.getValue());
-        subContactInfo.setAddress(address.getText());
-        subContactInfo.setPhoneNumber(phoneNumber.getText());
-        subContactInfo.setEMail(eMail.getText());
-
+    public Substitute getSubstitute() {
+        return this.substitute;
     }
 
 
