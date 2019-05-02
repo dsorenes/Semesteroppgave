@@ -35,5 +35,5 @@
     </Label>
     <TextField fx:id="referenceEmployer" layoutX="107.0" layoutY="204.0" prefHeight="37.0" prefWidth="127.0" promptText="Employer" />
     <Label layoutX="107.0" layoutY="174.0" styleClass="table-context" text="Employer" />
-    <Button fx:id="register" layoutX="340.0" layoutY="487.0" mnemonicParsing="false" styleClass="re" text="Register" onAction="#onRegister" />
+    <Button fx:id="register" layoutX="340.0" layoutY="487.0" mnemonicParsing="false" styleClass="re" text="Register" />
 </AnchorPane>

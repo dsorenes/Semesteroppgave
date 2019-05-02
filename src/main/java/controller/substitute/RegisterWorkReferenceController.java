@@ -62,13 +62,23 @@ public class RegisterWorkReferenceController implements Initializable {
     @FXML
     private Button addReference;
 
+    @FXML
+    public Button register;
+
     public ObservableList<WorkReference> references = FXCollections.observableArrayList();
+
+    public Substitute substitute;
+
+    public void setSubstitute(Substitute substitute) {
+        this.substitute = substitute;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeReferenceTableView();
 
         addReference.setOnAction(e -> onAddReference());
+        register.setOnAction(e -> onRegister());
     }
 
     void initializeReferenceTableView() {
@@ -85,94 +95,25 @@ public class RegisterWorkReferenceController implements Initializable {
     }
 
 
-    @FXML
-    Button register;
-
-    @FXML
-    private RegisterEducationController RegisterEducationViewController;
-
-    @FXML
-    private RegisterWorkExperienceController RegisterWorkExperienceViewController;
-
-    @FXML
-    private RegisterContactInformationController RegisterContactInformationViewController;
-
-    @FXML
-    private RegisterWorkReferenceController RegisterReferenceViewController;
-
 
     @FXML
     void onRegister() {
-
-        Substitute regSub = getSubContactInfo();
-
-        int subID = ReadFromCSV.createIdCSV("data/substitute");
-        int educationID = ReadFromCSV.createIdCSV("data/education");
         int referenceID = ReadFromCSV.createIdCSV("data/workReference");
-        int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
+        int subID = ReadFromCSV.createIdCSV("data/substitute");
+        this.substitute.setReferences(references, referenceID);
+        this.substitute.setID(subID);
+        this.substitute.getEducation().forEach(e -> e.setSubstituteID(this.substitute.getID()));
+        this.substitute.getWorkExperience().forEach(e -> e.setSubstituteID(this.substitute.getID()));
+        this.substitute.getReferences().forEach(e -> e.setSubstituteID(this.substitute.getID()));
 
-        regSub.setID(subID);
-
-        regSub.setEducation(RegisterEducationViewController.educations, educationID);
-
-        regSub.setReferences(RegisterReferenceViewController.references, referenceID);
-        regSub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable, workExperienceID);
-        regSub.setWorkField(RegisterContactInformationViewController.wantedField);
-/*
         SaveToCSV save = new SaveToCSV();
-
         List<Substitute> data = new ArrayList<>();
-        data.add(regSub);
-        save.SaveToFile("data/education", regSub.getEducation());
-        save.SaveToFile("data/workReference", regSub.getReferences());
-        save.SaveToFile("data/workExperience", regSub.getWorkExperience());
+        data.add(substitute);
+        save.SaveToFile("data/education", substitute.getEducation());
+        save.SaveToFile("data/workReference", substitute.getReferences());
+        save.SaveToFile("data/workExperience", substitute.getWorkExperience());
         save.SaveToFile("data/substitute", data);
 
-        ClearInput.clearInputFields(RegisterContactInformationViewController.firstName, RegisterContactInformationViewController.lastName, RegisterContactInformationViewController.eMail,
-                RegisterContactInformationViewController.address, RegisterContactInformationViewController.phoneNumber);
-        ClearInput.clearLists(RegisterContactInformationViewController.industryListView);
-        ClearInput.clearTables(RegisterEducationViewController.educationTable, RegisterReferenceViewController.referenceTableView, RegisterWorkExperienceViewController.workExperienceTable);
-   */
-
-
     }
 
-    public Substitute getSubContactInfo() {
-
-        Substitute sub = new Substitute();
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/contact/RegisterContactInformationView.fxml"));
-            Parent root = loader.load();
-            RegisterContactInformationController controller = loader.<RegisterContactInformationController>getController();
-            controller.setData(sub);
-        } catch (IOException e) {
-            System.out.println(e.toString());
-        }
-
-        return sub;
-
-    }
-
-/*
-    // TODO: MAKE IT WORK DANIEELL!
-
-    public ObservableList<Education> getEducationsInfo() {
-
-        ObservableList<Education> edu = null;
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/contact/RegisterContactInformationView.fxml"));
-            Parent root = loader.load();
-            RegisterEducationController controller = loader.<RegisterEducationController>getController();
-            controller.setData(edu);
-        } catch (IOException e) {
-            System.out.println(e.toString());
-        }
-
-        return edu;
-
-    }
-
-*/
 }

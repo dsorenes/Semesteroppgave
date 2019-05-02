@@ -2,6 +2,7 @@ package controller.substitute;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import model.data.employer.Industry;
 import model.data.employer.Sector;
@@ -11,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.data.substitute.Substitute;
+import model.filemanager.readfromfile.ReadFromCSV;
 import utils.ClearInput;
 import utils.DateTableFormat;
 import model.data.substitute.work.Work;
@@ -65,6 +68,12 @@ public class RegisterWorkExperienceController implements Initializable {
     private TableColumn<Work, LocalDate> toCol;
 
     public ObservableList<Work> previousWorkTable = FXCollections.observableArrayList();
+
+    public Substitute substitute;
+
+    public void setSubstitute(Substitute substitute) {
+        this.substitute = substitute;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -122,8 +131,15 @@ public class RegisterWorkExperienceController implements Initializable {
     @FXML
     private void NextPage(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/register/substitute/references/RegisterReferenceView.fxml"));
-            rootPane.getChildren().setAll(pane);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/references/RegisterReferenceView.fxml"));
+            Parent root = loader.load();
+            rootPane.getChildren().setAll(root);
+
+            RegisterWorkReferenceController controller = loader.getController();
+            int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
+            this.substitute.setWorkExperience(previousWorkTable, workExperienceID);
+            controller.setSubstitute(this.substitute);
+
         } catch (IOException e) { e.printStackTrace(); }
     }
 
