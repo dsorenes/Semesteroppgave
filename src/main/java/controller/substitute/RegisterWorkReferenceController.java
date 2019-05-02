@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.utils.ClearInput;
+import utils.ClearInput;
 import model.data.substitute.references.WorkReference;
 
 import java.net.URL;

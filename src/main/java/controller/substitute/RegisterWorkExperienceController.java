@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.utils.ClearInput;
-import model.utils.DateTableFormat;
+import utils.ClearInput;
+import utils.DateTableFormat;
 import model.data.substitute.work.Work;
 
 import java.net.URL;
