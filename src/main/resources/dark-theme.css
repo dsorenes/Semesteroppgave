@@ -113,8 +113,16 @@
     -fx-background-color: -fx-secondary;
     -fx-background-radius: 5px;
 }
+.button:pressed {
+    -fx-background-color:  -fx-secondary;
+}
 
 /*Toolbar buttons*/
+.toolbar-button:pressed
+{
+
+    -fx-background-color:  -fx-secondary;
+}
 .toolbar-button
 {
     -fx-border-color: transparent;
