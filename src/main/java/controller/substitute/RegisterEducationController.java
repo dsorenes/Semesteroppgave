@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import model.data.substitute.Substitute;
-import model.filemanager.readfromfile.ReadFromCSV;
+import model.filemanager.readfromfile.CSVReader;
 import utils.ClearInput;
 import utils.Year;
 
@@ -170,7 +170,7 @@ public class RegisterEducationController implements Initializable {
             rootPane.getChildren().setAll(root);
 
             RegisterWorkExperienceController controller = loader.getController();
-            int educationID = ReadFromCSV.createIdCSV("data/education");
+            int educationID = CSVReader.createIdCSV("data/education");
             this.substitute.setEducation(educations, educationID);
             controller.setSubstitute(this.substitute);
         } catch (IOException e) { e.printStackTrace(); }

@@ -1,16 +1,10 @@
 package controller.substitute;
 
-import controller.substitute.RegisterContactInformationController;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import model.data.substitute.Substitute;
-import model.data.substitute.work.Work;
-import model.data.substitute.education.Education;
 import model.data.substitute.references.WorkReference;
 
-import model.filemanager.readfromfile.ReadFromCSV;
-import model.filemanager.savetofile.SaveToCSV;
+import model.filemanager.readfromfile.CSVReader;
+import model.filemanager.savetofile.CSVWriter;
 
 import utils.ClearInput;
 
@@ -24,7 +18,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,21 +91,21 @@ public class RegisterWorkReferenceController implements Initializable {
 
     @FXML
     void onRegister() {
-        int referenceID = ReadFromCSV.createIdCSV("data/workReference");
-        int subID = ReadFromCSV.createIdCSV("data/substitute");
+        int referenceID = CSVReader.createIdCSV("data/workReference");
+        int subID = CSVReader.createIdCSV("data/substitute");
         this.substitute.setReferences(references, referenceID);
         this.substitute.setID(subID);
         this.substitute.getEducation().forEach(e -> e.setSubstituteID(this.substitute.getID()));
         this.substitute.getWorkExperience().forEach(e -> e.setSubstituteID(this.substitute.getID()));
         this.substitute.getReferences().forEach(e -> e.setSubstituteID(this.substitute.getID()));
 
-        SaveToCSV save = new SaveToCSV();
+        CSVWriter save = new CSVWriter();
         List<Substitute> data = new ArrayList<>();
         data.add(substitute);
-        save.SaveToFile("data/education", substitute.getEducation());
-        save.SaveToFile("data/workReference", substitute.getReferences());
-        save.SaveToFile("data/workExperience", substitute.getWorkExperience());
-        save.SaveToFile("data/substitute", data);
+        save.WriteToFile("data/education", substitute.getEducation());
+        save.WriteToFile("data/workReference", substitute.getReferences());
+        save.WriteToFile("data/workExperience", substitute.getWorkExperience());
+        save.WriteToFile("data/substitute", data);
 
     }
 
