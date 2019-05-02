@@ -24,6 +24,8 @@ public class Substitute {
     private boolean isEmployed;
     private List<WorkReference> references;
 
+    public Substitute() {}
+
     public Substitute(String firstName, String lastName, LocalDate dateOfBirth, String address, String phoneNumber, String eMail) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,6 +35,52 @@ public class Substitute {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public int getID() {
+        return this.ID;
+    }
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) { this.lastName = lastName;
+    }
+    public String geteMail() {
+        return eMail;
+    }
+    public void setEMail(String eMail) { this.eMail = eMail; }
+
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) { this.address = address; }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
+    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+
+    public String getSalaryDemand() { return salaryDemand; }
+    public void setSalaryDemand(String salaryDemand) { this.salaryDemand = salaryDemand; }
+
+    public boolean isEmployed() { return isEmployed; }
+    public void setIsEmployed(Boolean isEmployed) { this.isEmployed = isEmployed; }
+
+    public List<Industry> getWorkField() { return workField; }
+    public void setWorkField(List<Industry> workField) { this.workField = workField; }
+
+
+    public List<Work> getWorkExperience() { return workExperience; }
     public void setWorkExperience(List<Work> workExperience, int ID) {
         this.workExperience = workExperience;
         for (Work w : this.workExperience) {
@@ -40,11 +88,10 @@ public class Substitute {
             w.setID(ID++);
         }
     }
+    public void setWorkExperience(List<Work> work) { this.workExperience = work; }
 
-    public void setWorkExperience(List<Work> work) {
-        this.workExperience = work;
-    }
 
+    public List<Education> getEducation() { return education; }
     public void setEducation(List<Education> education, int ID) {
         this.education = education;
         for (Education e : this.education) {
@@ -52,15 +99,10 @@ public class Substitute {
             e.setID(ID++);
         }
     }
+    public void setEducation(List<Education> education) { this.education = education; }
 
-    public void setEducation(List<Education> education) {
-        this.education = education;
-    }
 
-    public void setWorkField(List<Industry> workField) {
-        this.workField = workField;
-    }
-
+    public List<WorkReference> getReferences() { return references; }
     public void setReferences(List<WorkReference> references, int ID) {
         this.references = references;
         for (WorkReference wr : this.references) {
@@ -68,10 +110,8 @@ public class Substitute {
             wr.setID(ID++);
         }
     }
+    public void setReferences(List<WorkReference> ref) { this.references = ref; }
 
-    public void setReferences(List<WorkReference> ref) {
-        this.references = ref;
-    }
 
     @Override
     public String toString() {
@@ -83,59 +123,4 @@ public class Substitute {
                eMail;
     }
 
-    public List<Work> getWorkExperience() {
-        return workExperience;
-    }
-
-    public List<Education> getEducation() {
-        return education;
-    }
-
-    public List<Industry> getWorkField() {
-        return workField;
-    }
-
-    public List<WorkReference> getReferences() {
-        return references;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String geteMail() {
-        return eMail;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getSalaryDemand() {
-        return salaryDemand;
-    }
-
-    public boolean isEmployed() {
-        return isEmployed;
-    }
-
-    public int getID() {
-        return this.ID;
-    }
 }
