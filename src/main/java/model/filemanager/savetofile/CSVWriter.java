@@ -9,16 +9,16 @@ import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.APPEND;
 
 
-public class SaveToCSV implements WriteToFile {
+public class CSVWriter implements FileWriter {
 
-    public <T> boolean SaveToFile(String fileName, List<T> list) {
+    public boolean WriteToFile(String fileName, List<?> list) {
         OpenOption[] options = new OpenOption[] {CREATE, APPEND};
         Path path = Paths.get(fileName.concat(".csv"));
 
         try (
                 var writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8, options)
         ) {
-            for (T o : list) {
+            for (Object o : list) {
                 writer.write(o.toString());
                 writer.newLine();
             }

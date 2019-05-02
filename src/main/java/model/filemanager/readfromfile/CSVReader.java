@@ -20,16 +20,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFromCSV implements ReadFromFile {
+public class CSVReader implements FileReader {
     @Override
-    public ArrayList<String> ReadFromFile(String fileName) {
+    public List<?> ReadFromFile(String fileName) {
         Path path = Paths.get(fileName.concat(".csv"));
         String line;
-        ArrayList<String> data = new ArrayList<>();
+        List<Object> data = new ArrayList<>();
         try (
-            var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+            var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
             ) {
-
             while ((line = reader.readLine()) != null) {
                 data.add(line);
             }
@@ -41,12 +40,12 @@ public class ReadFromCSV implements ReadFromFile {
         return data;
     }
 
-    public static int createIdCSV(String filename) {
+    protected static int createIdCSV(String filename) {
         Path path = Paths.get(filename.concat(".csv"));
         int ID = 0;
         String line;
         try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
         ) {
             while ((line = reader.readLine()) != null) {
                 ID++;
@@ -61,12 +60,12 @@ public class ReadFromCSV implements ReadFromFile {
         return 0;
     }
 
-    public static ArrayList<Employer> getEmployersFomCSV() {
+    protected static ArrayList<Employer> getEmployersFomCSV() {
         Path path = Paths.get("data/employer/employer.csv");
         String line;
         ArrayList<Employer> employers = new ArrayList<>();
         try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
                 ) {
 
             while ((line = reader.readLine()) != null) {
@@ -99,13 +98,13 @@ public class ReadFromCSV implements ReadFromFile {
         return employers;
     }
 
-    public static ArrayList<WorkReference> getWorkReferenceFromCSV(String filename) {
+    protected static ArrayList<WorkReference> getWorkReferenceFromCSV(String filename) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<WorkReference> work = new ArrayList<>();
 
         try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
         ) {
 
             while ((line = reader.readLine()) != null) {
@@ -135,13 +134,13 @@ public class ReadFromCSV implements ReadFromFile {
         return work;
     }
 
-    public static ArrayList<Education> getEducationFromCSV(String filename) {
+    protected static ArrayList<Education> getEducationFromCSV(String filename) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<Education> education = new ArrayList<>();
 
         try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
         ) {
 
             while ((line = reader.readLine()) != null) {
@@ -184,7 +183,7 @@ public class ReadFromCSV implements ReadFromFile {
         ArrayList<Work> work = new ArrayList<>();
 
         try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
+                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
                 ) {
 
             while ((line = reader.readLine()) != null) {
@@ -219,7 +218,7 @@ public class ReadFromCSV implements ReadFromFile {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<SubstitutePosition> substitutes = new ArrayList<>();
-        ArrayList<Employer> employers = new ArrayList<>(ReadFromCSV.getEmployersFomCSV());
+        ArrayList<Employer> employers = new ArrayList<>(CSVReader.getEmployersFomCSV());
 
         try (
                 var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
@@ -266,9 +265,9 @@ public class ReadFromCSV implements ReadFromFile {
         Path path = Paths.get("data/substitute.csv");
         String line;
         ArrayList<Substitute> substitutes = new ArrayList<>();
-        ArrayList<Work> work = new ArrayList<>(ReadFromCSV.getWorkFromCSV("data/workExperience"));
-        ArrayList<WorkReference> wr = new ArrayList<>(ReadFromCSV.getWorkReferenceFromCSV("data/workReference"));
-        ArrayList<Education> edu = new ArrayList<>(ReadFromCSV.getEducationFromCSV("data/education"));
+        ArrayList<Work> work = new ArrayList<>(CSVReader.getWorkFromCSV("data/workExperience"));
+        ArrayList<WorkReference> wr = new ArrayList<>(CSVReader.getWorkReferenceFromCSV("data/workReference"));
+        ArrayList<Education> edu = new ArrayList<>(CSVReader.getEducationFromCSV("data/education"));
 
         try (
                 var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)

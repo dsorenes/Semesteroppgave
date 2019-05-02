@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.filemanager.readfromfile.ReadFromCSV;
+import model.filemanager.readfromfile.CSVReader;
 import model.data.substitute.Substitute;
 
 import java.net.URL;
@@ -25,7 +25,7 @@ public class SubstituteTableController implements Initializable {
     private TableColumn<Substitute, String> lastNameCol;
 
     private void initializeSubstituteTable() {
-        ObservableList<Substitute> substitutes = FXCollections.observableArrayList(ReadFromCSV.getSubstitutesFromCSV());
+        ObservableList<Substitute> substitutes = FXCollections.observableArrayList(CSVReader.getSubstitutesFromCSV());
         substituteTable.getItems().setAll(substitutes);
     }
 

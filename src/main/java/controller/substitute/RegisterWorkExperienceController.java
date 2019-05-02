@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.data.substitute.Substitute;
-import model.filemanager.readfromfile.ReadFromCSV;
+import model.filemanager.readfromfile.CSVReader;
 import utils.ClearInput;
 import utils.DateTableFormat;
 import model.data.substitute.work.Work;
@@ -136,7 +136,7 @@ public class RegisterWorkExperienceController implements Initializable {
             rootPane.getChildren().setAll(root);
 
             RegisterWorkReferenceController controller = loader.getController();
-            int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
+            int workExperienceID = CSVReader.createIdCSV("data/workExperience");
             this.substitute.setWorkExperience(previousWorkTable, workExperienceID);
             controller.setSubstitute(this.substitute);
 
