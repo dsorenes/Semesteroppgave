@@ -5,10 +5,11 @@ import model.data.substitute.education.Education;
 import model.data.substitute.references.WorkReference;
 import model.data.substitute.work.Work;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Substitute {
+public class Substitute implements Serializable {
 
     private int ID;
     private String firstName;
