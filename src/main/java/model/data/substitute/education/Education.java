@@ -6,8 +6,10 @@ import java.time.Month;
 
 public class Education {
 
+    private Substitute substitute;
     private int substituteID;
     private int educationID;
+
     private String schoolName;
     private Subject subject;
     private EducationLevel educationLevel;
@@ -19,6 +21,7 @@ public class Education {
     private Boolean isCurrentlyStudying;
     private String from;
     private String to;
+
 
     public Education() {}
 
@@ -41,9 +44,6 @@ public class Education {
             this.to = "";
         }
     }
-
-    private Substitute substitute;
-
 
     public void assignSubstitute (Substitute sub) {
         this.substitute = sub;

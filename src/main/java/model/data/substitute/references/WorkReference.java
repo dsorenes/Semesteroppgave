@@ -7,12 +7,14 @@ import java.util.ArrayList;
 public class WorkReference {
 
     private Substitute substitute;
+    private int substituteID;
     private int referenceID;
+
     private String fullName;
     private String phoneNumber;
     private String eMail;
     private String employerName;
-    private int substituteID;
+
 
     public WorkReference() {}
 

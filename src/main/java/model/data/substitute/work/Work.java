@@ -9,15 +9,17 @@ import java.time.format.DateTimeFormatter;
 
 public class Work {
 
+    private Substitute substitute;
+    private int substituteID;
     private int workID;
+
     private String companyName;
     private String position;
     private Sector sector;
     private Industry industry;
     private LocalDate employedFrom;
     private LocalDate employedTo;
-    private Substitute substitute;
-    private int substituteID;
+
 
     public Work() {}
 
