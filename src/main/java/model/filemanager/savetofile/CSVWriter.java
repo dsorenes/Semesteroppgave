@@ -37,7 +37,7 @@ public class CSVWriter implements FileWriter {
         return false;
     }
 
-    public boolean editLine(String fileName, int id, String old, String replacement) {
+    public static boolean editLine(String fileName, int id, String old, String replacement) {
         String lineFromFile = CSVReader.findLine(fileName, id);
         Path path = Paths.get(fileName.concat(".csv"));
         if (lineFromFile == null || !lineFromFile.contains(old)) return false;

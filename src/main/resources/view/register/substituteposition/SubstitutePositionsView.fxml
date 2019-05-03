@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="524.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substituteposition.SubstitutePositionsController">
    <children>
-      <TableView fx:id="substitutePositionTableView" layoutX="14.0" layoutY="14.0" prefHeight="220.0" prefWidth="542.0">
+      <TableView fx:id="substitutePositionTableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="220.0" prefWidth="542.0">
         <columns>
           <TableColumn fx:id="nameCol" prefWidth="75.0" text="COmpany name" />
           <TableColumn fx:id="posCol" prefWidth="75.0" text="Position" />
@@ -25,7 +25,7 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem fx:id="showDetailsMenu" mnemonicParsing="false" onAction="#rightClickShowDetails" text="Show details" />
+                <MenuItem fx:id="showDetailsMenu" mnemonicParsing="false" text="Show details" />
               </items>
             </ContextMenu>
          </contextMenu>

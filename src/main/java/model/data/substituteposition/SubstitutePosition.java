@@ -50,6 +50,15 @@ public class SubstitutePosition {
         this.to = toMonth + ", " + toYear;
     }
 
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+        this.employer.setCompanyName(companyName);
+    }
+
     @Override
     public String toString() {
         return  substitutePositionID + ";" +
@@ -121,6 +130,20 @@ public class SubstitutePosition {
 
     public void setPosition(Industry position) {
         this.position = position;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+        String[] split = to.split(", ");
+        this.setToMonth(Month.valueOf(split[0].trim().toUpperCase()));
+        this.setToYear(Integer.parseInt(split[1]));
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+        String[] split = from.split(", ");
+        this.setFromMonth(Month.valueOf(split[0].trim().toUpperCase()));
+        this.setFromYear(Integer.parseInt(split[1]));
     }
 
     public void setFromMonth(Month fromMonth) {

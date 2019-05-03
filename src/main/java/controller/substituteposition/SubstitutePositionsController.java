@@ -1,7 +1,10 @@
 package controller.substituteposition;
 
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.TextFieldTableCell;
 import model.data.employer.Industry;
 import model.data.employer.Sector;
+import model.data.substitute.Substitute;
 import model.data.substituteposition.SubstitutePosition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -82,21 +85,50 @@ public class SubstitutePositionsController implements Initializable {
 
     private void initTable() {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nameCol.setOnEditCommit(t -> {
+            String oldValue = t.getOldValue();
+            t.getRowValue().getEmployer().setCompanyName(t.getNewValue());
+            CSVWriter.editLine("data/employer/employer", t.getRowValue().getEmployerID(), oldValue, t.getNewValue());
+            CSVWriter.editLine("data/position/position", t.getRowValue().getID(), oldValue, t.getNewValue());
+        });
+
         posCol.setCellValueFactory(new PropertyValueFactory<>("positionTitle"));
+        posCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        posCol.setOnEditCommit(t -> {
+            String oldValue = t.getOldValue();
+            t.getRowValue().setPositionTitle(t.getNewValue());
+            CSVWriter.editLine("data/position/position", t.getRowValue().getID(), oldValue, t.getNewValue());
+        });
+
         industryCol.setCellValueFactory(new PropertyValueFactory<>("position"));
+        industryCol.setCellFactory(ComboBoxTableCell.forTableColumn(Industry.values()));
+        industryCol.setOnEditCommit(t -> {
+            Industry old = t.getOldValue();
+            t.getRowValue().setPosition(t.getNewValue());
+            CSVWriter.editLine("data/position/position", t.getRowValue().getID(), old.toString(), t.getNewValue().toString());
+        });
         sectorCol.setCellValueFactory(new PropertyValueFactory<>("sector"));
+        sectorCol.setCellFactory(ComboBoxTableCell.forTableColumn(Sector.values()));
+        sectorCol.setOnEditCommit(t -> {
+            Sector old = t.getOldValue();
+            t.getRowValue().setSector(t.getNewValue());
+            CSVWriter.editLine("data/position/position", t.getRowValue().getID(), old.toString(), t.getNewValue().toString());
+        });
         fromCol.setCellValueFactory(new PropertyValueFactory<>("from"));
+        fromCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        fromCol.setOnEditCommit(t -> {
+            String oldValue = t.getOldValue();
+            t.getRowValue().setFrom(t.getNewValue());
+            CSVWriter.editLine("data/position/position", t.getRowValue().getID(), oldValue, t.getNewValue());
+        });
         toCol.setCellValueFactory(new PropertyValueFactory<>("to"));
-
-    }
-
-    @FXML
-    void rightClickShowDetails(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/register/substituteposition/SubstitutePositionDisplay.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Substitute position information");
-        stage.setScene(new Scene(root));
-        stage.show();
+        toCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        toCol.setOnEditCommit(t -> {
+            String oldValue = t.getOldValue();
+            t.getRowValue().setTo(t.getNewValue());
+            CSVWriter.editLine("data/position/position", t.getRowValue().getID(), oldValue, t.getNewValue());
+        });
     }
 
     private void populateTableView() {
