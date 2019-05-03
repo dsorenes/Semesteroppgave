@@ -66,14 +66,6 @@ public class AssignPositionController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        initTable();
-        initializeSubstituteTable();
-        populateTableView();
-
-    }
-
     private void populateTableView() {
         ObservableList<SubstitutePosition> subs = FXCollections.observableArrayList(CSVReader.parseToSubstitutePosition("data/position/position"));
         substitutePositionTableView.setItems(subs);
@@ -101,7 +93,14 @@ public class AssignPositionController implements Initializable {
         CSVWriter save = new CSVWriter();
         save.SaveToFile("data/assignedposition/assignedposition", pos);
 
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initTable();
+        initializeSubstituteTable();
+        populateTableView();
 
     }
+
 }

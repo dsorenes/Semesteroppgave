@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" stylesheets="@../dark-theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" stylesheets="@../StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
     <bottom>
-        <AnchorPane prefHeight="30.0" prefWidth="1024.0" styleClass="root" stylesheets="@../dark-theme.css" BorderPane.alignment="CENTER" />
+        <AnchorPane prefHeight="30.0" prefWidth="1024.0" styleClass="root" stylesheets="@../StyleSheet.css" BorderPane.alignment="CENTER" />
     </bottom>
     <left>
         <VBox alignment="CENTER" prefHeight="580.0" prefWidth="200.0" spacing="15.0" styleClass="custom-pane" BorderPane.alignment="CENTER">

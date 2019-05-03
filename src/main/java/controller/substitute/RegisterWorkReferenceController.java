@@ -82,8 +82,16 @@ public class RegisterWorkReferenceController implements Initializable {
     }
 
     void onAddReference() {
-        references.add(new WorkReference(referenceName.getText(), referencePhone.getText(), referenceEmail.getText(), referenceEmployer.getText()));
-        referenceTableView.setItems(references);
+
+        WorkReference ref = new WorkReference();
+
+        ref.setEmployerName(referenceName.getText());
+        ref.setPhoneNumber(referencePhone.getText());
+        ref.setEMail(referenceEmail.getText());
+        ref.setFullName(referenceEmployer.getText());
+
+        references.add(ref);
+
         ClearInput.clearInputFields(referenceName, referenceEmail, referenceEmployer, referencePhone);
     }
 
