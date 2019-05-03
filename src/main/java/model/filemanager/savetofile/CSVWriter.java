@@ -1,8 +1,9 @@
 package model.filemanager.savetofile;
 
-import model.filemanager.readfromfile.ReadFromCSV;
+import model.filemanager.readfromfile.CSVReader;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.ArrayList;
@@ -12,17 +13,16 @@ import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.APPEND;
 
 
-public class SaveToCSV implements WriteToFile {
+public class CSVWriter implements FileWriter {
 
-    private OpenOption[] options = new OpenOption[] {CREATE, APPEND};
+    private static final Charset encoding = StandardCharsets.ISO_8859_1;
+    private static final OpenOption[] options = new OpenOption[] {CREATE, APPEND};
 
     public <T> boolean SaveToFile(String fileName, List<T> list) {
 
         Path path = Paths.get(fileName.concat(".csv"));
 
-        try (
-                var writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8, options)
-        ) {
+        try (var writer = Files.newBufferedWriter(path, encoding, options)) {
             for (T o : list) {
                 writer.write(o.toString());
                 writer.newLine();
@@ -38,17 +38,15 @@ public class SaveToCSV implements WriteToFile {
     }
 
     public boolean editLine(String fileName, int id, String old, String replacement) {
-        String lineFromFile = ReadFromCSV.findLine(fileName, id);
+        String lineFromFile = CSVReader.findLine(fileName, id);
         Path path = Paths.get(fileName.concat(".csv"));
         if (lineFromFile == null || !lineFromFile.contains(old)) return false;
 
         String newLine = lineFromFile.replace(old, replacement);
-        ReadFromCSV read = new ReadFromCSV();
+        CSVReader read = new CSVReader();
         ArrayList<String> oldFile = read.ReadFromFile(fileName);
 
-        try (
-                var writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING)
-                ) {
+        try (var writer = Files.newBufferedWriter(path, encoding, StandardOpenOption.TRUNCATE_EXISTING)) {
             for (String i : oldFile) {
                 if (i.equals(lineFromFile)) {
                     writer.write(newLine);

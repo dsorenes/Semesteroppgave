@@ -14,8 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.filemanager.readfromfile.ReadFromCSV;
-import model.filemanager.savetofile.SaveToCSV;
+import model.filemanager.readfromfile.CSVReader;
+import model.filemanager.savetofile.CSVWriter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -77,10 +77,7 @@ public class SubstitutePositionsController implements Initializable {
         positionLabel.setText(substitutePosition.getPosition().toString());
         sectorLabel.setText(substitutePosition.getSector().toString());
         fromLabel.setText(substitutePosition.getFrom());
-        toLabel.setText(substitutePosition.getTo());
-        SaveToCSV save = new SaveToCSV();
-        boolean success = save.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getSector().toString(), Sector.PUBLIC.toString());
-        System.out.println(success);
+        toLabel.setText(substitutePosition.getDescription());
     }
 
     private void initTable() {
@@ -103,7 +100,12 @@ public class SubstitutePositionsController implements Initializable {
     }
 
     private void populateTableView() {
-        ObservableList<SubstitutePosition> subs = FXCollections.observableArrayList(ReadFromCSV.substitutePositionFromCSV("data/position/position"));
+        ObservableList<SubstitutePosition> subs = null;
+        try {
+            subs = FXCollections.observableArrayList(CSVReader.parseToSubstitutePosition("data/position/position"));
+        } catch (IOException e) {
+            System.out.println("SUBSTITUTERROREREF");
+        }
         substitutePositionTableView.setItems(subs);
     }
 }

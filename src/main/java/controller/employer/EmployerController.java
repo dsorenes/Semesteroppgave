@@ -8,10 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import model.filemanager.readfromfile.ReadFromCSV;
-import model.filemanager.savetofile.SaveToCSV;
+import model.filemanager.readfromfile.CSVReader;
+import model.filemanager.savetofile.CSVWriter;
 import model.utils.ClearInput;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -61,10 +62,15 @@ public class EmployerController implements Initializable {
     private void onRegister() {
         Employer employer = new Employer(companyName.getText(), companyAddress.getText(), firstName.getText(), lastName.getText(), phoneNumber.getText(), eMail.getText(), industryDropdown.getValue(), sectorDropdown.getValue());
         ArrayList<Employer> employees = new ArrayList<>();
-        int employerID = ReadFromCSV.createIdCSV("data/employer/employer");
+        int employerID = 0;
+        try {
+            employerID = CSVReader.createIdCSV("data/employer/employer");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         employer.setID(employerID);
         employees.add(employer);
-        SaveToCSV save = new SaveToCSV();
+        CSVWriter save = new CSVWriter();
         save.SaveToFile("data/employer/employer", employees);
 
 

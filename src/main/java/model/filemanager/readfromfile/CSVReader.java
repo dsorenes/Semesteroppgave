@@ -12,6 +12,7 @@ import model.data.substitute.references.WorkReference;
 import model.data.substitute.work.Work;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.time.LocalDate;
@@ -20,20 +21,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadFromCSV implements ReadFromFile {
+public class CSVReader implements FileReader {
+    private static final Charset encoding = StandardCharsets.ISO_8859_1;
+
     @Override
     public ArrayList<String> ReadFromFile(String fileName) {
         Path path = Paths.get(fileName.concat(".csv"));
         String line;
         ArrayList<String> data = new ArrayList<>();
-        try (
-            var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-            ) {
-
+        try (var reader = Files.newBufferedReader(path, encoding)) {
             while ((line = reader.readLine()) != null) {
                 data.add(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,34 +40,21 @@ public class ReadFromCSV implements ReadFromFile {
         return data;
     }
 
-    public static int createIdCSV(String filename) {
+    public static int createIdCSV(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
-        int ID = 0;
-        String line;
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-        ) {
-            while ((line = reader.readLine()) != null) {
-                ID++;
-            }
+        int ID = 1;
+        var reader = Files.newBufferedReader(path, encoding);
 
-            return ID;
+        while (reader.readLine() != null) ID++;
+        return ID;
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return 0;
     }
 
     public static ArrayList<Employer> getEmployersFomCSV() {
         Path path = Paths.get("data/employer/employer.csv");
         String line;
         ArrayList<Employer> employers = new ArrayList<>();
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
-
+        try (var reader = Files.newBufferedReader(path, encoding)) {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
 
@@ -99,14 +85,12 @@ public class ReadFromCSV implements ReadFromFile {
         return employers;
     }
 
-    public static ArrayList<WorkReference> getWorkReferenceFromCSV(String filename) {
+    protected static ArrayList<WorkReference> parseToWorkReference(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<WorkReference> work = new ArrayList<>();
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-        ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -125,24 +109,17 @@ public class ReadFromCSV implements ReadFromFile {
                 }
 
             }
-
-        } catch (IOException e) {
-
-        }
-
         if (work.isEmpty()) return new ArrayList<>();
 
         return work;
     }
 
-    public static ArrayList<Education> getEducationFromCSV(String filename) {
+    public static ArrayList<Education> parseToEducation(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<Education> education = new ArrayList<>();
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-        ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -169,23 +146,17 @@ public class ReadFromCSV implements ReadFromFile {
 
             }
 
-        } catch (IOException e) {
-
-        }
-
         if (education.isEmpty()) return new ArrayList<>();
 
         return education;
     }
 
-    public static ArrayList<Work> getWorkFromCSV(String filename) {
+    public static ArrayList<Work> parseToWork(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<Work> work = new ArrayList<>();
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -211,24 +182,18 @@ public class ReadFromCSV implements ReadFromFile {
 
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         if (work.isEmpty()) return new ArrayList<>();
 
         return work;
     }
 
-    public static ArrayList<SubstitutePosition> substitutePositionFromCSV(String filename) {
+    public static ArrayList<SubstitutePosition> parseToSubstitutePosition(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<SubstitutePosition> substitutes = new ArrayList<>();
-        ArrayList<Employer> employers = new ArrayList<>(ReadFromCSV.getEmployersFomCSV());
+        ArrayList<Employer> employers = new ArrayList<>(CSVReader.getEmployersFomCSV());
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -239,7 +204,6 @@ public class ReadFromCSV implements ReadFromFile {
                     for (Employer e : employers) {
                         if (e.getID() == employerID) {
                             emp = e;
-                            String companyName = data[2];
                             String positionTitle = data[3];
                             String location = data[4];
                             String description = data[5];
@@ -258,9 +222,6 @@ public class ReadFromCSV implements ReadFromFile {
                             String workHours = data[14];
                             String salaryConditions = data[15];
                             String employmentConditions = data[16];
-
-
-
 
                             SubstitutePosition sub = new SubstitutePosition(emp, w, s, fromMonth, fromYear, toMonth, toYear);
                             sub.setID(ID);
@@ -281,26 +242,20 @@ public class ReadFromCSV implements ReadFromFile {
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         if (substitutes.isEmpty()) return new ArrayList<>();
 
         return substitutes;
     }
 
-    public static ArrayList<Substitute> getSubstitutesFromCSV() {
+    public static ArrayList<Substitute> parseSubstitute() throws IOException {
         Path path = Paths.get("data/substitute.csv");
         String line;
         ArrayList<Substitute> substitutes = new ArrayList<>();
-        ArrayList<Work> work = new ArrayList<>(ReadFromCSV.getWorkFromCSV("data/workExperience"));
-        ArrayList<WorkReference> wr = new ArrayList<>(ReadFromCSV.getWorkReferenceFromCSV("data/workReference"));
-        ArrayList<Education> edu = new ArrayList<>(ReadFromCSV.getEducationFromCSV("data/education"));
+        ArrayList<Work> work = new ArrayList<>(CSVReader.parseToWork("data/workExperience"));
+        ArrayList<WorkReference> wr = new ArrayList<>(CSVReader.parseToWorkReference("data/workReference"));
+        ArrayList<Education> edu = new ArrayList<>(CSVReader.parseToEducation("data/education"));
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
+        try (var reader = Files.newBufferedReader(path, encoding)) {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
 
@@ -308,7 +263,7 @@ public class ReadFromCSV implements ReadFromFile {
                     int subID = Integer.parseInt(data[0]);
                     String first = data[1];
                     String last = data[2];
-                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                     String address = data[4];
                     String phone = data[5];
                     String eMail = data[6];
@@ -346,7 +301,7 @@ public class ReadFromCSV implements ReadFromFile {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException();
         }
 
         if (substitutes.isEmpty()) return new ArrayList<>();
@@ -359,10 +314,7 @@ public class ReadFromCSV implements ReadFromFile {
         String line;
         String ID = Integer.toString(id);
         String found = null;
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
-
+        try (var reader = Files.newBufferedReader(path, encoding)) {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");

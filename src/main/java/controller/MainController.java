@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.filemanager.savetofile.SaveToCSV;
 
 import java.io.IOException;
 

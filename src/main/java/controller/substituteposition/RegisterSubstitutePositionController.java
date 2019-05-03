@@ -9,11 +9,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import model.filemanager.readfromfile.ReadFromCSV;
-import model.filemanager.savetofile.SaveToCSV;
+import model.filemanager.readfromfile.CSVReader;
+import model.filemanager.savetofile.CSVWriter;
 import model.utils.ClearInput;
 import model.utils.Year;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Month;
 import java.util.ArrayList;
@@ -106,7 +107,12 @@ public class RegisterSubstitutePositionController implements Initializable {
     }
 
     private void onCreatePosition() {
-        int positionID = ReadFromCSV.createIdCSV("data/position/position");
+        int positionID = 0;
+        try {
+            positionID = CSVReader.createIdCSV("data/position/position");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SubstitutePosition position = new SubstitutePosition(employerList.getSelectionModel().getSelectedItem(), industryDropdown.getValue(), sectorDropdown.getValue(), fromMonth.getValue(), fromYear.getValue(),
                                                              toMonth.getValue(), toYear.getValue());
         position.setID(positionID);
@@ -124,7 +130,7 @@ public class RegisterSubstitutePositionController implements Initializable {
         ArrayList<SubstitutePosition> pos = new ArrayList<>();
         pos.add(position);
 
-        SaveToCSV save = new SaveToCSV();
+        CSVWriter save = new CSVWriter();
         save.SaveToFile("data/position/position", pos);
 
         ClearInput.clearDropdowns(fromMonth, fromYear, toMonth, toYear, industryDropdown, sectorDropdown);
@@ -143,7 +149,7 @@ public class RegisterSubstitutePositionController implements Initializable {
     }
 
     private void populateEmployerList() {
-        ObservableList<Employer> employers = FXCollections.observableArrayList(ReadFromCSV.getEmployersFomCSV());
+        ObservableList<Employer> employers = FXCollections.observableArrayList(CSVReader.getEmployersFomCSV());
         employerList.setItems(employers);
         employerList.setCellFactory(e -> new ListCell<>() {
           @Override

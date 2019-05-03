@@ -2,7 +2,6 @@ package model.filemanager.savetofile;
 
 import java.util.List;
 
-public interface WriteToFile {
-
+interface FileWriter {
      <T> boolean SaveToFile(String fileName, List<T> list);
 }

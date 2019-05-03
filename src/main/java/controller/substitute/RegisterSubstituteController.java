@@ -3,11 +3,12 @@ package controller.substitute;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import model.filemanager.readfromfile.ReadFromCSV;
-import model.filemanager.savetofile.SaveToCSV;
+import model.filemanager.readfromfile.CSVReader;
+import model.filemanager.savetofile.CSVWriter;
 import model.data.substitute.Substitute;
 import model.utils.ClearInput;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,18 @@ public class RegisterSubstituteController implements Initializable {
                 RegisterContactInformationViewController.dateOfBirth.getValue(), RegisterContactInformationViewController.address.getText(),
                 RegisterContactInformationViewController.phoneNumber.getText(), RegisterContactInformationViewController.eMail.getText());
 
-        int subID = ReadFromCSV.createIdCSV("data/substitute");
-        int educationID = ReadFromCSV.createIdCSV("data/education");
-        int referenceID = ReadFromCSV.createIdCSV("data/workReference");
-        int workExperienceID = ReadFromCSV.createIdCSV("data/workExperience");
+        int subID = 1;
+        int workExperienceID = 1;
+        int educationID = 1;
+        int referenceID = 1;
+        try {
+            subID = CSVReader.createIdCSV("data/substitute");
+            educationID = CSVReader.createIdCSV("data/education");
+            referenceID = CSVReader.createIdCSV("data/workReference");
+            workExperienceID = CSVReader.createIdCSV("data/workExperience");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         sub.setID(subID);
         sub.setEducation(RegisterEducationViewController.educations, educationID);
@@ -50,7 +59,7 @@ public class RegisterSubstituteController implements Initializable {
         sub.setWorkExperience(RegisterWorkExperienceViewController.previousWorkTable, workExperienceID);
         sub.setWantedWorkFields(RegisterContactInformationViewController.wantedField);
 
-        SaveToCSV save = new SaveToCSV();
+        CSVWriter save = new CSVWriter();
 
         List<Substitute> data = new ArrayList<>();
         data.add(sub);
