@@ -52,7 +52,7 @@ public class MainViewController {
 
             Stage stage = new Stage();
 
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/tableview/SubstituteTableView.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/register/substitute/SubstituteTableView.fxml"))));
             stage.show();
 
         } catch (IOException e) { e.printStackTrace(); }
