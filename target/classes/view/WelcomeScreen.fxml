@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="496.0" prefWidth="303.0" styleClass="custom-pane" stylesheets="@../StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeScreenController">
+      <ImageView fitHeight="510.0" fitWidth="303.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/WelcomeBackground.jpg" />
+         </image>
+      </ImageView>
+      <ToolBar layoutY="-1.0" prefHeight="33.0" prefWidth="303.0" styleClass="tab-header-background" stylesheets="@../StyleSheet.css">
+        <items>
+          <Button fx:id="LoggInn" mnemonicParsing="false" styleClass="toolbar-button" text="Logg inn" onAction="#LoggInn">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </Button>
+        </items>
+      </ToolBar>
+      <ToolBar layoutY="481.0" prefHeight="27.0" prefWidth="303.0" styleClass="root">
+         <items>
+            <Label styleClass="table-context" stylesheets="@../StyleSheet.css" text="Ver: 0.1.2" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="12.0" />
+               </font>
+            </Label>
+         </items>
+      </ToolBar>
+      <ImageView fitHeight="315.0" fitWidth="303.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo 2v2.png" />
+         </image>
+      </ImageView>
+</AnchorPane>

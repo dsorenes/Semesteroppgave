@@ -1,0 +1,4 @@
+--patch-module
+Semesteroppgave=_
+--add-reads
+Semesteroppgave=ALL-UNNAMED

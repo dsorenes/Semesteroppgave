@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../../StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substitute.RegisterContactInformationController">
+    <TextField fx:id="firstName" layoutX="51.0" layoutY="143.0" promptText="First name" />
+    <TextField fx:id="lastName" layoutX="280.0" layoutY="143.0" promptText="Last name" />
+    <DatePicker fx:id="dateOfBirth" layoutX="507.0" layoutY="143.0" promptText="Date of birth" />
+    <TextField fx:id="phoneNumber" layoutX="51.0" layoutY="222.0" promptText="Phone number" />
+    <TextField fx:id="address" layoutX="507.0" layoutY="222.0" promptText="Address" />
+    <TextField fx:id="eMail" layoutX="280.0" layoutY="222.0" promptText="E-mail" />
+    <Label layoutX="53.0" layoutY="115.0" styleClass="table-context" text="First name" />
+    <Label layoutX="280.0" layoutY="115.0" styleClass="table-context" text="Last name" />
+    <Label layoutX="507.0" layoutY="115.0" styleClass="table-context" text="Date of birth" />
+    <Label layoutX="53.0" layoutY="195.0" styleClass="table-context" text="Phone number" />
+    <Label layoutX="280.0" layoutY="195.0" styleClass="table-context" text="E-mail" />
+    <Label layoutX="507.0" layoutY="195.0" styleClass="table-context" text="Address" />
+    <ComboBox fx:id="industryDropdown" layoutX="66.0" layoutY="317.0" prefWidth="150.0" promptText="Wanted industry" />
+    <ListView fx:id="industryListView" layoutX="66.0" layoutY="363.0" prefHeight="93.0" prefWidth="274.0" />
+    <Button fx:id="addWantedIndustry" defaultButton="true" layoutX="225.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" styleClass="toolbar-button" text="Add industry" />
+    <Label layoutX="66.0" layoutY="294.0" styleClass="table-context" text="Add desired industries" />
+    <TextArea fx:id="salaryDemand" layoutX="453.0" layoutY="329.0" prefHeight="127.0" prefWidth="200.0" />
+    <Label layoutX="453.0" layoutY="294.0" styleClass="table-context" text="Salary demands" />
+    <Label layoutX="24.0" layoutY="22.0" styleClass="table-context" text="Contact information">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    <Button fx:id="nextPage" layoutX="328.0" layoutY="487.0" mnemonicParsing="false" onAction="#NextPage" prefHeight="39.0" prefWidth="68.0" text="Next" />
+</AnchorPane>

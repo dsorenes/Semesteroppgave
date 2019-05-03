@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.employer.EmployerController">
+   <children>
+      <TextField fx:id="firstName" layoutX="131.0" layoutY="302.0" promptText="First name" />
+      <TextField fx:id="lastName" layoutX="413.0" layoutY="302.0" promptText="Last name" />
+      <TextField fx:id="phoneNumber" layoutX="131.0" layoutY="387.0" prefHeight="37.0" prefWidth="200.0" promptText="Phone number" />
+      <TextField fx:id="eMail" layoutX="413.0" layoutY="387.0" promptText="E-mail" />
+      <Button fx:id="register" layoutX="331.0" layoutY="487.0" mnemonicParsing="false" text="Register" />
+      <Label layoutX="131.0" layoutY="285.0" styleClass="table-context" text="First name" />
+      <Label layoutX="413.0" layoutY="285.0" styleClass="table-context" text="Last name" />
+      <Label layoutX="131.0" layoutY="370.0" styleClass="table-context" text="Phone number" />
+      <Label layoutX="413.0" layoutY="370.0" styleClass="table-context" text="E-mail" />
+      <ComboBox fx:id="industryDropdown" layoutX="131.0" layoutY="198.0" prefHeight="25.0" prefWidth="183.0" promptText="Industry" />
+      <ComboBox fx:id="sectorDropdown" layoutX="321.0" layoutY="198.0" prefHeight="25.0" prefWidth="103.0" promptText="Sector" />
+      <TextField fx:id="companyName" layoutX="131.0" layoutY="124.0" prefHeight="37.0" prefWidth="200.0" promptText="Company name" />
+      <TextField fx:id="companyAddress" layoutX="413.0" layoutY="124.0" prefHeight="37.0" prefWidth="200.0" promptText="Company address" />
+      <Label layoutX="24.0" layoutY="22.0" styleClass="table-context" text="Company information">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="243.0" styleClass="table-context" text="Contact information">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="131.0" layoutY="107.0" styleClass="table-context" text="Company name" />
+      <Label layoutX="413.0" layoutY="107.0" styleClass="table-context" text="Company address" />
+   </children></AnchorPane>

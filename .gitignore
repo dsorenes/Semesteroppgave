@@ -1,12 +1,7 @@
 
 
 # Don't track content of these folders
-.idea/
-target/
 
 # Don't track these files
-nbactions.xml
-nb-configuration.xml
-.DS_Store
 *.txt
 
