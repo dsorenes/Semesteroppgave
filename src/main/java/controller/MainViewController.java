@@ -52,7 +52,7 @@ public class MainViewController implements Initializable {
     @FXML
     private void AvailableSubstitutePositions(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substituteposition/SubstitutePositionsView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/tableview/SubstitutePositionsView.fxml"));
             ChangeableView.setCenter(loader.load());
         } catch (IOException e) { e.printStackTrace(); }
     }

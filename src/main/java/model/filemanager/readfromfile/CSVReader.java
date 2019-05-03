@@ -277,7 +277,7 @@ public class CSVReader implements FileReader {
                     int subID = Integer.parseInt(data[0]);
                     String first = data[1];
                     String last = data[2];
-                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("dd.MM.yyyy"));
                     String address = data[4];
                     String phone = data[5];
                     String eMail = data[6];
