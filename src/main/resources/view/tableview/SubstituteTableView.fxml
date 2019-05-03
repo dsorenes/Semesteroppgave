@@ -6,7 +6,7 @@
 <?import javafx.scene.text.TextFlow?>
 
 <AnchorPane prefHeight="440.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SubstituteTableController">
-    <TableView fx:id="substituteTable" layoutX="12.0" layoutY="12.0" prefHeight="404.0" prefWidth="452.0">
+    <TableView fx:id="substituteTable" layoutX="12.0" layoutY="12.0" prefHeight="404.0" prefWidth="496.0">
         <columns>
             <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="First Name" />
             <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Last Name" />
