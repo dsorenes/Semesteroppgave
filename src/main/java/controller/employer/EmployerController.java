@@ -12,6 +12,7 @@ import model.filemanager.readfromfile.CSVReader;
 import model.filemanager.savetofile.CSVWriter;
 import utils.ClearInput;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -61,11 +62,16 @@ public class EmployerController implements Initializable {
     private void onRegister() {
         Employer employer = new Employer(companyName.getText(), companyAddress.getText(), firstName.getText(), lastName.getText(), phoneNumber.getText(), eMail.getText(), industryDropdown.getValue(), sectorDropdown.getValue());
         ArrayList<Employer> employees = new ArrayList<>();
-        int employerID = CSVReader.createIdCSV("data/employer/employer");
+        int employerID = 0;
+        try {
+            employerID = CSVReader.createIdCSV("data/employer/employer");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         employer.setID(employerID);
         employees.add(employer);
         CSVWriter save = new CSVWriter();
-        save.WriteToFile("data/employer/employer", employees);
+        save.SaveToFile("data/employer/employer", employees);
 
 
         ClearInput.clearInputFields(firstName, lastName, phoneNumber, companyName, companyAddress, eMail);

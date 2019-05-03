@@ -1,4 +1,4 @@
-package controller.employer;
+package controller.substituteposition;
 
 import model.data.employer.Employer;
 import model.data.employer.Industry;
@@ -14,6 +14,7 @@ import model.filemanager.savetofile.CSVWriter;
 import utils.ClearInput;
 import utils.Year;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Month;
 import java.util.ArrayList;
@@ -106,7 +107,12 @@ public class RegisterSubstitutePositionController implements Initializable {
     }
 
     private void onCreatePosition() {
-        int positionID = CSVReader.createIdCSV("data/position/position");
+        int positionID = 0;
+        try {
+            positionID = CSVReader.createIdCSV("data/position/position");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SubstitutePosition position = new SubstitutePosition(employerList.getSelectionModel().getSelectedItem(), industryDropdown.getValue(), sectorDropdown.getValue(), fromMonth.getValue(), fromYear.getValue(),
                                                              toMonth.getValue(), toYear.getValue());
         position.setID(positionID);
@@ -125,7 +131,7 @@ public class RegisterSubstitutePositionController implements Initializable {
         pos.add(position);
 
         CSVWriter save = new CSVWriter();
-        save.WriteToFile("data/position/position", pos);
+        save.SaveToFile("data/position/position", pos);
 
         ClearInput.clearDropdowns(fromMonth, fromYear, toMonth, toYear, industryDropdown, sectorDropdown);
         ClearInput.clearInputFields(selectedEmployer, posLocation, posHours, positionTitle, contactEmail, contactName, contactPhone);

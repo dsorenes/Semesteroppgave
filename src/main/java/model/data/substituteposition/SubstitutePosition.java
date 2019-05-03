@@ -34,6 +34,7 @@ public class SubstitutePosition {
     private String to;
     private String from;
     private String companyName;
+    private String qualificationsNeeded;
 
 
     public SubstitutePosition() {};
@@ -52,6 +53,36 @@ public class SubstitutePosition {
         this.to = toMonth + ", " + toYear;
     }
 
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+        this.employer.setCompanyName(companyName);
+    }
+
+    @Override
+    public String toString() {
+        return  substitutePositionID + ";" +
+                this.getEmployerID() + ";" +
+                this.employer.getCompanyName()+ ";" +
+                positionTitle + ";" +
+                location + ";" +
+                description + ";" +
+                position + ";" +
+                sector + ";" +
+                from + ';' +
+                to + ";" +
+                contactName + ";" +
+                contactPhone + ";" +
+                contactEMail + ";" +
+                qualificationsNeeded + ";" +
+                workHours + ";" +
+                salaryConditions + ";" +
+                employmentConditions;
+
+    }
 
     public int getID() { return this.substitutePositionID; }
     public void setID(int ID) { this.substitutePositionID = ID; }
@@ -65,8 +96,6 @@ public class SubstitutePosition {
     public String getCompanyName() {
         return this.companyName;
     }
-    public void setCompanyName(String companyName) { this.companyName = companyName; }
-
     public String getContactName() { return contactName; }
     public void setContactName(String contactName) { this.contactName = contactName; }
 
@@ -95,9 +124,37 @@ public class SubstitutePosition {
         this.location = location;
     }
 
+    public void setPosition(Industry position) {
+        this.position = position;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+        String[] split = to.split(", ");
+        this.setToMonth(Month.valueOf(split[0].trim().toUpperCase()));
+        this.setToYear(Integer.parseInt(split[1]));
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+        String[] split = from.split(", ");
+        this.setFromMonth(Month.valueOf(split[0].trim().toUpperCase()));
+        this.setFromYear(Integer.parseInt(split[1]));
+    }
+
     public List<String> getQualifications() { return qualifications; }
+
     public void setQualifications(List<String> qualifications) {
         this.qualifications = qualifications;
+        StringBuilder qual = new StringBuilder();
+        for (String q : qualifications) {
+            qual.append(q);
+        }
+        this.qualificationsNeeded = qual.toString();
+    }
+
+    public void setQualificationsNeeded(String qual) {
+        this.qualificationsNeeded = qual;
     }
 
     public String getEmploymentConditions() { return employmentConditions; }
@@ -106,6 +163,14 @@ public class SubstitutePosition {
     public String getDescription() { return description; }
     public void setDescription(String description) {
         this.description = description;
+        String[] a =description.split("[\n\r]+");
+        StringBuilder desc = new StringBuilder();
+        for (String i : a) {
+            if (!i.isBlank() || !i.isEmpty()) desc.append(i).append(":");
+        }
+        int index = desc.lastIndexOf(":");
+        desc.deleteCharAt(index);
+        this.description = desc.toString();
     }
 
     public String getWorkHours() { return workHours; }
@@ -114,6 +179,7 @@ public class SubstitutePosition {
     }
 
     public String getSalaryConditions() { return salaryConditions; }
+
     public void setSalaryConditions(String salaryConditions) {
         this.salaryConditions = salaryConditions;
     }
@@ -133,17 +199,14 @@ public class SubstitutePosition {
     public String getTo() {
         return this.to;
     }
-    public void setTo(String to) { this.to = to; }
 
     public String getFrom() {
         return this.from;
     }
-    public void setFrom(String from) { this.from = from; }
 
     public Industry getPosition() {
         return position;
     }
-    public void setPosition(Industry position) { this.position = position; }
 
     public String getPositionType() {
         return positionType;
@@ -158,24 +221,14 @@ public class SubstitutePosition {
     public String getPositionTitle() {
         return positionTitle;
     }
+
+    public String getQualificationsNeeded() {
+        return qualificationsNeeded;
+    }
     public void setPositionTitle(String positionTitle) { this.positionTitle = positionTitle; }
 
     public boolean isAvailable() {
         return isAvailable;
-    }
-
-
-    @Override
-    public String toString() {
-        return  substitutePositionID + ";" +
-                this.getEmployerID() + ";" +
-                this.employer.getCompanyName()+ ";" +
-                positionTitle + ";" +
-                description + ";" +
-                position + ";" +
-                sector + ";" +
-                from + ';' +
-                to;
     }
 
 }

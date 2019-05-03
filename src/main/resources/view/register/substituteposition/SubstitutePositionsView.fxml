@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="524.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substituteposition.SubstitutePositionsController">
+<AnchorPane prefHeight="524.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substituteposition.SubstitutePositionsController">
    <children>
-      <TableView fx:id="substitutePositionTableView" layoutX="14.0" layoutY="14.0" prefHeight="441.0" prefWidth="537.0">
+      <TableView fx:id="substitutePositionTableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="220.0" prefWidth="542.0">
         <columns>
           <TableColumn fx:id="nameCol" prefWidth="75.0" text="COmpany name" />
           <TableColumn fx:id="posCol" prefWidth="75.0" text="Position" />
@@ -23,10 +25,40 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem fx:id="showDetailsMenu" mnemonicParsing="false" onAction="#rightClickShowDetails" text="Show details" />
+                <MenuItem fx:id="showDetailsMenu" mnemonicParsing="false" text="Show details" />
               </items>
             </ContextMenu>
          </contextMenu>
       </TableView>
+      <Label layoutX="14.0" layoutY="247.0" text="Company name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="247.0" text="Position">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="269.0" layoutY="247.0" text="Sector">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="352.0" layoutY="247.0" text="Position from">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="483.0" layoutY="247.0" text="to">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="companyNameLabel" layoutX="21.0" layoutY="274.0" prefHeight="37.0" prefWidth="84.0" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="positionLabel" layoutX="154.0" layoutY="274.0" prefHeight="37.0" prefWidth="84.0" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="sectorLabel" layoutX="247.0" layoutY="274.0" prefHeight="37.0" prefWidth="84.0" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="fromLabel" layoutX="352.0" layoutY="274.0" prefHeight="37.0" prefWidth="84.0" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="toLabel" layoutX="455.0" layoutY="274.0" prefHeight="37.0" prefWidth="84.0" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

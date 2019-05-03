@@ -90,6 +90,7 @@ public class RegisterContactInformationController implements Initializable {
             substitute.setAddress(address.getText());
             substitute.setPhoneNumber(phoneNumber.getText());
             substitute.setEMail(eMail.getText());
+            substitute.setWantedWorkFields(wantedField);
 
             System.out.println(substitute);
 
