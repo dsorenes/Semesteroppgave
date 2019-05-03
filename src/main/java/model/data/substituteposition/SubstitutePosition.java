@@ -5,7 +5,9 @@ import model.data.employer.Sector;
 import model.data.employer.Employer;
 import model.data.substitute.Substitute;
 
+import java.lang.reflect.Array;
 import java.time.Month;
+import java.util.Arrays;
 import java.util.List;
 
 public class SubstitutePosition {
@@ -155,7 +157,7 @@ public class SubstitutePosition {
 
     public void setQualificationsNeeded(String qual) {
         this.qualificationsNeeded = qual;
-    }
+}
 
     public String getEmploymentConditions() { return employmentConditions; }
     public void setEmploymentConditions(String employmentConditions) { this.employmentConditions = employmentConditions; }
