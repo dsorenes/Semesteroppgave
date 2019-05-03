@@ -140,4 +140,6 @@ public class SubstitutePositionsController implements Initializable {
         }
         substitutePositionTableView.setItems(subs);
     }
+
+
 }

@@ -70,33 +70,36 @@ public class MainViewController {
         } catch (IOException e) { e.printStackTrace(); }
     }
 
-
-
     @FXML
-    public void saveFile(ActionEvent event) {
-
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Save");
-        fc.setInitialDirectory(new File("."));
-        File selectedFile = fc.showOpenDialog(null);
-
-        if (selectedFile != null) {
-
-        } else {
-
-        }
+    private void AssignPosition(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/assignposition/AssignPosition.fxml"));
+            ChangeableView.setCenter(loader.load());
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
     @FXML
-    public void openFile(ActionEvent event) {
-
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Open");
-        fc.setInitialDirectory(new File("."));
-        File selectedFile = fc.showOpenDialog(null);
-
+    private void AssignedPositions(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/tableview/AssignedPositions.fxml"));
+            ChangeableView.setCenter(loader.load());
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
+
+
+    @FXML
+    public void FileBtn(ActionEvent event) {
+
+        try {
+
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FileManager.fxml"))));
+            stage.show();
+
+        } catch (IOException e) { e.printStackTrace(); }
+    }
 
 
 }
