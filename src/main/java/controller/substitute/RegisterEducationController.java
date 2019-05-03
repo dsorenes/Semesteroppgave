@@ -148,10 +148,11 @@ public class RegisterEducationController implements Initializable {
         education.setFromMonth(fromMonth.getValue());
         education.setFromYear(fromYear.getValue());
         education.setToMonth(toMonth.getValue());
-        education.setToYear( toYear.getValue());
+        education.setToYear(toYear.getValue());
         education.setIsCurrentlyStudying(currentlyStudyingCheck.isSelected());
 
         educations.add(education);
+
         educationTable.setItems(educations);
 
         ClearInput.clearInputFields(schoolName, degree);

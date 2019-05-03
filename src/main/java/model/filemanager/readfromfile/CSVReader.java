@@ -12,6 +12,7 @@ import model.data.substitute.references.WorkReference;
 import model.data.substitute.work.Work;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.time.LocalDate;
@@ -21,18 +22,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVReader implements FileReader {
+    private static final Charset encoding = StandardCharsets.ISO_8859_1;
+
     @Override
-    public List<?> ReadFromFile(String fileName) {
+    public ArrayList<String> ReadFromFile(String fileName) {
         Path path = Paths.get(fileName.concat(".csv"));
         String line;
-        List<Object> data = new ArrayList<>();
-        try (
-            var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
-            ) {
+        ArrayList<String> data = new ArrayList<>();
+        try (var reader = Files.newBufferedReader(path, encoding)) {
             while ((line = reader.readLine()) != null) {
                 data.add(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,34 +40,21 @@ public class CSVReader implements FileReader {
         return data;
     }
 
-    protected static int createIdCSV(String filename) {
+    public static int createIdCSV(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
-        int ID = 0;
-        String line;
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
-        ) {
-            while ((line = reader.readLine()) != null) {
-                ID++;
-            }
+        int ID = 1;
+        var reader = Files.newBufferedReader(path, encoding);
 
-            return ID;
+        while (reader.readLine() != null) ID++;
+        return ID;
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return 0;
     }
 
-    protected static ArrayList<Employer> getEmployersFomCSV() {
+    public static ArrayList<Employer> getEmployersFomCSV() {
         Path path = Paths.get("data/employer/employer.csv");
         String line;
         ArrayList<Employer> employers = new ArrayList<>();
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
-                ) {
-
+        try (var reader = Files.newBufferedReader(path, encoding)) {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
 
@@ -98,14 +85,12 @@ public class CSVReader implements FileReader {
         return employers;
     }
 
-    protected static ArrayList<WorkReference> getWorkReferenceFromCSV(String filename) {
+    protected static ArrayList<WorkReference> parseToWorkReference(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<WorkReference> work = new ArrayList<>();
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
-        ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -124,24 +109,17 @@ public class CSVReader implements FileReader {
                 }
 
             }
-
-        } catch (IOException e) {
-
-        }
-
         if (work.isEmpty()) return new ArrayList<>();
 
         return work;
     }
 
-    protected static ArrayList<Education> getEducationFromCSV(String filename) {
+    public static ArrayList<Education> parseToEducation(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<Education> education = new ArrayList<>();
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
-        ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -168,61 +146,54 @@ public class CSVReader implements FileReader {
 
             }
 
-        } catch (IOException e) {
-
-        }
-
         if (education.isEmpty()) return new ArrayList<>();
 
         return education;
     }
 
-    public static ArrayList<Work> getWorkFromCSV(String filename) {
+    public static ArrayList<Work> parseToWork(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<Work> work = new ArrayList<>();
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)
-                ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
                 if (data.length > 0 && data[0].compareTo("workID") != 0) {
+                    int workID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String companyName = data[2];
                     String position = data[3];
-                    Sector s = Sector.valueOf(data[4].toUpperCase().trim());
+                    Sector sector = Sector.NULL;
+                    if (data[4] != null) {
+                        sector = Sector.valueOf(data[4].toUpperCase().trim());
+                    }
                     Industry i = Industry.fromString(data[5]);
                     String from = data[6];
                     String to = data[7];
                     LocalDate f = LocalDate.parse(from, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                     LocalDate t = LocalDate.parse(to, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    Work w = new Work(companyName, position, s, i, f, t);
+                    Work w = new Work(companyName, position, sector, i, f, t);
                     w.setSubstituteID(substituteID);
+                    w.setID(workID);
                     work.add(w);
                 }
 
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         if (work.isEmpty()) return new ArrayList<>();
 
         return work;
     }
 
-    public static ArrayList<SubstitutePosition> substitutePositionFromCSV(String filename) {
+    public static ArrayList<SubstitutePosition> parseToSubstitutePosition(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<SubstitutePosition> substitutes = new ArrayList<>();
         ArrayList<Employer> employers = new ArrayList<>(CSVReader.getEmployersFomCSV());
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
+        var reader = Files.newBufferedReader(path, encoding);
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
@@ -233,45 +204,58 @@ public class CSVReader implements FileReader {
                     for (Employer e : employers) {
                         if (e.getID() == employerID) {
                             emp = e;
-                            String[] from = data[7].split(",");
-                            String[] to = data[8].split(",");
+                            String positionTitle = data[3];
+                            String location = data[4];
+                            String description = data[5];
+                            Industry w = Industry.fromString(data[6]);
+                            Sector s = Sector.valueOf(data[7]);
+                            String[] from = data[8].split(",");
+                            String[] to = data[9].split(",");
                             Month fromMonth = Month.valueOf(from[0]);
                             int fromYear = Integer.parseInt(from[1].trim());
                             Month toMonth = Month.valueOf(to[0]);
                             int toYear = Integer.parseInt(from[1].trim());
-
-                            Industry w = Industry.fromString(data[5]);
-                            Sector s = Sector.valueOf(data[6]);
+                            String contactName = data[10];
+                            String contactPhone = data[11];
+                            String contactEmail = data[12];
+                            String qualifications = data[13];
+                            String workHours = data[14];
+                            String salaryConditions = data[15];
+                            String employmentConditions = data[16];
 
                             SubstitutePosition sub = new SubstitutePosition(emp, w, s, fromMonth, fromYear, toMonth, toYear);
                             sub.setID(ID);
                             sub.setPositionTitle(data[3]);
+                            sub.setPositionTitle(positionTitle);
+                            sub.setLocation(location);
+                            sub.setDescription(description);
+                            sub.setContactName(contactName);
+                            sub.setContactPhone(contactPhone);
+                            sub.setContactEMail(contactEmail);
+                            sub.setQualificationsNeeded(qualifications);
+                            sub.setWorkHours(workHours);
+                            sub.setSalaryConditions(salaryConditions);
+                            sub.setEmploymentConditions(employmentConditions);
                             substitutes.add(sub);
                         }
                     }
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         if (substitutes.isEmpty()) return new ArrayList<>();
 
         return substitutes;
     }
 
-    public static ArrayList<Substitute> getSubstitutesFromCSV() {
+    public static ArrayList<Substitute> parseSubstitute() throws IOException {
         Path path = Paths.get("data/substitute.csv");
         String line;
         ArrayList<Substitute> substitutes = new ArrayList<>();
-        ArrayList<Work> work = new ArrayList<>(CSVReader.getWorkFromCSV("data/workExperience"));
-        ArrayList<WorkReference> wr = new ArrayList<>(CSVReader.getWorkReferenceFromCSV("data/workReference"));
-        ArrayList<Education> edu = new ArrayList<>(CSVReader.getEducationFromCSV("data/education"));
+        ArrayList<Work> work = new ArrayList<>(CSVReader.parseToWork("data/workExperience"));
+        ArrayList<WorkReference> wr = new ArrayList<>(CSVReader.parseToWorkReference("data/workReference"));
+        ArrayList<Education> edu = new ArrayList<>(CSVReader.parseToEducation("data/education"));
 
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
+        try (var reader = Files.newBufferedReader(path, encoding)) {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
 
@@ -279,10 +263,11 @@ public class CSVReader implements FileReader {
                     int subID = Integer.parseInt(data[0]);
                     String first = data[1];
                     String last = data[2];
-                    LocalDate born = LocalDate.parse(data[3]);
+                    LocalDate born = LocalDate.parse(data[3], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                     String address = data[4];
                     String phone = data[5];
                     String eMail = data[6];
+                    String wantedWorkFields = data[7];
                     Substitute substitute = new Substitute(first, last, born, address, phone, eMail);
                     substitute.setID(subID);
 
@@ -310,12 +295,13 @@ public class CSVReader implements FileReader {
                     substitute.setWorkExperience(subwork);
                     substitute.setReferences(ref);
                     substitute.setEducation(education);
+                    substitute.setWantedWorkFields(wantedWorkFields);
                     substitutes.add(substitute);
                 }
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException();
         }
 
         if (substitutes.isEmpty()) return new ArrayList<>();
@@ -323,22 +309,19 @@ public class CSVReader implements FileReader {
         return substitutes;
     }
 
-     public ArrayList<String> findAttributes(String filename, int id) {
+     public static String findLine(String filename, int id) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         String ID = Integer.toString(id);
-
-        ArrayList<String> matches = new ArrayList<>();
-        try (
-                var reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)
-                ) {
+        String found = null;
+        try (var reader = Files.newBufferedReader(path, encoding)) {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
                 if (data.length > 0) {
-                    String substituteID = data[1];
-                    if (substituteID.compareTo(ID) == 0) {
-                        matches.add(line);
+                    String fileID = data[0];
+                    if (fileID.compareTo(ID) == 0) {
+                        found = line;
                     }
                 }
             }
@@ -346,12 +329,7 @@ public class CSVReader implements FileReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if (matches.isEmpty()) {
-            return null;
-        }
-
-        return matches;
+        return found;
     }
 
 }

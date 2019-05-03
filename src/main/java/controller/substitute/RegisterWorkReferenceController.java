@@ -17,7 +17,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import utils.ClearInput;
+import model.data.substitute.references.WorkReference;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,24 +91,26 @@ public class RegisterWorkReferenceController implements Initializable {
     }
 
 
-
     @FXML
-    void onRegister() {
-        int referenceID = CSVReader.createIdCSV("data/workReference");
-        int subID = CSVReader.createIdCSV("data/substitute");
-        this.substitute.setReferences(references, referenceID);
-        this.substitute.setID(subID);
-        this.substitute.getEducation().forEach(e -> e.setSubstituteID(this.substitute.getID()));
-        this.substitute.getWorkExperience().forEach(e -> e.setSubstituteID(this.substitute.getID()));
-        this.substitute.getReferences().forEach(e -> e.setSubstituteID(this.substitute.getID()));
+    private void onRegister() {
+        try {
 
-        CSVWriter save = new CSVWriter();
-        List<Substitute> data = new ArrayList<>();
-        data.add(substitute);
-        save.WriteToFile("data/education", substitute.getEducation());
-        save.WriteToFile("data/workReference", substitute.getReferences());
-        save.WriteToFile("data/workExperience", substitute.getWorkExperience());
-        save.WriteToFile("data/substitute", data);
+            int referenceID = CSVReader.createIdCSV("data/workReference");
+            int subID = CSVReader.createIdCSV("data/substitute");
+            this.substitute.setReferences(references, referenceID);
+            this.substitute.setID(subID);
+            this.substitute.getEducation().forEach(e -> e.setSubstituteID(this.substitute.getID()));
+            this.substitute.getWorkExperience().forEach(e -> e.setSubstituteID(this.substitute.getID()));
+            this.substitute.getReferences().forEach(e -> e.setSubstituteID(this.substitute.getID()));
+
+            CSVWriter save = new CSVWriter();
+            List<Substitute> data = new ArrayList<>();
+            data.add(substitute);
+            save.SaveToFile("data/education", substitute.getEducation());
+            save.SaveToFile("data/workReference", substitute.getReferences());
+            save.SaveToFile("data/workExperience", substitute.getWorkExperience());
+            save.SaveToFile("data/substitute", data);
+        } catch (IOException e) { }
 
     }
 
