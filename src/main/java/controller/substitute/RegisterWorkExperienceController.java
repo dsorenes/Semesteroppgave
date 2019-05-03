@@ -1,5 +1,9 @@
 package controller.substitute;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import model.data.employer.Industry;
 import model.data.employer.Sector;
 import javafx.collections.FXCollections;
@@ -8,10 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.data.substitute.Substitute;
+import model.filemanager.readfromfile.CSVReader;
 import utils.ClearInput;
 import utils.DateTableFormat;
 import model.data.substitute.work.Work;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -62,6 +69,12 @@ public class RegisterWorkExperienceController implements Initializable {
 
     public ObservableList<Work> previousWorkTable = FXCollections.observableArrayList();
 
+    public Substitute substitute;
+
+    public void setSubstitute(Substitute substitute) {
+        this.substitute = substitute;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeIndustryDropdown();
@@ -85,7 +98,17 @@ public class RegisterWorkExperienceController implements Initializable {
 
     @FXML
     void onAddWorkExperience() {
-        Work previousWork = new Work(inputCompanyName.getText(), inputPositionName.getText(), sectorDropdown.getValue(), industryDropdown.getValue(), inputEmployedFrom.getValue(), inputEmployedTo.getValue());
+
+        Work previousWork = new Work();
+
+        previousWork.setCompanyName(inputCompanyName.getText());
+        previousWork.setPosition(inputPositionName.getText());
+        previousWork.setSector(sectorDropdown.getValue());
+        previousWork.setIndustry(industryDropdown.getValue());
+        previousWork.setEmployedFrom(inputEmployedFrom.getValue());
+        previousWork.setEmployedTo(inputEmployedTo.getValue());
+
+
         previousWorkTable.add(previousWork);
         workExperienceTable.setItems(previousWorkTable);
 
@@ -101,5 +124,24 @@ public class RegisterWorkExperienceController implements Initializable {
     void initializeSectorDropdown() {
         sectorDropdown.getItems().addAll(Sector.values());
     }
+
+    @FXML
+    private AnchorPane rootPane;
+
+    @FXML
+    private void NextPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/references/RegisterReferenceView.fxml"));
+            Parent root = loader.load();
+            rootPane.getChildren().setAll(root);
+
+            RegisterWorkReferenceController controller = loader.getController();
+            int workExperienceID = CSVReader.createIdCSV("data/workExperience");
+            this.substitute.setWorkExperience(previousWorkTable, workExperienceID);
+            controller.setSubstitute(this.substitute);
+
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+
 
 }
