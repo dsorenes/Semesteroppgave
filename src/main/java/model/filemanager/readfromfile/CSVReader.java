@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CSVReader implements FileReader {
@@ -232,7 +233,7 @@ public class CSVReader implements FileReader {
                             sub.setContactName(contactName);
                             sub.setContactPhone(contactPhone);
                             sub.setContactEMail(contactEmail);
-                            sub.setQualificationsNeeded(qualifications);
+                            sub.setQualifications(Arrays.asList(qualifications.split(", ")));
                             sub.setWorkHours(workHours);
                             sub.setSalaryConditions(salaryConditions);
                             sub.setEmploymentConditions(employmentConditions);
@@ -311,7 +312,7 @@ public class CSVReader implements FileReader {
         return substitutes;
     }
 
-     public static String findLine(String filename, int id) {
+     public static String findLine(String filename, int id, int column) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         String ID = Integer.toString(id);
@@ -320,8 +321,8 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0) {
-                    String fileID = data[0];
+                if (data.length > 0 && data.length > column) {
+                    String fileID = data[column];
                     if (fileID.compareTo(ID) == 0) {
                         found = line;
                     }

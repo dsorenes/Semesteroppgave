@@ -132,16 +132,31 @@ public class SubstituteTableController implements Initializable {
         initializeSubstituteTable();
 
 
-        substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSelection());
+        substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSubstituteTableSelection());
+        referenceTableView.getSelectionModel().selectedItemProperty().addListener(e -> onWorkReferenceTableSelection());
+        workExperienceTable.getSelectionModel().selectedItemProperty().addListener(e -> onWorkTableSelection());
+        educationTable.getSelectionModel().selectedItemProperty().addListener(e -> onEducationTableSelection());
 
     }
 
-    private void onSelection() {
+    private void onSubstituteTableSelection() {
         Substitute s = substituteTable.getSelectionModel().getSelectedItem();
         if (s != null) {
             populateTablesOnSelection(s);
         }
 
+    }
+
+    private void onWorkReferenceTableSelection() {
+        WorkReference w = referenceTableView.getSelectionModel().getSelectedItem();
+    }
+
+    private void onWorkTableSelection() {
+        Work w = workExperienceTable.getSelectionModel().getSelectedItem();
+    }
+
+    private void onEducationTableSelection() {
+        Education e = educationTable.getSelectionModel().getSelectedItem();
     }
 
     private void populateTablesOnSelection(Substitute sub) {

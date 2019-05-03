@@ -22,48 +22,47 @@ import model.filemanager.savetofile.CSVWriter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SubstitutePositionsController implements Initializable {
 
-    @FXML
-    private TableView<SubstitutePosition> substitutePositionTableView;
+    @FXML private TableView<SubstitutePosition> substitutePositionTableView;
 
-    @FXML
-    private TableColumn<SubstitutePosition, String> nameCol;
+    @FXML private TableColumn<SubstitutePosition, String> nameCol;
 
-    @FXML
-    private TableColumn<SubstitutePosition, String> posCol;
+    @FXML private TableColumn<SubstitutePosition, String> posCol;
 
-    @FXML
-    private TableColumn<SubstitutePosition, Industry> industryCol;
+    @FXML private TableColumn<SubstitutePosition, Industry> industryCol;
 
-    @FXML
-    private TableColumn<SubstitutePosition, Sector> sectorCol;
+    @FXML private TableColumn<SubstitutePosition, Sector> sectorCol;
 
-    @FXML
-    private TableColumn<SubstitutePosition, String> fromCol;
+    @FXML private TableColumn<SubstitutePosition, String> fromCol;
 
-    @FXML
-    private TableColumn<SubstitutePosition, String> toCol;
+    @FXML private TableColumn<SubstitutePosition, String> toCol;
 
-    @FXML
-    private MenuItem showDetailsMenu;
+    @FXML private TableColumn<SubstitutePosition, String> locationCol;
 
-    @FXML
-    private Label companyNameLabel;
+    @FXML private TextArea description;
 
-    @FXML
-    private Label positionLabel;
+    @FXML private TextArea employmentConditions;
 
-    @FXML
-    private Label sectorLabel;
+    @FXML private TextArea salaryConditions;
 
-    @FXML
-    private Label fromLabel;
+    @FXML private ListView<String> qualifications;
 
-    @FXML
-    private Label toLabel;
+    @FXML private TextField workHours;
+
+    @FXML private TextField contactFullName;
+
+    @FXML private TextField contactPhone;
+
+    @FXML private TextField contactEmail;
+
+    @FXML private Button saveChanges;
+
+    SubstitutePosition substitutePosition;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,16 +70,35 @@ public class SubstitutePositionsController implements Initializable {
         populateTableView();
 
         substitutePositionTableView.getSelectionModel().selectedItemProperty().addListener(e -> onSelectDisplayInformation());
+        saveChanges.setOnAction(e -> onSaveChanges());
+
 
     }
 
+    private void onSaveChanges() {
+        String descript = substitutePosition.getDescription();
+        substitutePosition.setDescription(description.getText());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getDescription(), substitutePosition.getDescription());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getEmploymentConditions(), employmentConditions.getText());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getSalaryConditions(), salaryConditions.getText());
+        String qual = substitutePosition.getQualificationsNeeded();
+        substitutePosition.setQualifications(qualifications.getItems());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), qual, substitutePosition.getQualificationsNeeded());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getWorkHours(), workHours.getText());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getContactName(), contactFullName.getText());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getContactPhone(), contactPhone.getText());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getContactEMail(), contactEmail.getText());
+    }
     private void onSelectDisplayInformation() {
-        SubstitutePosition substitutePosition = substitutePositionTableView.getSelectionModel().getSelectedItem();
-        companyNameLabel.setText(substitutePosition.getCompanyName());
-        positionLabel.setText(substitutePosition.getPosition().toString());
-        sectorLabel.setText(substitutePosition.getSector().toString());
-        fromLabel.setText(substitutePosition.getFrom());
-        toLabel.setText(substitutePosition.getDescription());
+        substitutePosition = substitutePositionTableView.getSelectionModel().getSelectedItem();
+        description.setText(substitutePosition.getDescription());
+        employmentConditions.setText(substitutePosition.getEmploymentConditions());
+        salaryConditions.setText(substitutePosition.getSalaryConditions());
+        qualifications.getItems().setAll(substitutePosition.getQualifications());
+        workHours.setText(substitutePosition.getWorkHours());
+        contactFullName.setText(substitutePosition.getContactName());
+        contactPhone.setText(substitutePosition.getContactPhone());
+        contactEmail.setText(substitutePosition.getContactEMail());
     }
 
     private void initTable() {
@@ -115,6 +133,14 @@ public class SubstitutePositionsController implements Initializable {
             t.getRowValue().setSector(t.getNewValue());
             CSVWriter.editLine("data/position/position", t.getRowValue().getID(), old.toString(), t.getNewValue().toString());
         });
+        locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+        locationCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        locationCol.setOnEditCommit(t -> {
+            String oldValue = t.getOldValue();
+            t.getRowValue().setLocation(t.getNewValue());
+            CSVWriter.editLine("data/position/position", t.getRowValue().getID(), oldValue, t.getNewValue());
+        });
+
         fromCol.setCellValueFactory(new PropertyValueFactory<>("from"));
         fromCol.setCellFactory(TextFieldTableCell.forTableColumn());
         fromCol.setOnEditCommit(t -> {
@@ -135,9 +161,9 @@ public class SubstitutePositionsController implements Initializable {
         ObservableList<SubstitutePosition> subs = null;
         try {
             subs = FXCollections.observableArrayList(CSVReader.parseToSubstitutePosition("data/position/position"));
+            substitutePositionTableView.setItems(subs);
         } catch (IOException e) {
             System.out.println("SUBSTITUTERROREREF");
         }
-        substitutePositionTableView.setItems(subs);
     }
 }
