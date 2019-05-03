@@ -6,7 +6,7 @@ import model.data.substitute.references.WorkReference;
 import model.filemanager.readfromfile.CSVReader;
 import model.filemanager.savetofile.CSVWriter;
 
-import utils.ClearInput;
+import model.utils.ClearInput;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,10 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import utils.ClearInput;
-import model.data.substitute.references.WorkReference;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,8 +82,16 @@ public class RegisterWorkReferenceController implements Initializable {
     }
 
     void onAddReference() {
-        references.add(new WorkReference(referenceName.getText(), referencePhone.getText(), referenceEmail.getText(), referenceEmployer.getText()));
-        referenceTableView.setItems(references);
+
+        WorkReference ref = new WorkReference();
+
+        ref.setEmployerName(referenceName.getText());
+        ref.setPhoneNumber(referencePhone.getText());
+        ref.setEMail(referenceEmail.getText());
+        ref.setFullName(referenceEmployer.getText());
+
+        references.add(ref);
+
         ClearInput.clearInputFields(referenceName, referenceEmail, referenceEmployer, referencePhone);
     }
 

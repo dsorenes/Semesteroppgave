@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../dark-theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.assignposition.AssignPositionController">
+<AnchorPane maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.assignposition.AssignPositionController">
    <children>
       <Button fx:id="assign" layoutX="643.0" layoutY="480.0" mnemonicParsing="false" text="Assign" onAction="#AssignSubstitute" />
       <TableView fx:id="substitutePositionTableView" layoutX="60.0" layoutY="75.0" prefHeight="200.0" prefWidth="525.0">

@@ -13,8 +13,9 @@ import javafx.scene.layout.AnchorPane;
 
 import model.data.substitute.Substitute;
 import model.filemanager.readfromfile.CSVReader;
-import utils.ClearInput;
-import utils.Year;
+import model.utils.ClearInput;
+import model.utils.InputValidation;
+import model.utils.Year;
 
 import model.data.substitute.education.Education;
 import model.data.substitute.education.EducationLevel;

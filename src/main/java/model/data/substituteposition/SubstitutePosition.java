@@ -39,7 +39,7 @@ public class SubstitutePosition {
     private String qualificationsNeeded;
 
 
-    public SubstitutePosition() {};
+    public SubstitutePosition() {}
 
     public SubstitutePosition (Employer employer, Industry position, Sector sector, Month fromMonth, int fromYear, Month toMonth, int toYear) {
         this.employer =employer;
@@ -64,27 +64,6 @@ public class SubstitutePosition {
         this.employer.setCompanyName(companyName);
     }
 
-    @Override
-    public String toString() {
-        return  substitutePositionID + ";" +
-                this.getEmployerID() + ";" +
-                this.employer.getCompanyName()+ ";" +
-                positionTitle + ";" +
-                location + ";" +
-                description + ";" +
-                position + ";" +
-                sector + ";" +
-                from + ';' +
-                to + ";" +
-                contactName + ";" +
-                contactPhone + ";" +
-                contactEMail + ";" +
-                qualificationsNeeded + ";" +
-                workHours + ";" +
-                salaryConditions + ";" +
-                employmentConditions;
-
-    }
 
     public int getID() { return this.substitutePositionID; }
     public void setID(int ID) { this.substitutePositionID = ID; }
@@ -231,6 +210,28 @@ public class SubstitutePosition {
 
     public boolean isAvailable() {
         return isAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return  substitutePositionID + ";" +
+                this.getEmployerID() + ";" +
+                this.employer.getCompanyName()+ ";" +
+                positionTitle + ";" +
+                location + ";" +
+                description + ";" +
+                position + ";" +
+                sector + ";" +
+                from + ';' +
+                to + ";" +
+                contactName + ";" +
+                contactPhone + ";" +
+                contactEMail + ";" +
+                qualificationsNeeded + ";" +
+                workHours + ";" +
+                salaryConditions + ";" +
+                employmentConditions;
+
     }
 
 }

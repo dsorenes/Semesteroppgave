@@ -11,7 +11,11 @@ import model.data.substitute.education.EducationLevel;
 import model.data.substitute.education.Subject;
 import model.data.substitute.references.WorkReference;
 import model.data.substitute.work.Work;
+<<<<<<< HEAD
 import utils.ErrorPopup;
+=======
+import model.utils.ErrorPopup;
+>>>>>>> d860e8586fd11ce2aabda59b6fcd4c470b936f25
 
 import java.io.IOException;
 import java.nio.charset.Charset;

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../../dark-theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substitute.RegisterWorkReferenceController">
+<AnchorPane fx:id="rootPane" maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../../StyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substitute.RegisterWorkReferenceController">
     <TextField fx:id="referenceName" layoutX="504.0" layoutY="204.0" prefHeight="37.0" prefWidth="133.0" promptText="Name" />
     <TextField fx:id="referencePhone" layoutX="240.0" layoutY="204.0" prefHeight="37.0" prefWidth="127.0" promptText="Phone number" />
     <TableView fx:id="referenceTableView" layoutX="107.0" layoutY="311.0" prefHeight="136.0" prefWidth="547.0">

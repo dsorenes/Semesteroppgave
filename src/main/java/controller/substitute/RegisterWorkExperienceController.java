@@ -14,8 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.data.substitute.Substitute;
 import model.filemanager.readfromfile.CSVReader;
-import utils.ClearInput;
-import utils.DateTableFormat;
+import model.utils.ClearInput;
+import model.utils.DateTableFormat;
 import model.data.substitute.work.Work;
 
 import java.io.IOException;

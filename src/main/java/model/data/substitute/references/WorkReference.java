@@ -15,6 +15,7 @@ public class WorkReference {
     private String eMail;
     private String employerName;
 
+    public WorkReference() {}
 
     public WorkReference(String fullName, String phoneNumber, String eMail, String employerName) {
         this.fullName = fullName;

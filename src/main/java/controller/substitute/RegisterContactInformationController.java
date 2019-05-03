@@ -13,12 +13,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import model.data.substitute.Substitute;
-import utils.ClearInput;
+import model.exceptions.InvalidAddressException;
+import model.exceptions.InvalidEmailException;
+import model.exceptions.InvalidNameException;
+import model.exceptions.InvalidNumberException;
+import model.utils.ClearInput;
+import model.utils.ErrorPopup;
+import model.utils.InputValidation;
 
 import java.io.IOException;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -57,6 +62,7 @@ public class RegisterContactInformationController implements Initializable {
     protected ObservableList<Industry> wantedField = FXCollections.observableArrayList();
 
     public Substitute substitute = new Substitute();
+    public Substitute getSubstitute() { return this.substitute; }
 
 
     @Override
@@ -83,13 +89,23 @@ public class RegisterContactInformationController implements Initializable {
     private void NextPage(ActionEvent event) {
 
         try {
-
+            InputValidation.checkName(firstName.getText());
             substitute.setFirstName(firstName.getText());
+
+            InputValidation.checkName(lastName.getText());
             substitute.setLastName(lastName.getText());
+
             substitute.setDateOfBirth(dateOfBirth.getValue());
+
+            InputValidation.checkAddress(address.getText());
             substitute.setAddress(address.getText());
+
+            InputValidation.checkNumber(phoneNumber.getText());
             substitute.setPhoneNumber(phoneNumber.getText());
+
+            InputValidation.checkEmail(eMail.getText());
             substitute.setEMail(eMail.getText());
+
             substitute.setWantedWorkFields(wantedField);
 
             System.out.println(substitute);
@@ -104,14 +120,26 @@ public class RegisterContactInformationController implements Initializable {
 
 
         } catch (IOException e) { e.printStackTrace();
-
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        } catch (InvalidNameException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid name", "Invalid name");
+        } catch (InvalidNumberException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid number", "Invalid number");
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid Email", "Invalid Email");
+        } catch (InvalidAddressException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            ErrorPopup.createAlert(Alert.AlertType.ERROR,"Invalid Address", "Invalid Address");
         }
 
     }
-
-    public Substitute getSubstitute() {
-        return this.substitute;
-    }
-
 
 }

@@ -1,4 +1,4 @@
-package utils;
+package model.utils;
 
 import model.exceptions.*;
 
@@ -85,15 +85,19 @@ public class InputValidation {
             throw new InvalidAddressException("A address can not be longer that 20 characters");
 
         }
-/*
-        if (!address.matches("^\\d+\\s[ÆØÅæøåA-z]+\\s[A-z]+")) {
 
-            throw new InvalidAddressException("Invalid adress");
-
-        }
-*/
         return true;
 
     }
 
+    public static boolean checkSelection(String selected) throws InvalidSelectedException {
+
+        if (selected == null) {
+            throw new InvalidSelectedException("Null value from field");
+        }
+
+
+
+        return true;
+    }
 }

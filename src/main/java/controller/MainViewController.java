@@ -4,12 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,7 +44,7 @@ public class MainViewController implements Initializable {
     @FXML
     private void AvailableSubstitutes(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/SubstituteTableView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/tableview/SubstituteTableView.fxml"));
             ChangeableView.setCenter(loader.load());
         } catch (IOException e) { e.printStackTrace(); }
     }
