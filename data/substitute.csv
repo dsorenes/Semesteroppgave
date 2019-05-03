@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-1;Daniel;Sørenes;2019-05-28;rthrth;rthrt;hrth;Construction:Construction:
-=======
 substituteID;First name;Last name;Date of birth;Address;Phone number;E-mail
 ;;;;;;
 ;;;;;;
@@ -13,4 +10,8 @@ substituteID;First name;Last name;Date of birth;Address;Phone number;E-mail
 9;Gjerterud;Ingebritsen;1977-05-12;fghjfghjfg;tyjtyrj;rtyjrtyjrtyj
 10;yulhjkl;hjklhjkl;2019-05-18;uiliul;uiluil;uyiluil
 11;test;test;2019-05-15;asdasd 1;45454545;asd@asd.no
->>>>>>> master
+0;rtyj;rtyjrtyj;2019-05-10;rtyj;rtyj;rtyj
+13;Daniel;SÃ¸renes;2019-05-29;tyuk;tyukytuk;tyuk
+14;erth;ertherth;2019-05-09;erth;ertherth;erth
+15;tyuktyuk;tyuktyuk;2019-05-16;tyuk;tyuk;tyuk
+16;rtyj;tryjrtyjrtjy;2019-05-09;rtyj;rtyjrtyj;rtyj
