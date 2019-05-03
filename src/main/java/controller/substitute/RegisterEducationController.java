@@ -2,16 +2,25 @@ package controller.substitute;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+
+import model.data.substitute.Substitute;
+import model.filemanager.readfromfile.CSVReader;
 import utils.ClearInput;
 import utils.Year;
+
 import model.data.substitute.education.Education;
 import model.data.substitute.education.EducationLevel;
 import model.data.substitute.education.Subject;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Month;
 import java.util.*;
@@ -74,6 +83,12 @@ public class RegisterEducationController implements Initializable {
 
     public ObservableList<Education> educations = FXCollections.observableArrayList();
 
+    public void setSubstitute(Substitute substitute) {
+        this.substitute = substitute;
+    }
+
+    public Substitute substitute;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeIsCurrentlyStudyingCheckbox();
@@ -123,8 +138,19 @@ public class RegisterEducationController implements Initializable {
     }
 
     void onAddEducation() {
-        Education education = new Education(schoolName.getText(), subjectDropdown.getValue(), educationLevelDropdown.getValue(), degree.getText(),
-                                            fromMonth.getValue(), fromYear.getValue(), toMonth.getValue(), toYear.getValue(), currentlyStudyingCheck.isSelected());
+
+        Education education = new Education();
+
+        education.setSchoolName(schoolName.getText());
+        education.setSubject(subjectDropdown.getValue());
+        education.setEducationLevel(educationLevelDropdown.getValue());
+        education.setDegree(degree.getText());
+        education.setFromMonth(fromMonth.getValue());
+        education.setFromYear(fromYear.getValue());
+        education.setToMonth(toMonth.getValue());
+        education.setToYear(toYear.getValue());
+        education.setIsCurrentlyStudying(currentlyStudyingCheck.isSelected());
+
         educations.add(education);
 
         educationTable.setItems(educations);
@@ -133,5 +159,23 @@ public class RegisterEducationController implements Initializable {
         ClearInput.clearDropdowns(subjectDropdown, educationLevelDropdown, fromMonth, fromYear, toMonth, toYear);
 
     }
+
+    @FXML
+    private AnchorPane rootPane;
+
+    @FXML
+    private void NextPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substitute/work/RegisterWorkExperienceView.fxml"));
+            Parent root = loader.load();
+            rootPane.getChildren().setAll(root);
+
+            RegisterWorkExperienceController controller = loader.getController();
+            int educationID = CSVReader.createIdCSV("data/education");
+            this.substitute.setEducation(educations, educationID);
+            controller.setSubstitute(this.substitute);
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+
 
 }

@@ -1,1 +1,13 @@
-
+educationID;substituteID;School name;Level of education;Subject;Degree;Study from;to;Studying now
+1;7;fghjfghjtry;Folk high school;Health and social studies;jtyjtyj;MAY, 2022;APRIL, 2023;false
+2;7;tyj;Vocational School;Engineer, technology and data;tyjtyj;MAY, 2022;APRIL, 2023;false
+3;8;fghjfghj;Vocational School;Health and social studies;fghjfghjfg;MAY, 2022;MAY, 2022;false
+4;8;fghjfghj;University;Engineer, technology and data;fghj;MAY, 2002;JUNE, 2021;false
+5;9;rthrth;University;Journalism, Communication and Media Studies;rthrth;MARCH, 2022;MAY, 2022;false
+6;10;uiluilui;Vocational School;Engineer, technology and data;luiluil;MAY, 2022;APRIL, 2022;false
+7;11;asdasd;Folk high school;Health and social studies;asdasd;MAY, 2023;FEBRUARY, 2023;false
+0;0;rtyjrtyj;Folk high school;Health and social studies;rtyjrtyj;null;null;false
+9;0;tyuktyuk;Folk high school;Engineer, technology and data;tyuktyuktyuk;null;null;false
+14;0;rth;Vocational School;Health and social studies;rthrth;null;null;false
+11;15;ghjkghjk;Vocational School;Engineer, technology and data;ghjkghjk;null;null;false
+12;16;tryjrtyj;Vocational School;Engineer, technology and data;rtyjrtyj;null;null;false

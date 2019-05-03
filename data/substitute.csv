@@ -1,14 +1,17 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+substituteID;First name;Last name;Date of birth;Address;Phone number;E-mail
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+7;asdf;dfgerg;2019-05-16;jtryjtyrj;ergerg;rtyjtry
+8;Jan;tEIGEN;2019-05-16;rthrth;rthrt;hrth
+9;Gjerterud;Ingebritsen;1977-05-12;fghjfghjfg;tyjtyrj;rtyjrtyjrtyj
+10;yulhjkl;hjklhjkl;2019-05-18;uiliul;uiluil;uyiluil
+11;test;test;2019-05-15;asdasd 1;45454545;asd@asd.no
+0;rtyj;rtyjrtyj;2019-05-10;rtyj;rtyj;rtyj
+13;Daniel;Sørenes;2019-05-29;tyuk;tyukytuk;tyuk
+14;erth;ertherth;2019-05-09;erth;ertherth;erth
+15;tyuktyuk;tyuktyuk;2019-05-16;tyuk;tyuk;tyuk
+16;rtyj;tryjrtyjrtjy;2019-05-09;rtyj;rtyjrtyj;rtyj

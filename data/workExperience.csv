@@ -1,21 +1,23 @@
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
+workID;substituteID;Company name;Position;Sector;Industry;Employed from;to
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+;;;;;;;
+11;7;tryjtryj;tyjtyj;PRIVATE;Store and retail;2019-05-06;2019-05-09
+12;7;tyjty;jtyjtyj;PUBLIC;Oil and gas;2017-01-05;2023-07-12
+13;8;fghjfghjfghjf;mnfghnfghn;PUBLIC;Construction;2019-05-01;2019-04-29
+14;8;ghjnbmvbn;vbnvbn;PRIVATE;Construction;2019-05-05;2019-05-10
+15;9;STATOIL;yukytukghjkghjk;PRIVATE;Oil and gas;2009-05-14;2019-05-02
+16;10;uil;uiluiluil;PRIVATE;Children, school and education;2019-04-30;2019-05-10
+17;11;asdasd;asdasda;PRIVATE;Store and retail;2019-05-01;2019-05-04
+0;0;rtyj;rtyjrtyj;PRIVATE;Construction;2019-05-15;2019-05-08
+19;0;tyuk;tyuktyuk;PRIVATE;Store and retail;2019-05-22;2019-05-01
+14;0;rth;rthrth;PRIVATE;Construction;2019-05-15;2019-05-01
+21;15;ytuk;ytukytuk;null;Store and retail;2019-05-15;2019-05-08
+22;16;rtyj;rtyjrtyj;PRIVATE;Construction;2019-05-07;2019-05-08
