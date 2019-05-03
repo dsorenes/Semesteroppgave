@@ -58,7 +58,7 @@ public class CSVReader implements FileReader {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
 
-                if (data.length > 0 && (data[0].compareTo("employerID")!= 0)  ) {
+                if (data.length > 0) {
                     int employerID = Integer.parseInt(data[0]);
                     String companyName = data[1];
                     String cAddress = data[2];
@@ -94,7 +94,7 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0 && data[0].compareTo("referenceID") != 0) {
+                if (data.length > 0) {
                     int referenceID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String companyName = data[2];
@@ -123,7 +123,7 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0 && data[0].compareTo("educationID") != 0) {
+                if (data.length > 0) {
                     int educationID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String schoolname = data[2];
@@ -160,7 +160,7 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0 && data[0].compareTo("workID") != 0) {
+                if (data.length > 0) {
                     int workID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String companyName = data[2];
@@ -198,7 +198,7 @@ public class CSVReader implements FileReader {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
                 Employer emp;
-                if (data.length > 0 && data[0].compareTo("positionID") != 0) {
+                if (data.length > 0) {
                     int ID = Integer.parseInt(data[0]);
                     int employerID = Integer.parseInt(data[1]);
                     for (Employer e : employers) {
@@ -259,7 +259,7 @@ public class CSVReader implements FileReader {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
 
-                if (data.length > 0 && (data[0].compareTo("substituteID") != 0)) {
+                if (data.length > 0) {
                     int subID = Integer.parseInt(data[0]);
                     String first = data[1];
                     String last = data[2];
