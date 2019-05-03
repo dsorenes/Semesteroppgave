@@ -1,8 +1,10 @@
 package model.filemanager.savetofile;
 
+import model.data.substitute.Substitute;
 import model.filemanager.readfromfile.CSVReader;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
@@ -38,7 +40,7 @@ public class CSVWriter implements FileWriter {
     }
 
     public static boolean editLine(String fileName, int id, String old, String replacement) {
-        String lineFromFile = CSVReader.findLine(fileName, id);
+        String lineFromFile = CSVReader.findLine(fileName, id, 0);
         Path path = Paths.get(fileName.concat(".csv"));
         if (lineFromFile == null || !lineFromFile.contains(old)) return false;
 
@@ -64,6 +66,28 @@ public class CSVWriter implements FileWriter {
         return true;
     }
 
+    public static boolean deleteLine(String fileName, int id, int column) throws IOException {
+        Path path = Paths.get(fileName.concat(".csv"));
+        String line;
+        if (column != 0 && column != 1) return false;
 
+         line = CSVReader.findLine(fileName, id, column);
+         if (line == null) return false;
 
+         CSVReader read = new CSVReader();
+         ArrayList<String> oldFile = read.ReadFromFile(fileName);
+
+         try (var writer = Files.newBufferedWriter(path, encoding, StandardOpenOption.TRUNCATE_EXISTING)) {
+            for (String i : oldFile) {
+                if (!i.equals(line)) {
+                    writer.write(i);
+                    writer.newLine();
+                }
+            }
+
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+        return true;
+    }
 }

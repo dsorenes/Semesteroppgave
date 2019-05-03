@@ -16,25 +16,11 @@ public class WorkReference {
     private String employerName;
 
 
-    public WorkReference() {}
-
     public WorkReference(String fullName, String phoneNumber, String eMail, String employerName) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.eMail = eMail;
         this.employerName = employerName;
-    }
-
-    public static ArrayList<WorkReference> WorkReferenceFromCSV(ArrayList<String> attributes) {
-        ArrayList<WorkReference> references = new ArrayList<>();
-        for (String s : attributes) {
-            String[] data = s.split(";");
-            if (data.length > 0) {
-                references.add(new WorkReference(data[0], data[1], data[2], data[3]));
-            }
-
-        }
-        return references;
     }
 
     public void assignSubstitute(Substitute sub) {

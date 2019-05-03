@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CSVReader implements FileReader {
@@ -85,7 +86,7 @@ public class CSVReader implements FileReader {
         return employers;
     }
 
-    protected static ArrayList<WorkReference> parseToWorkReference(String filename) throws IOException {
+    public static ArrayList<WorkReference> parseToWorkReference(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<WorkReference> work = new ArrayList<>();
@@ -232,7 +233,7 @@ public class CSVReader implements FileReader {
                             sub.setContactName(contactName);
                             sub.setContactPhone(contactPhone);
                             sub.setContactEMail(contactEmail);
-                            sub.setQualificationsNeeded(qualifications);
+                            sub.setQualifications(Arrays.asList(qualifications.split(", ")));
                             sub.setWorkHours(workHours);
                             sub.setSalaryConditions(salaryConditions);
                             sub.setEmploymentConditions(employmentConditions);
@@ -268,6 +269,7 @@ public class CSVReader implements FileReader {
                     String phone = data[5];
                     String eMail = data[6];
                     String wantedWorkFields = data[7];
+                    boolean isEmployed = Boolean.parseBoolean(data[8]);
                     Substitute substitute = new Substitute(first, last, born, address, phone, eMail);
                     substitute.setID(subID);
 
@@ -296,6 +298,7 @@ public class CSVReader implements FileReader {
                     substitute.setReferences(ref);
                     substitute.setEducation(education);
                     substitute.setWantedWorkFields(wantedWorkFields);
+                    substitute.setIsEmployed(isEmployed);
                     substitutes.add(substitute);
                 }
             }
@@ -309,7 +312,7 @@ public class CSVReader implements FileReader {
         return substitutes;
     }
 
-     public static String findLine(String filename, int id) {
+     public static String findLine(String filename, int id, int column) {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         String ID = Integer.toString(id);
@@ -318,8 +321,8 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0) {
-                    String fileID = data[0];
+                if (data.length > 0 && data.length > column) {
+                    String fileID = data[column];
                     if (fileID.compareTo(ID) == 0) {
                         found = line;
                     }

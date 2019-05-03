@@ -107,7 +107,7 @@ public class RegisterSubstitutePositionController implements Initializable {
     }
 
     private void onCreatePosition() {
-        int positionID = 0;
+        int positionID = 1;
         try {
             positionID = CSVReader.createIdCSV("data/position/position");
         } catch (IOException e) {

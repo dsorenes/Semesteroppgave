@@ -21,7 +21,7 @@ public class Substitute {
     private List<Education> education;
     private String salaryDemand;
     private String wantedWorkFields;
-    private boolean isEmployed;
+    private boolean isEmployed = false;
     private List<WorkReference> references;
 
     public Substitute() {}
@@ -52,7 +52,7 @@ public class Substitute {
     }
     public void setLastName(String lastName) { this.lastName = lastName;
     }
-    public String geteMail() {
+    public String getEMail() {
         return eMail;
     }
     public void setEMail(String eMail) { this.eMail = eMail; }
@@ -73,7 +73,7 @@ public class Substitute {
     public String getSalaryDemand() { return salaryDemand; }
     public void setSalaryDemand(String salaryDemand) { this.salaryDemand = salaryDemand; }
 
-    public boolean isEmployed() { return isEmployed; }
+    public boolean getIsEmployed() { return isEmployed; }
     public void setIsEmployed(Boolean isEmployed) { this.isEmployed = isEmployed; }
 
     public String getWantedWorkFields() {
@@ -133,7 +133,8 @@ public class Substitute {
                address + ';' +
                phoneNumber + ';' +
                eMail + ";" +
-                wantedWorkFields;
+                wantedWorkFields + ";" +
+                isEmployed;
 
     }
 
