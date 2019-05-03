@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import model.filemanager.readfromfile.CSVReader;
 import model.filemanager.savetofile.CSVWriter;
 import model.data.substitute.Substitute;
-import model.utils.ClearInput;
+import utils.ClearInput;
 
 import java.io.IOException;
 import java.net.URL;

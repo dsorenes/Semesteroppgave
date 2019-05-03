@@ -10,7 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.filemanager.readfromfile.CSVReader;
 import model.filemanager.savetofile.CSVWriter;
-import model.utils.ClearInput;
+import utils.ClearInput;
 
 import java.io.IOException;
 import java.net.URL;
