@@ -66,7 +66,7 @@ public class CSVWriter implements FileWriter {
         return true;
     }
 
-    public static boolean deleteLine(String fileName, int id, int column) throws IOException {
+    public static boolean deleteLine(String fileName, int id, int column) {
         Path path = Paths.get(fileName.concat(".csv"));
         String line;
         if (column != 0 && column != 1) return false;
