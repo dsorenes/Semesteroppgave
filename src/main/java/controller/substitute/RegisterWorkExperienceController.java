@@ -79,8 +79,6 @@ public class RegisterWorkExperienceController implements Initializable {
         sectorCol.setCellValueFactory(new PropertyValueFactory<>("sector"));
         fromCol.setCellValueFactory(new PropertyValueFactory<>("employedFrom"));
         toCol.setCellValueFactory(new PropertyValueFactory<>("employedTo"));
-
-
     }
 
     @FXML

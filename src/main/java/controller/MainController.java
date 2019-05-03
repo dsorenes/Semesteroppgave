@@ -98,7 +98,7 @@ public class MainController {
     }
 
     private void loadAvailableSubstitutes() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/tableview/SubstituteTableView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/register/substitute/SubstituteTableView.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Available substitutes");
         stage.setScene(new Scene(root));

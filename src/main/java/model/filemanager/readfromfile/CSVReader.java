@@ -85,7 +85,7 @@ public class CSVReader implements FileReader {
         return employers;
     }
 
-    protected static ArrayList<WorkReference> parseToWorkReference(String filename) throws IOException {
+    public static ArrayList<WorkReference> parseToWorkReference(String filename) throws IOException {
         Path path = Paths.get(filename.concat(".csv"));
         String line;
         ArrayList<WorkReference> work = new ArrayList<>();
@@ -94,7 +94,7 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0 && data[0].compareTo("referenceID") != 0) {
+                if (data.length > 0) {
                     int referenceID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String companyName = data[2];
@@ -123,7 +123,7 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0 && data[0].compareTo("educationID") != 0) {
+                if (data.length > 0) {
                     int educationID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String schoolname = data[2];
@@ -160,7 +160,7 @@ public class CSVReader implements FileReader {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length > 0 && data[0].compareTo("workID") != 0) {
+                if (data.length > 0) {
                     int workID = Integer.parseInt(data[0]);
                     int substituteID = Integer.parseInt(data[1]);
                     String companyName = data[2];
@@ -198,7 +198,7 @@ public class CSVReader implements FileReader {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
                 Employer emp;
-                if (data.length > 0 && data[0].compareTo("positionID") != 0) {
+                if (data.length > 0) {
                     int ID = Integer.parseInt(data[0]);
                     int employerID = Integer.parseInt(data[1]);
                     for (Employer e : employers) {
@@ -259,7 +259,7 @@ public class CSVReader implements FileReader {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(";");
 
-                if (data.length > 0 && (data[0].compareTo("substituteID") != 0)) {
+                if (data.length > 0) {
                     int subID = Integer.parseInt(data[0]);
                     String first = data[1];
                     String last = data[2];
@@ -268,6 +268,7 @@ public class CSVReader implements FileReader {
                     String phone = data[5];
                     String eMail = data[6];
                     String wantedWorkFields = data[7];
+                    boolean isEmployed = Boolean.parseBoolean(data[8]);
                     Substitute substitute = new Substitute(first, last, born, address, phone, eMail);
                     substitute.setID(subID);
 
@@ -296,6 +297,7 @@ public class CSVReader implements FileReader {
                     substitute.setReferences(ref);
                     substitute.setEducation(education);
                     substitute.setWantedWorkFields(wantedWorkFields);
+                    substitute.setIsEmployed(isEmployed);
                     substitutes.add(substitute);
                 }
             }
