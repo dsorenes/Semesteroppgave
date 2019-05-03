@@ -11,9 +11,8 @@ import model.data.substitute.education.EducationLevel;
 import model.data.substitute.education.Subject;
 import model.data.substitute.references.WorkReference;
 import model.data.substitute.work.Work;
-import utils.errorpopup.ErrorPopup;
+import utils.ErrorPopup;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -327,26 +326,24 @@ public class CSVReader implements FileReader {
     }
 
      public static String findLine(String filename, int id, int column) {
-        Path path = Paths.get(filename.concat(".csv"));
-        String line;
-        String ID = Integer.toString(id);
-        String found = null;
-        try (var reader = Files.newBufferedReader(path, encoding)) {
-
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(";");
-                if (data.length > 0 && data.length > column) {
-                    String fileID = data[column];
-                    if (fileID.compareTo(ID) == 0) {
-                        found = line;
-                    }
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return found;
-    }
-
+         Path path = Paths.get(filename.concat(".csv"));
+         String line;
+         String ID = Integer.toString(id);
+         String found = null;
+         try (var reader = Files.newBufferedReader(path, encoding)) {
+             while ((line = reader.readLine()) != null) {
+                 String[] data = line.split(";");
+                 if (data.length > 0 && data.length > column) {
+                     String fileID = data[column];
+                     if (fileID.compareTo(ID) == 0) {
+                         found = line;
+                         return found;
+                     }
+                 }
+             }
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+         return found;
+     }
 }

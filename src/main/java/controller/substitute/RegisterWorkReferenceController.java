@@ -90,7 +90,6 @@ public class RegisterWorkReferenceController implements Initializable {
         ClearInput.clearInputFields(referenceName, referenceEmail, referenceEmployer, referencePhone);
     }
 
-
     @FXML
     private void onRegister() {
         int subID = 1;

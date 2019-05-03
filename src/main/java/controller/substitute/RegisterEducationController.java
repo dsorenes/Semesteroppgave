@@ -149,8 +149,6 @@ public class RegisterEducationController implements Initializable {
         education.setTo(fromMonth.getValue() + ", " + toYear.getValue());
         education.setIsCurrentlyStudying(currentlyStudyingCheck.isSelected());
 
-        System.out.println(education);
-
         educations.add(education);
         educationTable.setItems(educations);
 
@@ -170,7 +168,8 @@ public class RegisterEducationController implements Initializable {
             rootPane.getChildren().setAll(root);
 
             RegisterWorkExperienceController controller = loader.getController();
-            int educationID = CSVReader.createIdCSV("data/education");
+            int educationID = 1;
+            educationID = CSVReader.createIdCSV("data/education");
             this.substitute.setEducation(educations, educationID);
             controller.setSubstitute(this.substitute);
         } catch (IOException e) { e.printStackTrace(); }

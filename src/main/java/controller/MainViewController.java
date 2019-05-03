@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
@@ -10,9 +11,11 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class MainViewController {
+public class MainViewController implements Initializable {
 
 
     @FXML
@@ -53,7 +56,7 @@ public class MainViewController {
     @FXML
     private void AvailableSubstitutePositions(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substituteposition/RegisterSubstitutePositionView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register/substituteposition/SubstitutePositionsView.fxml"));
             ChangeableView.setCenter(loader.load());
         } catch (IOException e) { e.printStackTrace(); }
     }
@@ -86,4 +89,8 @@ public class MainViewController {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
