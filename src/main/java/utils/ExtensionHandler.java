@@ -1,4 +1,4 @@
-package model.filemanager;
+package utils;
 
 import model.exceptions.InvalidFileTypeException;
 

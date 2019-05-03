@@ -7,32 +7,38 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="486.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substituteposition.RegisterSubstitutePositionController">
+<AnchorPane maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../dark-theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substituteposition.RegisterSubstitutePositionController">
    <children>
-      <ComboBox fx:id="sectorDropdown" layoutX="227.0" layoutY="70.0" prefWidth="150.0" promptText="Sector" />
-      <TextField fx:id="posLocation" layoutX="397.0" layoutY="24.0" promptText="Arbeidssted" />
-      <TextField fx:id="posHours" layoutX="569.0" layoutY="24.0" promptText="Arbeidstid" />
-      <ComboBox fx:id="industryDropdown" layoutX="227.0" layoutY="24.0" prefWidth="150.0" promptText="Jobbkategori" />
-      <ComboBox fx:id="fromMonth" layoutX="227.0" layoutY="121.0" prefHeight="25.0" prefWidth="67.0" />
-      <ComboBox fx:id="fromYear" layoutX="308.0" layoutY="121.0" prefHeight="25.0" prefWidth="67.0" />
-      <ComboBox fx:id="toMonth" layoutX="228.0" layoutY="165.0" prefHeight="25.0" prefWidth="67.0" />
-      <ComboBox fx:id="toYear" layoutX="310.0" layoutY="165.0" prefHeight="25.0" prefWidth="67.0" />
-      <ListView fx:id="qualificationList" layoutX="460.0" layoutY="235.0" prefHeight="200.0" prefWidth="267.0" />
-      <TextField fx:id="posQualityField" layoutX="460.0" layoutY="208.0" prefHeight="25.0" prefWidth="200.0" promptText="Krav til kvalifikasjoner" />
-      <TextArea fx:id="posDescription" layoutX="12.0" layoutY="264.0" prefHeight="169.0" prefWidth="420.0" promptText="Stillingsbeskrivelse" wrapText="true" />
-      <Label layoutX="227.0" layoutY="106.0" text="Varighet fra" />
-      <Label layoutX="230.0" layoutY="150.0" text="til" />
-      <ListView fx:id="employerList" layoutX="14.0" layoutY="26.0" prefHeight="169.0" prefWidth="200.0" />
-      <Label layoutX="12.0" layoutY="9.0" text="Arbeidsgiver" />
-      <Button fx:id="addQualification" layoutX="670.0" layoutY="207.0" mnemonicParsing="false" text="Legg til" />
-      <TextField fx:id="contactName" layoutX="12.0" layoutY="444.0" promptText="Navn" />
-      <TextField fx:id="contactPhone" layoutX="170.0" layoutY="444.0" prefHeight="25.0" prefWidth="137.0" promptText="Telefonnummer" />
-      <TextField fx:id="contactEmail" layoutX="324.0" layoutY="444.0" prefHeight="25.0" prefWidth="240.0" promptText="E-post" />
-      <TextArea fx:id="posConditions" layoutX="397.0" layoutY="66.0" prefHeight="126.0" prefWidth="150.0" promptText="Arbeidsvilkår" />
-      <TextArea fx:id="posSalary" layoutX="569.0" layoutY="66.0" prefHeight="126.0" prefWidth="161.0" promptText="Lønnsbetingelser" />
-      <TextField fx:id="positionTitle" layoutX="15.0" layoutY="233.0" prefHeight="25.0" prefWidth="278.0" promptText="Stillingstittel" />
-      <Button fx:id="createPosition" layoutX="580.0" layoutY="444.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Opprett nytt vikariat" />
-      <TextField fx:id="selectedEmployer" disable="true" editable="false" layoutX="15.0" layoutY="198.0" prefHeight="25.0" prefWidth="200.0" promptText="Employer" />
+      <ComboBox fx:id="sectorDropdown" layoutX="230.0" layoutY="96.0" prefWidth="150.0" promptText="Sector" />
+      <TextField fx:id="posLocation" layoutX="402.0" layoutY="52.0" prefHeight="37.0" prefWidth="190.0" promptText="Arbeidssted" />
+      <TextField fx:id="posHours" layoutX="601.0" layoutY="52.0" prefHeight="37.0" prefWidth="120.0" promptText="Arbeidstid" />
+      <ComboBox fx:id="industryDropdown" layoutX="233.0" layoutY="52.0" prefWidth="150.0" promptText="Jobbkategori" />
+      <ComboBox fx:id="fromMonth" layoutX="227.0" layoutY="167.0" prefHeight="25.0" prefWidth="67.0" />
+      <ComboBox fx:id="fromYear" layoutX="312.0" layoutY="167.0" prefHeight="25.0" prefWidth="67.0" />
+      <ComboBox fx:id="toMonth" layoutX="227.0" layoutY="221.0" prefHeight="25.0" prefWidth="67.0" />
+      <ComboBox fx:id="toYear" layoutX="312.0" layoutY="222.0" prefHeight="25.0" prefWidth="67.0" />
+      <ListView fx:id="qualificationList" layoutX="454.0" layoutY="278.0" prefHeight="200.0" prefWidth="267.0" />
+      <TextField fx:id="posQualityField" layoutX="452.0" layoutY="234.0" prefHeight="37.0" prefWidth="190.0" promptText="Krav til kvalifikasjoner" />
+      <TextArea fx:id="posDescription" layoutX="12.0" layoutY="309.0" prefHeight="169.0" prefWidth="420.0" promptText="Stillingsbeskrivelse" wrapText="true" />
+      <Label layoutX="273.0" layoutY="142.0" styleClass="table-context" text="Varighet fra" />
+      <Label layoutX="294.0" layoutY="200.0" styleClass="table-context" text="til" />
+      <ListView fx:id="employerList" layoutX="14.0" layoutY="26.0" prefHeight="182.0" prefWidth="200.0" />
+      <Label layoutX="12.0" layoutY="9.0" styleClass="table-context" text="Arbeidsgiver" />
+      <Button fx:id="addQualification" layoutX="642.0" layoutY="233.0" mnemonicParsing="false" styleClass="toolbar-button" text="Legg til" />
+      <TextField fx:id="contactName" layoutX="12.0" layoutY="489.0" prefHeight="37.0" prefWidth="176.0" promptText="Navn" />
+      <TextField fx:id="contactPhone" layoutX="196.0" layoutY="489.0" prefHeight="37.0" prefWidth="112.0" promptText="Telefonnummer" />
+      <TextField fx:id="contactEmail" layoutX="312.0" layoutY="489.0" prefHeight="25.0" prefWidth="240.0" promptText="E-post" />
+      <TextArea fx:id="posConditions" layoutX="402.0" layoutY="96.0" prefHeight="126.0" prefWidth="150.0" promptText="Arbeidsvilkår" />
+      <TextArea fx:id="posSalary" layoutX="562.0" layoutY="96.0" prefHeight="126.0" prefWidth="161.0" promptText="Lønnsbetingelser" />
+      <TextField fx:id="positionTitle" layoutX="12.0" layoutY="260.0" prefHeight="25.0" prefWidth="278.0" promptText="Stillingstittel" />
+      <Button fx:id="createPosition" layoutX="578.0" layoutY="488.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="143.0" text="Register" />
+      <TextField fx:id="selectedEmployer" disable="true" editable="false" layoutX="14.0" layoutY="215.0" prefHeight="25.0" prefWidth="200.0" promptText="Employer" />
+      <Label layoutX="309.0" layoutY="9.0" styleClass="table-context" text="Register substitute position">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

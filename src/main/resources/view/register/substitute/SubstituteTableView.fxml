@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="517.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substitute.SubstituteTableController">
-    <TableView fx:id="substituteTable" editable="true" layoutY="32.0" prefHeight="155.0" prefWidth="712.0">
+<AnchorPane maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../dark-theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substitute.SubstituteTableController">
+    <TableView fx:id="substituteTable" editable="true" layoutX="6.0" layoutY="32.0" prefHeight="155.0" prefWidth="746.0">
         <columns>
             <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="First Name" />
             <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Last Name" />
@@ -31,7 +31,7 @@
       </contextMenu>
     </TableView>
 
-    <TableView fx:id="referenceTableView" editable="true" layoutY="215.0" prefHeight="113.0" prefWidth="293.0">
+    <TableView fx:id="referenceTableView" editable="true" layoutX="7.0" layoutY="215.0" prefHeight="113.0" prefWidth="286.0">
         <columns>
             <TableColumn fx:id="employerCol" prefWidth="113.0" text="Employer" />
             <TableColumn fx:id="fullNameCol" prefWidth="224.0" text="Name" />
@@ -50,7 +50,7 @@
       </contextMenu>
     </TableView>
 
-    <TableView fx:id="workExperienceTable" editable="true" layoutX="299.0" layoutY="215.0" prefHeight="113.0" prefWidth="413.0">
+    <TableView fx:id="workExperienceTable" editable="true" layoutX="299.0" layoutY="215.0" prefHeight="113.0" prefWidth="455.0">
         <columns>
             <TableColumn fx:id="companyCol" prefWidth="75.0" text="Company" />
             <TableColumn fx:id="positionCol" prefWidth="82.0" text="Position" />
@@ -71,7 +71,7 @@
       </contextMenu>
     </TableView>
 
-    <TableView fx:id="educationTable" editable="true" layoutX="1.0" layoutY="362.0" prefHeight="155.0" prefWidth="712.0">
+    <TableView fx:id="educationTable" editable="true" layoutX="7.0" layoutY="362.0" prefHeight="173.0" prefWidth="746.0">
         <columns>
             <TableColumn fx:id="schoolNameCol" prefWidth="75.0" text="School" />
             <TableColumn fx:id="degreeCol" prefWidth="75.0" text="Degree" />
@@ -92,22 +92,22 @@
          </ContextMenu>
       </contextMenu>
     </TableView>
-   <Label layoutX="2.0" layoutY="192.0" text="References">
+   <Label layoutX="11.0" layoutY="192.0" styleClass="table-context" text="References">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <Label layoutX="299.0" layoutY="192.0" text="Previous work experience">
+   <Label layoutX="299.0" layoutY="192.0" styleClass="table-context" text="Previous work experience">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <Label layoutX="2.0" layoutY="7.0" text="Substitutes">
+   <Label layoutX="10.0" layoutY="7.0" styleClass="table-context" text="Substitutes">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <Label layoutX="3.0" layoutY="337.0" text="Education">
+   <Label layoutX="14.0" layoutY="337.0" styleClass="table-context" text="Education">
       <font>
          <Font size="16.0" />
       </font>

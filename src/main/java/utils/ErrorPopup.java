@@ -1,4 +1,4 @@
-package utils.errorpopup;
+package utils;
 
 import javafx.scene.control.Alert;
 

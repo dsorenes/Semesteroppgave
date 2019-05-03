@@ -1,4 +1,4 @@
-package utils.inputvalidation;
+package utils;
 
 import model.exceptions.*;
 

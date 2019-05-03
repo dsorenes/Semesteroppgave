@@ -10,11 +10,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="531.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substituteposition.SubstitutePositionsController">
+<AnchorPane maxHeight="540.0" maxWidth="760.0" minHeight="540.0" minWidth="760.0" prefHeight="540.0" prefWidth="760.0" stylesheets="@../../../dark-theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.substituteposition.SubstitutePositionsController">
    <children>
-      <TableView fx:id="substitutePositionTableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="176.0" prefWidth="528.0">
+      <TableView fx:id="substitutePositionTableView" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="220.0" prefWidth="732.0">
         <columns>
-          <TableColumn fx:id="nameCol" prefWidth="97.0" text="COmpany name" />
+          <TableColumn fx:id="nameCol" prefWidth="97.0" text="Company" />
           <TableColumn fx:id="posCol" prefWidth="67.0" text="Position" />
             <TableColumn fx:id="industryCol" prefWidth="61.0" text="Industry" />
             <TableColumn fx:id="sectorCol" prefWidth="75.0" text="Sector" />
@@ -33,14 +33,14 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <TextArea fx:id="description" layoutX="15.0" layoutY="353.0" prefHeight="154.0" prefWidth="254.0" promptText="Description" />
-      <TextField fx:id="contactFullName" layoutX="284.0" layoutY="353.0" promptText="Full name" />
-      <TextField fx:id="contactPhone" layoutX="284.0" layoutY="396.0" promptText="Phone number" />
-      <TextField fx:id="contactEmail" layoutX="284.0" layoutY="438.0" promptText="E-mail" />
-      <ListView fx:id="qualifications" layoutX="14.0" layoutY="219.0" prefHeight="98.0" prefWidth="142.0" />
-      <TextField fx:id="workHours" layoutX="288.0" layoutY="482.0" prefHeight="25.0" prefWidth="142.0" promptText="Work hours" />
-      <TextArea fx:id="salaryConditions" layoutX="173.0" layoutY="219.0" prefHeight="98.0" prefWidth="142.0" promptText="Salary conditions" />
-      <TextArea fx:id="employmentConditions" layoutX="325.0" layoutY="219.0" prefHeight="98.0" prefWidth="149.0" promptText="Employment conditions" />
-      <Button fx:id="saveChanges" layoutX="450.0" layoutY="438.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="75.0" text="Save changes" />
+      <TextArea fx:id="description" layoutX="16.0" layoutY="353.0" prefHeight="167.0" prefWidth="299.0" promptText="Description" />
+      <TextField fx:id="contactFullName" layoutX="325.0" layoutY="353.0" promptText="Full name" />
+      <TextField fx:id="contactPhone" layoutX="325.0" layoutY="396.0" promptText="Phone number" />
+      <TextField fx:id="contactEmail" layoutX="325.0" layoutY="438.0" promptText="E-mail" />
+      <ListView fx:id="qualifications" layoutX="16.0" layoutY="247.0" prefHeight="98.0" prefWidth="161.0" />
+      <TextField fx:id="workHours" layoutX="325.0" layoutY="482.0" prefHeight="37.0" prefWidth="200.0" promptText="Work hours" />
+      <TextArea fx:id="salaryConditions" layoutX="194.0" layoutY="247.0" prefHeight="98.0" prefWidth="161.0" promptText="Salary conditions" />
+      <TextArea fx:id="employmentConditions" layoutX="368.0" layoutY="247.0" prefHeight="98.0" prefWidth="161.0" promptText="Employment conditions" />
+      <Button fx:id="saveChanges" layoutX="593.0" layoutY="450.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="142.0" text="Save changes" />
    </children>
 </AnchorPane>
