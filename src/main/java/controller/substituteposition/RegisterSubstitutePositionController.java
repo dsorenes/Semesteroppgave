@@ -11,10 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import model.filemanager.readfromfile.CSVReader;
 import model.filemanager.savetofile.CSVWriter;
-import utils.ClearInput;
-import utils.Year;
+import model.utils.ClearInput;
+import model.utils.Year;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.Month;
 import java.util.ArrayList;

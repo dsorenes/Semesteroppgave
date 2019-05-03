@@ -1,6 +1,6 @@
 package controller;
 
-import static utils.FileGrabber.getFile;
+import static model.utils.FileGrabber.getFile;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

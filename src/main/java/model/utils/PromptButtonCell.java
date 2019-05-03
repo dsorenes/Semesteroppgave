@@ -1,4 +1,4 @@
-package utils;
+package model.utils;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

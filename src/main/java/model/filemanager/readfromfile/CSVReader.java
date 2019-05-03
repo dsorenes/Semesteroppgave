@@ -11,9 +11,8 @@ import model.data.substitute.education.EducationLevel;
 import model.data.substitute.education.Subject;
 import model.data.substitute.references.WorkReference;
 import model.data.substitute.work.Work;
-import utils.ErrorPopup;
+import model.utils.ErrorPopup;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

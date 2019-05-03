@@ -1,4 +1,4 @@
-package controller.substituteposition;
+package controller.tableview;
 
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;

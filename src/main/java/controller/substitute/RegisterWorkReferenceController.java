@@ -6,7 +6,7 @@ import model.data.substitute.references.WorkReference;
 import model.filemanager.readfromfile.CSVReader;
 import model.filemanager.savetofile.CSVWriter;
 
-import utils.ClearInput;
+import model.utils.ClearInput;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,10 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import utils.ClearInput;
-import model.data.substitute.references.WorkReference;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;

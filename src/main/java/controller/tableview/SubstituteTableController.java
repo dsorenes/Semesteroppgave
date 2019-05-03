@@ -1,4 +1,4 @@
-package controller.substitute;
+package controller.tableview;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
