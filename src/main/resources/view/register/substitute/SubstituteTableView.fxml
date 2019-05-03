@@ -25,7 +25,7 @@
       <contextMenu>
          <ContextMenu>
            <items>
-             <MenuItem mnemonicParsing="false" text="Delete row" />
+             <MenuItem fx:id="rightClickDeleteSubstitute" mnemonicParsing="false" text="Delete row" />
            </items>
          </ContextMenu>
       </contextMenu>
@@ -44,7 +44,7 @@
       <contextMenu>
          <ContextMenu>
            <items>
-             <MenuItem mnemonicParsing="false" text="Delete row" />
+             <MenuItem fx:id="rightClickDeleteReference" mnemonicParsing="false" text="Delete row" />
            </items>
          </ContextMenu>
       </contextMenu>
@@ -65,7 +65,7 @@
       <contextMenu>
          <ContextMenu>
            <items>
-             <MenuItem mnemonicParsing="false" text="Delete row" />
+             <MenuItem fx:id="rightClickDeleteWork" mnemonicParsing="false" text="Delete row" />
            </items>
          </ContextMenu>
       </contextMenu>
@@ -87,7 +87,7 @@
       <contextMenu>
          <ContextMenu>
            <items>
-             <MenuItem mnemonicParsing="false" text="Delete row" />
+             <MenuItem fx:id="rightClickDeleteEducation" mnemonicParsing="false" text="Delete row" />
            </items>
          </ContextMenu>
       </contextMenu>

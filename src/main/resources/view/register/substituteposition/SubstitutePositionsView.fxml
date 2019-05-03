@@ -28,7 +28,7 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem fx:id="showDetailsMenu" mnemonicParsing="false" text="Show details" />
+                <MenuItem fx:id="rightClickDelete" mnemonicParsing="false" text="Delete row" />
               </items>
             </ContextMenu>
          </contextMenu>

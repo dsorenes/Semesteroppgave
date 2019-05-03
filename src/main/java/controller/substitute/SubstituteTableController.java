@@ -28,89 +28,69 @@ import java.util.ResourceBundle;
 
 public class SubstituteTableController implements Initializable {
 
-    @FXML
-    private TableView<Substitute> substituteTable;
+    @FXML private TableView<Substitute> substituteTable;
 
-    @FXML
-    private TableColumn<Substitute, String> firstNameCol;
+    @FXML private TableColumn<Substitute, String> firstNameCol;
 
-    @FXML
-    private TableColumn<Substitute, String> lastNameCol;
+    @FXML private TableColumn<Substitute, String> lastNameCol;
 
-    @FXML
-    private TableColumn<Substitute, String> addressCol;
+    @FXML private TableColumn<Substitute, String> addressCol;
 
-    @FXML
-    private TableColumn<Substitute, LocalDate> bornCol;
+    @FXML private TableColumn<Substitute, LocalDate> bornCol;
 
-    @FXML
-    private TableColumn<Substitute, String> eMailCol;
+    @FXML private TableColumn<Substitute, String> eMailCol;
 
-    @FXML
-    private TableColumn<Substitute, String> phoneCol;
+    @FXML private TableColumn<Substitute, String> phoneCol;
 
-    @FXML
-    private TableColumn<Substitute, Boolean> employedCol;
+    @FXML private TableColumn<Substitute, Boolean> employedCol;
 
-    @FXML
-    public TableView<Education> educationTable;
+    @FXML public TableView<Education> educationTable;
 
-    @FXML
-    private TableColumn<Education, String> schoolNameCol;
+    @FXML private TableColumn<Education, String> schoolNameCol;
 
-    @FXML
-    private TableColumn<Education, String> degreeCol;
+    @FXML private TableColumn<Education, String> degreeCol;
 
-    @FXML
-    private TableColumn<Education, Subject> subjectCol;
+    @FXML private TableColumn<Education, Subject> subjectCol;
 
-    @FXML
-    private TableColumn<Education, EducationLevel> educationLevelCol;
+    @FXML private TableColumn<Education, EducationLevel> educationLevelCol;
 
-    @FXML
-    private TableColumn<Education, String> eduFromCol;
+    @FXML private TableColumn<Education, String> eduFromCol;
 
-    @FXML
-    private TableColumn<Education, String> eduToCol;
+    @FXML private TableColumn<Education, String> eduToCol;
 
-    @FXML
-    private TableColumn<Education, Boolean> isStudyingCol;
+    @FXML private TableColumn<Education, Boolean> isStudyingCol;
 
-    @FXML
-    public TableView<WorkReference> referenceTableView;
+    @FXML public TableView<WorkReference> referenceTableView;
 
-    @FXML
-    private TableColumn<WorkReference, String> fullNameCol;
+    @FXML private TableColumn<WorkReference, String> fullNameCol;
 
-    @FXML
-    private TableColumn<WorkReference, String> phoneNumberCol;
+    @FXML private TableColumn<WorkReference, String> phoneNumberCol;
 
-    @FXML
-    private TableColumn<WorkReference, String> MailCol;
+    @FXML private TableColumn<WorkReference, String> MailCol;
 
-    @FXML
-    private TableColumn<WorkReference, String> employerCol;
+    @FXML private TableColumn<WorkReference, String> employerCol;
 
-    @FXML
-    public TableView<Work> workExperienceTable;
+    @FXML public TableView<Work> workExperienceTable;
 
-    @FXML
-    private TableColumn<Work, String> companyCol;
+    @FXML private TableColumn<Work, String> companyCol;
 
-    @FXML
-    private TableColumn<Work, String> positionCol;
+    @FXML private TableColumn<Work, String> positionCol;
 
-    @FXML
-    private TableColumn<Work, Industry> industryCol;
+    @FXML private TableColumn<Work, Industry> industryCol;
 
-    @FXML
-    private TableColumn<Work, Sector> sectorCol;
+    @FXML private TableColumn<Work, Sector> sectorCol;
 
-    @FXML
-    private TableColumn<Work, LocalDate> fromCol;
+    @FXML private TableColumn<Work, LocalDate> fromCol;
 
-    @FXML
-    private TableColumn<Work, LocalDate> toCol;
+    @FXML private TableColumn<Work, LocalDate> toCol;
+
+    @FXML private MenuItem rightClickDeleteReference;
+
+    @FXML private MenuItem rightClickDeleteSubstitute;
+
+    @FXML private MenuItem rightClickDeleteEducation;
+
+    @FXML private MenuItem rightClickDeleteWork;
 
 
     private void initializeSubstituteTable() {
@@ -131,11 +111,13 @@ public class SubstituteTableController implements Initializable {
         initializeReferenceCol();
         initializeSubstituteTable();
 
-
         substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSubstituteTableSelection());
         referenceTableView.getSelectionModel().selectedItemProperty().addListener(e -> onWorkReferenceTableSelection());
-        workExperienceTable.getSelectionModel().selectedItemProperty().addListener(e -> onWorkTableSelection());
         educationTable.getSelectionModel().selectedItemProperty().addListener(e -> onEducationTableSelection());
+        onRightClickDeleteReference();
+        onRightClickDeleteSubstitute();
+        onRightClickDeleteWork();
+        onRightClickDeleteEducation();
 
     }
 
@@ -147,12 +129,52 @@ public class SubstituteTableController implements Initializable {
 
     }
 
-    private void onWorkReferenceTableSelection() {
-        WorkReference w = referenceTableView.getSelectionModel().getSelectedItem();
+    private void onRightClickDeleteReference() {
+        rightClickDeleteReference.setOnAction(e -> {
+            try {
+                CSVWriter.deleteLine("data/workReference", onWorkReferenceTableSelection(), 0);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
-    private void onWorkTableSelection() {
-        Work w = workExperienceTable.getSelectionModel().getSelectedItem();
+    private void onRightClickDeleteWork() {
+        rightClickDeleteWork.setOnAction(e -> {
+            try {
+                CSVWriter.deleteLine("data/workExperience", workExperienceTable.getSelectionModel().getSelectedItem().getID(), 0);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+
+    private void onRightClickDeleteSubstitute() {
+        rightClickDeleteSubstitute.setOnAction(e -> {
+            try {
+                CSVWriter.deleteLine("data/substitute", substituteTable.getSelectionModel().getSelectedItem().getID(), 0);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+
+    private void onRightClickDeleteEducation() {
+        rightClickDeleteSubstitute.setOnAction(e -> {
+            try {
+                CSVWriter.deleteLine("data/education", educationTable.getSelectionModel().getSelectedItem().getID(), 0);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+
+    private int onWorkReferenceTableSelection() {
+        return referenceTableView.getSelectionModel().getSelectedItem().getID();
+    }
+
+    private int onWorkTableSelection() {
+        return workExperienceTable.getSelectionModel().getSelectedItem().getID();
     }
 
     private void onEducationTableSelection() {

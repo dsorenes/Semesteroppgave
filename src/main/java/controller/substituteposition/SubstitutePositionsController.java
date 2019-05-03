@@ -62,6 +62,8 @@ public class SubstitutePositionsController implements Initializable {
 
     @FXML private Button saveChanges;
 
+    @FXML private MenuItem rightClickDelete;
+
     SubstitutePosition substitutePosition;
 
     @Override
@@ -71,8 +73,13 @@ public class SubstitutePositionsController implements Initializable {
 
         substitutePositionTableView.getSelectionModel().selectedItemProperty().addListener(e -> onSelectDisplayInformation());
         saveChanges.setOnAction(e -> onSaveChanges());
-
-
+        rightClickDelete.setOnAction(e -> {
+            try {
+                CSVWriter.deleteLine("data/position/position", substitutePositionTableView.getSelectionModel().getSelectedItem().getID(), 0);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     private void onSaveChanges() {
