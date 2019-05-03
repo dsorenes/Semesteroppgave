@@ -107,7 +107,6 @@ public class RegisterContactInformationController implements Initializable {
 
         }
 
-
     }
 
     public Substitute getSubstitute() {

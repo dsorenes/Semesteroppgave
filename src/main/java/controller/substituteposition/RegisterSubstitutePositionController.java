@@ -108,11 +108,8 @@ public class RegisterSubstitutePositionController implements Initializable {
 
     private void onCreatePosition() {
         int positionID = 1;
-        try {
-            positionID = CSVReader.createIdCSV("data/position/position");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        positionID = CSVReader.createIdCSV("data/position/position");
+
         SubstitutePosition position = new SubstitutePosition(employerList.getSelectionModel().getSelectedItem(), industryDropdown.getValue(), sectorDropdown.getValue(), fromMonth.getValue(), fromYear.getValue(),
                                                              toMonth.getValue(), toYear.getValue());
         position.setID(positionID);

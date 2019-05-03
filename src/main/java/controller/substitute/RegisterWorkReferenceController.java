@@ -95,12 +95,9 @@ public class RegisterWorkReferenceController implements Initializable {
     private void onRegister() {
         int subID = 1;
         int referenceID = 1;
-        try {
-            subID = CSVReader.createIdCSV("data/substitute");
-            referenceID = CSVReader.createIdCSV("data/workReference");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        subID = CSVReader.createIdCSV("data/substitute");
+        referenceID = CSVReader.createIdCSV("data/workReference");
+
         this.substitute.setReferences(references, referenceID);
         this.substitute.setID(subID);
         this.substitute.getEducation().forEach(e -> e.setSubstituteID(this.substitute.getID()));

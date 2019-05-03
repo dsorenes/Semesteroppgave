@@ -55,7 +55,6 @@ public class AssignPositionController implements Initializable {
 
 
     private void initTable() {
-
         companyCol.setCellValueFactory(new PropertyValueFactory<>("companyName"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("positionTitle"));
         industryCol.setCellValueFactory(new PropertyValueFactory<>("position"));
@@ -69,7 +68,6 @@ public class AssignPositionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         initTable();
         initializeSubstituteTable();
         populateTableView();
@@ -77,47 +75,32 @@ public class AssignPositionController implements Initializable {
     }
 
     private void populateTableView() {
-        ObservableList<SubstitutePosition> subs = null;
-        try {
-            subs = FXCollections.observableArrayList(CSVReader.parseToSubstitutePosition("data/position/position"));
-        } catch (IOException e) {
-            System.out.println("SUBSTITUTERROREREF");
-        }
+        ObservableList<SubstitutePosition> subs = FXCollections.observableArrayList(CSVReader.parseToSubstitutePosition("data/position/position"));
         substitutePositionTableView.setItems(subs);
     }
 
     private void initializeSubstituteTable() {
         ObservableList<Substitute> substitutes;
-        try {
-            substitutes = FXCollections.observableArrayList(CSVReader.parseSubstitute());
-            substituteTableView.getItems().setAll(substitutes);
-        } catch (IOException e) {
-            System.out.println("ERROR");
-        }
+        substitutes = FXCollections.observableArrayList(CSVReader.parseSubstitute());
+        substituteTableView.getItems().setAll(substitutes);
     }
 
     public void AssignSubstitute(ActionEvent event) {
-
-        int assignedID = 0;
+        int assignedID = 1;
         AssignedPosition job = new AssignedPosition();
 
-        try {
-            assignedID = CSVReader.createIdCSV("data/assignedposition/assignedposition");
+        assignedID = CSVReader.createIdCSV("data/assignedposition/assignedposition");
 
-            job.setAssignedID(assignedID);
-            job.setSubstituteID(substituteTableView.getSelectionModel().getSelectedItem().getID());
-            job.setSubstitutePositionID(substitutePositionTableView.getSelectionModel().getSelectedItem().getID());
+        job.setAssignedID(assignedID);
+        job.setSubstituteID(substituteTableView.getSelectionModel().getSelectedItem().getID());
+        job.setSubstitutePositionID(substitutePositionTableView.getSelectionModel().getSelectedItem().getID());
 
-            ArrayList<AssignedPosition> pos = new ArrayList<>();
-            pos.add(job);
+        ArrayList<AssignedPosition> pos = new ArrayList<>();
+        pos.add(job);
 
-            CSVWriter save = new CSVWriter();
-            save.SaveToFile("data/assignedposition/assignedposition", pos);
+        CSVWriter save = new CSVWriter();
+        save.SaveToFile("data/assignedposition/assignedposition", pos);
 
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
     }

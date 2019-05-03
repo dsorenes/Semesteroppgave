@@ -74,18 +74,15 @@ public class SubstitutePositionsController implements Initializable {
         substitutePositionTableView.getSelectionModel().selectedItemProperty().addListener(e -> onSelectDisplayInformation());
         saveChanges.setOnAction(e -> onSaveChanges());
         rightClickDelete.setOnAction(e -> {
-            try {
-                CSVWriter.deleteLine("data/position/position", substitutePositionTableView.getSelectionModel().getSelectedItem().getID(), 0);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            CSVWriter.deleteLine("data/position/position", substitutePositionTableView.getSelectionModel().getSelectedItem().getID(), 0);
+
         });
     }
 
     private void onSaveChanges() {
         String descript = substitutePosition.getDescription();
         substitutePosition.setDescription(description.getText());
-        CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getDescription(), substitutePosition.getDescription());
+        CSVWriter.editLine("data/position/position", substitutePosition.getID(), descript, substitutePosition.getDescription());
         CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getEmploymentConditions(), employmentConditions.getText());
         CSVWriter.editLine("data/position/position", substitutePosition.getID(), substitutePosition.getSalaryConditions(), salaryConditions.getText());
         String qual = substitutePosition.getQualificationsNeeded();
@@ -166,12 +163,9 @@ public class SubstitutePositionsController implements Initializable {
 
     private void populateTableView() {
         ObservableList<SubstitutePosition> subs = null;
-        try {
-            subs = FXCollections.observableArrayList(CSVReader.parseToSubstitutePosition("data/position/position"));
-            substitutePositionTableView.setItems(subs);
-        } catch (IOException e) {
-            System.out.println("SUBSTITUTERROREREF");
-        }
+        subs = FXCollections.observableArrayList(CSVReader.parseToSubstitutePosition("data/position/position"));
+        substitutePositionTableView.setItems(subs);
+
     }
 
 

@@ -63,11 +63,8 @@ public class EmployerController implements Initializable {
         Employer employer = new Employer(companyName.getText(), companyAddress.getText(), firstName.getText(), lastName.getText(), phoneNumber.getText(), eMail.getText(), industryDropdown.getValue(), sectorDropdown.getValue());
         ArrayList<Employer> employees = new ArrayList<>();
         int employerID = 1;
-        try {
-            employerID = CSVReader.createIdCSV("data/employer/employer");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        employerID = CSVReader.createIdCSV("data/employer/employer");
+
         employer.setID(employerID);
         employees.add(employer);
         CSVWriter save = new CSVWriter();

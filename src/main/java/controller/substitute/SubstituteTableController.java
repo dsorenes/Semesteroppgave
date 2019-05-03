@@ -95,12 +95,8 @@ public class SubstituteTableController implements Initializable {
 
     private void initializeSubstituteTable() {
         ObservableList<Substitute> substitutes;
-        try {
-            substitutes = FXCollections.observableArrayList(CSVReader.parseSubstitute());
-            substituteTable.getItems().setAll(substitutes);
-        } catch (IOException e) {
-            System.out.println("ERROR");
-        }
+        substitutes = FXCollections.observableArrayList(CSVReader.parseSubstitute());
+        substituteTable.getItems().setAll(substitutes);
     }
 
     @Override
@@ -112,8 +108,6 @@ public class SubstituteTableController implements Initializable {
         initializeSubstituteTable();
 
         substituteTable.getSelectionModel().selectedItemProperty().addListener(e -> onSubstituteTableSelection());
-        referenceTableView.getSelectionModel().selectedItemProperty().addListener(e -> onWorkReferenceTableSelection());
-        educationTable.getSelectionModel().selectedItemProperty().addListener(e -> onEducationTableSelection());
         onRightClickDeleteReference();
         onRightClickDeleteSubstitute();
         onRightClickDeleteWork();
@@ -131,54 +125,26 @@ public class SubstituteTableController implements Initializable {
 
     private void onRightClickDeleteReference() {
         rightClickDeleteReference.setOnAction(e -> {
-            try {
-                CSVWriter.deleteLine("data/workReference", onWorkReferenceTableSelection(), 0);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            CSVWriter.deleteLine("data/workReference", referenceTableView.getSelectionModel().getSelectedItem().getID(), 0);
         });
     }
 
     private void onRightClickDeleteWork() {
         rightClickDeleteWork.setOnAction(e -> {
-            try {
-                CSVWriter.deleteLine("data/workExperience", workExperienceTable.getSelectionModel().getSelectedItem().getID(), 0);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            CSVWriter.deleteLine("data/workExperience", workExperienceTable.getSelectionModel().getSelectedItem().getID(), 0);
         });
     }
 
     private void onRightClickDeleteSubstitute() {
         rightClickDeleteSubstitute.setOnAction(e -> {
-            try {
-                CSVWriter.deleteLine("data/substitute", substituteTable.getSelectionModel().getSelectedItem().getID(), 0);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            CSVWriter.deleteLine("data/substitute", substituteTable.getSelectionModel().getSelectedItem().getID(), 0);
         });
     }
 
     private void onRightClickDeleteEducation() {
-        rightClickDeleteSubstitute.setOnAction(e -> {
-            try {
-                CSVWriter.deleteLine("data/education", educationTable.getSelectionModel().getSelectedItem().getID(), 0);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+        rightClickDeleteEducation.setOnAction(e -> {
+            CSVWriter.deleteLine("data/education", educationTable.getSelectionModel().getSelectedItem().getID(), 0);
         });
-    }
-
-    private int onWorkReferenceTableSelection() {
-        return referenceTableView.getSelectionModel().getSelectedItem().getID();
-    }
-
-    private int onWorkTableSelection() {
-        return workExperienceTable.getSelectionModel().getSelectedItem().getID();
-    }
-
-    private void onEducationTableSelection() {
-        Education e = educationTable.getSelectionModel().getSelectedItem();
     }
 
     private void populateTablesOnSelection(Substitute sub) {
@@ -294,19 +260,7 @@ public class SubstituteTableController implements Initializable {
             CSVWriter.editLine("data/workExperience", t.getRowValue().getID(), old.toString(), t.getNewValue().toString());
         });
         fromCol.setCellValueFactory(new PropertyValueFactory<>("employedFrom"));
-//        fromCol.setCellFactory(TextFieldTableCell.forTableColumn());
-//        fromCol.setOnEditCommit(t -> {
-//            String oldValue = t.getOldValue();
-//            t.getRowValue().setFrom(t.getNewValue());
-//            CSVWriter.editLine("data/workExperience", t.getRowValue().getID(), oldValue, t.getNewValue());
-//        });
         toCol.setCellValueFactory(new PropertyValueFactory<>("employedTo"));
-//        toCol.setCellFactory(TextFieldTableCell.forTableColumn());
-////        toCol.setOnEditCommit(t -> {
-////            String oldValue = t.getOldValue();
-////            t.getRowValue().setTo(t.getNewValue());
-////            CSVWriter.editLine("data/workExperience", t.getRowValue().getID(), oldValue, t.getNewValue());
-////        });
     }
 
     void initializeEducationCol() {
