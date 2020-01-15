@@ -1,6 +1,11 @@
 # Semesteroppgave-Programutvikling
 
 ![Screenshot](Skjermbilde%202020-01-15%20kl.%2017.45.37.png)
+![Screenshot](Skjermbilde%202020-01-15%20kl.%2017.45.59.png)
+![Screenshot](Skjermbilde%202020-01-15%20kl.%2017.46.05.png)
+![Screenshot](Skjermbilde%202020-01-15%20kl.%2017.46.22.png)
+![Screenshot](Skjermbilde%202020-01-15%20kl.%2017.46.28.png)
+![Screenshot](Skjermbilde%202020-01-15%20kl.%2017.46.42.png)
 
 
 ## Karakter blir satt etter følgende generelle mål:
