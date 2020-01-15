@@ -1,5 +1,7 @@
 # Semesteroppgave-Programutvikling
 
+![Screenshot](Skjermbilde 2020-01-15 kl. 17.45.37.png)
+
 
 ## Karakter blir satt etter følgende generelle mål:
 • At du har arbeidet effektivt med medlemmene i din gruppe
